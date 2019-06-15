@@ -1,0 +1,9 @@
+{
+  "itemName" : "EES_transmutationbook",
+  "price" : 10,
+  "rarity" : "Essential",
+  "category" : "Tool",
+  "inventoryIcon" : "EES_transmutationbook.png",
+  "description" : "This book contains all your knowledge about transmutation.",
+  "shortdescription" : "Transmutation book"
+}

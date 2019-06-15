@@ -1,0 +1,18 @@
+[
+	{
+    "op": "add",
+    "path": "/EES_oreemc",
+    "value": {
+      "representativeItem" : "EES_oreemc",
+      "playerMax" : 9999999
+    }
+  },
+	{
+    "op": "add",
+    "path": "/EES_universalemc",
+    "value": {
+      "representativeItem" : "EES_universalemc",
+      "playerMax" : 9999999
+    }
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "author" : "AlbertoRota",
+  "description" : "Equivalent Exchange for Strabound",
+  "friendlyName" : "EE for Strabound",
+  "includes" : [],
+  "link" : "",
+  "name" : "EES",
+  "path" : ".",
+  "requires" : [],
+  "steamContentId" : "",
+  "version" : "0.0.0"
+}
