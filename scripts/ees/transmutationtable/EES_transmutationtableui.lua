@@ -34,6 +34,10 @@ function update(dt)
     burnEmc = calculateItemListEmcValue(itemGridItems, initBurnSlots, endBurnSlots, 0.1)
     widget.setText("labelBurnEmc", burnEmc)
 
+    -- Display player emc
+    widget.setText("labelOreEmc", player.currency("EES_oreemc"))
+    widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
+
     -- Update "lastItemGridItems" with the new values
     lastItemGridItems = itemGridItems
   end

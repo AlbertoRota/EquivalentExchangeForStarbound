@@ -1,7 +1,7 @@
 {
-  "itemName" : "EES_oreEmc",
+  "itemName" : "EES_oreemc",
   "rarity" : "Common",
-  "inventoryIcon" : "EES_oreEmc.png",
+  "inventoryIcon" : "EES_oreemc.png",
   "description" : "Mysterious energy used by the Ancients. It pulses in harmony with the living universe.",
   "shortdescription" : "Ancient Essence",
   "currency" : "EES_oreemc",
