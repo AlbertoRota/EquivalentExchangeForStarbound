@@ -4,26 +4,20 @@ require "/scripts/ees/EES_utils.lua"
 ------------------------- Starbound hooks and functions ------------------------
 --------------------------------------------------------------------------------
 
--- Get "configName" from the config, raises error if not found.
-function getMandatoryConfig(configName)
-  local errMsgMissingConfig = "Configuration parameter \"%s\" not found."
-  local value = config.getParameter(configName)
-  if not value then
-    error(string.format(errMsgMissingConfig, configName))
-  end
-  return value
-end
-
 -- Hook function called when the obj is created/placed in the world.
 function init()
   container = {}
 
-  -- Load config from the ".object" file
+  -- Load config from the ".object" file.
   canStudy        = getMandatoryConfig("eesCanStudy")
   initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots")
   endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots")
   initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots")
   endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots")
+
+  -- Register mesagges that will be called by the GUI.
+  message.setHandler("clearStudySlots", clearStudySlots)
+  message.setHandler("clearBurnSlots", clearBurnSlots)
 end
 
 -- Hook function called every "scriptDelta".
@@ -33,12 +27,12 @@ end
 -- Hook function called after any modification to the "itemgrid" elements.
 function containerCallback()
   -- Check all the "Study" slots for invalid items
-  for strudySlot = initStudySlots, endStudySlots do
-    local item = world.containerItemAt(entity.id(), strudySlot)
+  for studySlot = initStudySlots, endStudySlots do
+    local item = world.containerItemAt(entity.id(), studySlot)
 
-    -- If the item is not in "canStudy", move it out of the "Study" slots
+    -- If the item is not in "canStudy", move it out of the "Study" slots.
     if item and not canStudy[item.name] then
-      moveToBurnSlotOrEjectItem(strudySlot)
+      moveToBurnSlotOrEjectItem(studySlot)
     end
   end
 end
@@ -48,8 +42,38 @@ function uninit()
 end
 
 --------------------------------------------------------------------------------
+------------------------------- Public functions -------------------------------
+--------------------------------------------------------------------------------
+
+-- Clears the Study slots.
+-- Called by "world.sendEntityMessage(entityId, 'clearStudySlots')"
+function clearStudySlots()
+  for studySlot = initStudySlots, endStudySlots do
+    world.containerTakeAt(entity.id(), studySlot)
+  end
+end
+
+-- Clears the Burn slots.
+-- Called by "world.sendEntityMessage(entityId, 'clearBurnSlots')"
+function clearBurnSlots()
+  for burnSlot = initBurnSlots, endBurnSlots do
+    world.containerTakeAt(entity.id(), burnSlot)
+  end
+end
+
+--------------------------------------------------------------------------------
 ------------------------------ Private functions -------------------------------
 --------------------------------------------------------------------------------
+
+-- Get "configName" from the config, raises error if not found.
+function getMandatoryConfig(configName)
+  local errMsgMissingConfig = "Configuration parameter \"%s\" not found."
+  local value = config.getParameter(configName)
+  if not value then
+    error(string.format(errMsgMissingConfig, configName))
+  end
+  return value
+end
 
 -- Attemps to move the item in the specified slot to one of the "Burn" slots.
 -- If it's impossible to the item there, it gets ejected out of the container.

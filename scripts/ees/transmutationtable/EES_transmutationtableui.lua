@@ -51,12 +51,22 @@ end
 -------------------------- Buttons hooks and functions -------------------------
 --------------------------------------------------------------------------------
 
+-- Adds the emcValue to the player currency and clears the study slots
 function buttonStudy()
   traceprint("ui - buttonStudy")
+  local itemGridItems = widget.itemGridItems("itemGrid")
+  studyEmc = calculateItemListEmcValue(itemGridItems, initStudySlots, endStudySlots, 1)
+  player.addCurrency("EES_oreemc", studyEmc)
+  world.sendEntityMessage(pane.containerEntityId(), "clearStudySlots")
 end
 
+-- Adds the emcValue to the player currency and clears the burn slots
 function buttonBurn()
   traceprint("ui - buttonBurn")
+  local itemGridItems = widget.itemGridItems("itemGrid")
+  studyEmc = calculateItemListEmcValue(itemGridItems, initBurnSlots, endBurnSlots, 0.1)
+  player.addCurrency("EES_universalemc", studyEmc)
+  world.sendEntityMessage(pane.containerEntityId(), "clearBurnSlots")
 end
 
 --------------------------------------------------------------------------------
