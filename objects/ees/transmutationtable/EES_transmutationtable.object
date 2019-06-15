@@ -40,7 +40,7 @@
   ],
   "openSounds" : [ "/sfx/objects/chest_medium_open.ogg" ],
   "closeSounds" : [ "/sfx/objects/chest_medium_close.ogg" ],
-  "slotCount" : 12,
+  "slotCount" : 8,
   "uiConfig" : "/interface/ees/transmutationtable/EES_transmutationtable.config",
   "frameCooldown" : 5,
   "autoCloseCooldown" : 3600,
@@ -64,8 +64,8 @@
   },
   "eesSlotConfig" : {
     "initStudySlots" : 0,
-    "endStudySlots" : 5,
-    "initBurnSlots" : 6,
-    "endBurnSlots" : 11
+    "endStudySlots" : 3,
+    "initBurnSlots" : 4,
+    "endBurnSlots" : 7
   }
 }

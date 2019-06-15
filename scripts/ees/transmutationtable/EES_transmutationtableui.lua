@@ -17,8 +17,15 @@ function init()
   initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots") + 1
   endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots") + 1
 
-  tprint(root.itemConfig("dirtmaterial"), "dirtmaterial")
-  tprint(root.itemConfig("liquidwater"), "liquidwater")
+  -- Add a dummy item to the list.
+  local list = "scrollArea.itemList"
+  local newItem = string.format("%s.%s", list, widget.addListItem(list))
+  widget.setText(newItem..".itemName", "Changed itemName")
+  widget.setImage(newItem..".priceLabel", "Changed priceLabel")
+
+  for i = 1, 12 do
+    widget.addListItem(list)
+  end
 end
 
 -- Hook function called every "scriptDelta".
