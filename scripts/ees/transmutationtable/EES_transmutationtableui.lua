@@ -7,16 +7,17 @@ require "/scripts/ees/EES_utils.lua"
 -- Hook function called when the GUI is opened.
 function init()
   container = {}
-  lastItemGridItems = {}
-  studyEmc = 0
-  burnEmc = 0
+  self.currentItemGridItems = {}
+  self.lastItemGridItems = {}
+  self.studyEmc = 0
+  self.burnEmc = 0
   self.itemList = "scrollArea.itemList"
 
   -- Load config from the ".object" file of the linked container.
-  initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots") + 1
-  endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots") + 1
-  initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots") + 1
-  endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots") + 1
+  self.initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots") + 1
+  self.endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots") + 1
+  self.initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots") + 1
+  self.endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots") + 1
 
   -- Initiallize the itemList
   populateItemList()
@@ -28,21 +29,15 @@ end
 -- Hook function called every "scriptDelta".
 function update(dt)
   -- Pool the itemGrid to check if the inventory has changed
-  local itemGridItems = widget.itemGridItems("itemGrid")
-  if itemListAreDifferent(itemGridItems, lastItemGridItems, initStudySlots, endBurnSlots) then
+  if itemGridHasChanged() then
     -- Re-calculate and display the "studyEmc" value
-    studyEmc = calculateItemListEmcValue(itemGridItems, initStudySlots, endStudySlots, 1)
-    widget.setText("labelStudyEmc", studyEmc)
+    widget.setText("labelStudyEmc", calculateStudyEmcValue())
 
     -- Re-calculate and display the "burnEmc" value
-    burnEmc = calculateItemListEmcValue(itemGridItems, initBurnSlots, endBurnSlots, 0.1)
-    widget.setText("labelBurnEmc", burnEmc)
+    widget.setText("labelBurnEmc", calculateBurnEmcValue())
 
     -- Display player emc
     updatePlayerEmcLabels()
-
-    -- Update "lastItemGridItems" with the new values
-    lastItemGridItems = itemGridItems
   end
 end
 
@@ -56,20 +51,26 @@ end
 
 -- Adds the emcValue to the player currency and clears the study slots
 function buttonStudy()
-  traceprint("ui - buttonStudy")
-  local itemGridItems = widget.itemGridItems("itemGrid")
-  studyEmc = calculateItemListEmcValue(itemGridItems, initStudySlots, endStudySlots, 1)
-  player.addCurrency("EES_oreemc", studyEmc)
+  -- Ensure that we are using the latest grid status
+  self.currentItemGridItems = widget.itemGridItems("itemGrid")
+
+  -- Add the EMC and update the Book
+  player.addCurrency("EES_oreemc", calculateStudyEmcValue())
   updateTransmutationBook()
+
+  -- Clear the  slots
   world.sendEntityMessage(pane.containerEntityId(), "clearStudySlots")
 end
 
 -- Adds the emcValue to the player currency and clears the burn slots
 function buttonBurn()
-  traceprint("ui - buttonBurn")
-  local itemGridItems = widget.itemGridItems("itemGrid")
-  studyEmc = calculateItemListEmcValue(itemGridItems, initBurnSlots, endBurnSlots, 0.1)
-  player.addCurrency("EES_universalemc", studyEmc)
+  -- Ensure that we are using the latest grid status
+  self.currentItemGridItems = widget.itemGridItems("itemGrid")
+
+  -- Add the EMC, no need to update the Book
+  player.addCurrency("EES_universalemc", calculateBurnEmcValue())
+
+  -- Clear the  slots
   world.sendEntityMessage(pane.containerEntityId(), "clearBurnSlots")
 end
 
@@ -115,6 +116,7 @@ end
 function updateTransmutationBook()
   local transmutationBookUpdated = false
   local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
+  tprint(transmutationBook, "old")
 
   -- Initiallize the relevant parameters if not present.
   if not transmutationBook.parameters.eesTransmutations then
@@ -127,48 +129,44 @@ function updateTransmutationBook()
   end
 
   -- Update the info of the transmutations.
-  local itemList = widget.itemGridItems("itemGrid")
-  for slot = initStudySlots, endStudySlots do
+  for slot = self.initStudySlots, self.endStudySlots do
     -- Check if the slot contains a valid item
-    local item = itemList[slot]
-    if item then -- The slot has an item
-      local itemConfig = root.itemConfig(item.name)
-      if itemConfig then -- The item is valid
+    local itemDescriptor = self.currentItemGridItems[slot]
+    if itemDescriptor then -- The slot has an item
+      local itemConfig = root.itemConfig(itemDescriptor.name)
 
-        local itemTransmutation = transmutationBook.parameters.eesTransmutations["ore"][item.name]
-        if not itemTransmutation then
-          -- It's a new item, initiallize it and add it to the book
-          local newItemTransmutation = {
-            known = false,
-            new = false,
-            progress = item.count,
-            price = itemConfig.config.price or 1,
-            name = item.name
-          }
-          if newItemTransmutation.progress >= 10 then
-            newItemTransmutation.known = true
-            newItemTransmutation.new = true
-            newItemTransmutation.progress = 10
-          end
-          transmutationBook.parameters.eesTransmutations["ore"][item.name] = newItemTransmutation
-          transmutationBookUpdated = true
-        elseif not itemTransmutation.known then
-          -- It's an unknown item, update book information
-          itemTransmutation.progress = itemTransmutation.progress + item.count
-          if itemTransmutation.progress >= 10 then
-            itemTransmutation.known = true
-            itemTransmutation.new = true
-            itemTransmutation.progress = 10
-          end
-          transmutationBookUpdated = true
+      local itemTransmutation = transmutationBook.parameters.eesTransmutations["ore"][itemDescriptor.name]
+      if not itemTransmutation then
+        -- It's a new transmutation, initiallize it.
+        itemTransmutation = {
+          known = false,
+          new = false,
+          progress = 0,
+          price = itemConfig.config.price or 5,
+          name = itemDescriptor.name
+        }
+      end
+
+      if not itemTransmutation.known then
+        -- It's an unknown item, update the transmutation information
+        itemTransmutation.progress = itemTransmutation.progress + itemDescriptor.count
+        if itemTransmutation.progress >= 10 then
+          itemTransmutation.known = true
+          itemTransmutation.new = true
+          itemTransmutation.progress = 10
         end
+
+        -- Save that information back into the book
+        transmutationBook.parameters.eesTransmutations["ore"][itemDescriptor.name] = itemTransmutation
+        transmutationBookUpdated = true
       end
     end
   end
 
-  -- If the book has been updated, give the updated version to the player.
   if transmutationBookUpdated then
+    -- If the book has been updated, give the updated version to the player.
     player.consumeTaggedItem("EES_transmutationbook", 1)
+    tprint(transmutationBook, "new")
     player.giveItem(transmutationBook)
 
     -- Re-populate the list to refresh the changes
@@ -220,55 +218,81 @@ function populateItemList()
   end
 end
 
--- Compares two "itemList" to see if the have the same items in the same slots.
-function itemListAreDifferent(itemList1, itemList2, startSlot, endSlot)
+-- Checks if the "itemGrid" has changed since the last check.
+function itemGridHasChanged()
   local hasChanged = false
-  for slot = startSlot, endSlot do
-    -- Pick one item from each list
-    local item_1 = itemList1[slot]
-    local item_2 = itemList2[slot]
 
-    if item_1 == nil and item_2 == nil then
-      -- If the slot is empty in both list, skipt the rest of the validations
-    elseif item_1 == nil and item_2 ~= nil then
-      -- Slot is empty in the first list, but not in the second
+  -- Update "currentItemGridItems".
+  self.currentItemGridItems = widget.itemGridItems("itemGrid")
+
+  -- Check if there are differences.
+  for slot = self.initStudySlots, self.endBurnSlots do
+    -- Pick one item from each list
+    local currentItem = self.currentItemGridItems[slot]
+    local lastItem = self.lastItemGridItems[slot]
+
+    if currentItem == nil and lastItem == nil then
+      -- If the slot is empty in both, skipt the rest of the validations.
+    elseif currentItem == nil and lastItem ~= nil then
+      -- Slot is empty now, but it wasn't.
       hasChanged = true
-    elseif item_1 ~= nil and item_2 == nil then
-      -- Slot is empty in the second list, but not in the first
+    elseif currentItem ~= nil and lastItem == nil then
+      -- Slot is filled now, but it wasn't.
       hasChanged = true
-    elseif item_1.name ~= item_2.name then
+    elseif currentItem.name ~= lastItem.name then
       -- They are different items
       hasChanged = true
-    elseif item_1.count ~= item_2.count then
+    elseif currentItem.count ~= lastItem.count then
       -- The ammount of items is different
       hasChanged = true
     end
   end
 
+  -- Update "lastItemGridItems".
+  self.lastItemGridItems = self.currentItemGridItems
   return hasChanged
 end
 
--- Calculates the EMC value of an "itemList"
--- TODO: Needs to be improved to allow more complex calculations.
-function calculateItemListEmcValue(itemList, startSlot, endSlot, sellFactor)
+-- Calculates the EMC value of all the items in the "Study" slots.
+function calculateStudyEmcValue()
   local emcValue = 0
-  for slot = startSlot, endSlot do
-    local item = itemList[slot]
-    if item then
-      local itemConfig = root.itemConfig(item.name)
-      if itemConfig then
-        local itemPrice = itemConfig.config.price
-        if not itemPrice or itemPrice < 5 then itemPrice = 5 end
-        emcValue = emcValue + math.floor(itemPrice * item.count * sellFactor)
-      end
-    end
+  for slot = self.initStudySlots, self.endStudySlots do
+    emcValue = emcValue + calculateItemEmc(self.currentItemGridItems[slot], 1)
   end
   return emcValue
 end
 
+-- Calculates the EMC value of all the items in the "Burn" slots.
+function calculateBurnEmcValue()
+  local emcValue = 0
+  for slot = self.initBurnSlots, self.endBurnSlots do
+    emcValue = emcValue + calculateItemEmc(self.currentItemGridItems[slot], 0.1)
+  end
+  return emcValue
+end
+
+-- Calculates the EMC value of the given "itemDescriptor".
+-- "discountFactor" is 1 by default (EMC = pixel price)
+function calculateItemEmc(itemDescriptor , discountFactor)
+  -- Preconditions and default values
+  if not itemDescriptor then return 0 end
+  discountFactor = discountFactor or 1
+
+  -- Obtain the relevant information of the item
+  local itemConfig = root.itemConfig(itemDescriptor.name).config
+  local itemPrice = itemConfig.price
+  local itemCategory = itemConfig.category -- TODO: Will be used in the future.
+
+  -- Obtain the value of a single item
+  -- TODO: Improve the EMC calculation (Water should be worthless)
+  if not itemPrice or itemPrice < 5 then itemPrice = 5 end
+
+  -- Calculate the value of all the items in the "itemDescriptor"
+  return math.floor(itemPrice * itemDescriptor.count * discountFactor)
+end
+
 -- Gives the player the item slected in the itemList.
 -- Consumes EMC in the process, first the specific, then the universal.
--- TODO: Seriously rethink and refactor this code.
 function craftSelectedWithEmc(count)
   -- Get the currently selected item.
   local selectedListItem = widget.getListSelected(self.itemList)
@@ -278,21 +302,34 @@ function craftSelectedWithEmc(count)
     )
 
     local totalPrice = itemData.price * count
-    local playerOreEmc = player.currency("EES_oreemc")
-    local playerUniversalEmc = player.currency("EES_universalemc")
-
-    if totalPrice <= playerOreEmc then
-      player.consumeCurrency("EES_oreemc", totalPrice)
-      -- Give the player the desired ammount of items.
+    if consumePlayerEmc(totalPrice) then
       player.giveItem({name = itemData.name, count = count})
-    elseif totalPrice - playerOreEmc <= playerUniversalEmc then
-      player.consumeCurrency("EES_oreemc", playerOreEmc)
-      player.consumeCurrency("EES_universalemc", totalPrice - playerOreEmc)
-      -- Give the player the desired ammount of items.
-      player.giveItem({name = itemData.name, count = count})
+    else
+      -- TODO: Play error sound.
     end
 
     -- Display player emc
     updatePlayerEmcLabels()
+  end
+end
+
+-- Similar to "player.consumeCurrency", but for EMC.
+-- Consumes first "mainEmc", using only "universalemc" if "ammount > mainEmc".
+function consumePlayerEmc(ammount)
+  local playerOreEmc = player.currency("EES_oreemc")
+  local playerUniversalEmc = player.currency("EES_universalemc")
+
+  if ammount <= playerOreEmc then
+    -- Enough EMC of the main type, consume it first.
+    player.consumeCurrency("EES_oreemc", ammount)
+    return true
+  elseif ammount - playerOreEmc <= playerUniversalEmc then
+    -- Consume all main EMC first, the use the universal.
+    player.consumeCurrency("EES_oreemc", playerOreEmc)
+    player.consumeCurrency("EES_universalemc", ammount - playerOreEmc)
+    return true
+  else
+    -- Not enough EMC to consume, return error.
+    return false
   end
 end

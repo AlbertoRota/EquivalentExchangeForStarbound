@@ -9,11 +9,11 @@ function init()
   container = {}
 
   -- Load config from the ".object" file.
-  canStudy        = getMandatoryConfig("eesCanStudy")
-  initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots")
-  endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots")
-  initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots")
-  endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots")
+  self.canStudy        = getMandatoryConfig("eesCanStudy")
+  self.initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots")
+  self.endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots")
+  self.initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots")
+  self.endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots")
 
   -- Register mesagges that will be called by the GUI.
   message.setHandler("clearStudySlots", clearStudySlots)
@@ -27,11 +27,11 @@ end
 -- Hook function called after any modification to the "itemgrid" elements.
 function containerCallback()
   -- Check all the "Study" slots for invalid items
-  for studySlot = initStudySlots, endStudySlots do
+  for studySlot = self.initStudySlots, self.endStudySlots do
     local item = world.containerItemAt(entity.id(), studySlot)
 
     -- If the item is not in "canStudy", move it out of the "Study" slots.
-    if item and not canStudy[item.name] then
+    if item and not self.canStudy[item.name] then
       moveToBurnSlotOrEjectItem(studySlot)
     end
   end
@@ -48,7 +48,7 @@ end
 -- Clears the Study slots.
 -- Called by "world.sendEntityMessage(entityId, 'clearStudySlots')"
 function clearStudySlots()
-  for studySlot = initStudySlots, endStudySlots do
+  for studySlot = self.initStudySlots, self.endStudySlots do
     world.containerTakeAt(entity.id(), studySlot)
   end
 end
@@ -56,7 +56,7 @@ end
 -- Clears the Burn slots.
 -- Called by "world.sendEntityMessage(entityId, 'clearBurnSlots')"
 function clearBurnSlots()
-  for burnSlot = initBurnSlots, endBurnSlots do
+  for burnSlot = self.initBurnSlots, self.endBurnSlots do
     world.containerTakeAt(entity.id(), burnSlot)
   end
 end
@@ -82,7 +82,7 @@ function moveToBurnSlotOrEjectItem(containerSlot)
   local itemToBeMoved = world.containerTakeAt(entity.id(), containerSlot)
 
   -- Try to fit the item in any of the "Burn" slots.
-  for burnSlot = initBurnSlots, endBurnSlots do
+  for burnSlot = self.initBurnSlots, self.endBurnSlots do
     itemToBeMoved = world.containerPutItemsAt(entity.id(), itemToBeMoved, burnSlot)
   end
 
