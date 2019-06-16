@@ -102,9 +102,9 @@ function initTransmutationBook()
   local coalore = { known = true, new = false, progress = 10 }
   itemDes.parameters.eesTransmutations.ore["coalore"] = coalore
   local ironore = { known = true, new = true, progress = 10 }
-  itemDes.parameters.eesTransmutations.ore["ironore"] = coalore
+  itemDes.parameters.eesTransmutations.ore["ironore"] = ironore
   local copperore = { known = false, new = false, progress = 4 }
-  itemDes.parameters.eesTransmutations.ore["copperore"] = coalore
+  itemDes.parameters.eesTransmutations.ore["copperore"] = copperore
 
   player.giveItem(itemDes)
 end
@@ -117,10 +117,17 @@ function populateItemList()
   for itemName,itemProgress in pairs(transmutationBook.parameters.eesTransmutations["ore"]) do
     local itemConfig = root.itemConfig(itemName).config
     tprint(itemConfig, itemName .. " - itemConfig")
+    tprint(itemProgress, itemName .. " - itemProgress")
 
     local newItem = string.format("%s.%s", list, widget.addListItem(list))
     widget.setText(newItem..".itemName", itemConfig.shortdescription)
-    widget.setImage(newItem..".priceLabel", itemConfig.price)
+    widget.setText(newItem..".priceLabel", itemConfig.price)
+    widget.setItemSlotItem(
+      newItem..".itemIcon",
+      { name = itemConfig.itemName, count = 1 }
+    )
+    widget.setVisible(newItem..".newIcon", itemProgress.new)
+    widget.setVisible(newItem..".notcraftableoverlay", not itemProgress.known)
   end
 end
 
