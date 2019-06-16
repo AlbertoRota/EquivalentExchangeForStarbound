@@ -26,8 +26,7 @@ function init()
   populateItemList()
 
   -- Initiallize player emc
-  widget.setText("labelOreEmc", player.currency("EES_oreemc"))
-  widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
+  updatePlayerEmcLabels()
 end
 
 -- Hook function called every "scriptDelta".
@@ -44,8 +43,7 @@ function update(dt)
     widget.setText("labelBurnEmc", burnEmc)
 
     -- Display player emc
-    widget.setText("labelOreEmc", player.currency("EES_oreemc"))
-    widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
+    updatePlayerEmcLabels()
 
     -- Update "lastItemGridItems" with the new values
     lastItemGridItems = itemGridItems
@@ -107,6 +105,12 @@ function getMandatoryConfig(configName)
     error(string.format(errMsgMissingConfig, configName))
   end
   return value
+end
+
+-- Updates the labels for the player EMC with the current player EMC.
+function updatePlayerEmcLabels()
+  widget.setText("labelOreEmc", player.currency("EES_oreemc"))
+  widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
 end
 
 -- Debug function to pre-load a "EES_transmutationbook" for the player.
@@ -226,7 +230,22 @@ function craftSelectedWithEmc(count)
       string.format("%s.%s", self.itemList, selectedListItem)
     )
 
-    -- Give the player the desired ammount of items.
-    player.giveItem({name = itemData.name, count = count})
+    local totalPrice = itemData.price * count
+    local playerOreEmc = player.currency("EES_oreemc")
+    local playerUniversalEmc = player.currency("EES_universalemc")
+
+    if totalPrice <= playerOreEmc then
+      player.consumeCurrency("EES_oreemc", totalPrice)
+      -- Give the player the desired ammount of items.
+      player.giveItem({name = itemData.name, count = count})
+    elseif totalPrice - playerOreEmc <= playerUniversalEmc then
+      player.consumeCurrency("EES_oreemc", playerOreEmc)
+      player.consumeCurrency("EES_universalemc", totalPrice - playerOreEmc)
+      -- Give the player the desired ammount of items.
+      player.giveItem({name = itemData.name, count = count})
+    end
+
+    -- Display player emc
+    updatePlayerEmcLabels()
   end
 end
