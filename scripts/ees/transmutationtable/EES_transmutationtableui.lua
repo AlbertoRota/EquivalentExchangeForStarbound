@@ -18,10 +18,6 @@ function init()
   initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots") + 1
   endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots") + 1
 
-  -- Add a dummy item to the transmutationBook.
-  -- TODO: Delete this
-  initTransmutationBook()
-
   -- Initiallize the itemList
   populateItemList()
 
@@ -64,6 +60,7 @@ function buttonStudy()
   local itemGridItems = widget.itemGridItems("itemGrid")
   studyEmc = calculateItemListEmcValue(itemGridItems, initStudySlots, endStudySlots, 1)
   player.addCurrency("EES_oreemc", studyEmc)
+  updateTransmutationBook()
   world.sendEntityMessage(pane.containerEntityId(), "clearStudySlots")
 end
 
@@ -113,33 +110,80 @@ function updatePlayerEmcLabels()
   widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
 end
 
--- Debug function to pre-load a "EES_transmutationbook" for the player.
--- TODO: Delete this
-function initTransmutationBook()
-  local transmutationBook = { name = "EES_transmutationbook", count = 1 }
-  local itemDes = player.consumeItem(transmutationBook, false, false)
+-- Updates the player's transmutation book with the info of the study slots.
+-- TODO: Seriously rethink and refactor this code. (Too long and complex)
+function updateTransmutationBook()
+  local transmutationBookUpdated = false
+  local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
 
-  if not itemDes.parameters.eesTransmutations then
-    itemDes.parameters.eesTransmutations = {}
+  -- Initiallize the relevant parameters if not present.
+  if not transmutationBook.parameters.eesTransmutations then
+    transmutationBook.parameters.eesTransmutations = {}
+    transmutationBookUpdated = true
   end
-  if not itemDes.parameters.eesTransmutations["ore"] then
-    itemDes.parameters.eesTransmutations["ore"] = {}
+  if not transmutationBook.parameters.eesTransmutations["ore"] then
+    transmutationBook.parameters.eesTransmutations["ore"] = {}
+    transmutationBookUpdated = true
   end
 
-  local coalore = { known = true, new = false, progress = 10, price = 2, name = "coalore" }
-  itemDes.parameters.eesTransmutations.ore[0] = coalore
-  local ironore = { known = true, new = true, progress = 10 , price = 20, name = "ironore" }
-  itemDes.parameters.eesTransmutations.ore[1] = ironore
-  local copperore = { known = false, new = false, progress = 4, price = 10, name = "copperore" }
-  itemDes.parameters.eesTransmutations.ore[2] = copperore
+  -- Update the info of the transmutations.
+  local itemList = widget.itemGridItems("itemGrid")
+  for slot = initStudySlots, endStudySlots do
+    -- Check if the slot contains a valid item
+    local item = itemList[slot]
+    if item then -- The slot has an item
+      local itemConfig = root.itemConfig(item.name)
+      if itemConfig then -- The item is valid
 
-  player.giveItem(itemDes)
+        local itemTransmutation = transmutationBook.parameters.eesTransmutations["ore"][item.name]
+        if not itemTransmutation then
+          -- It's a new item, initiallize it and add it to the book
+          local newItemTransmutation = {
+            known = false,
+            new = false,
+            progress = item.count,
+            price = itemConfig.config.price or 1,
+            name = item.name
+          }
+          if newItemTransmutation.progress >= 10 then
+            newItemTransmutation.known = true
+            newItemTransmutation.new = true
+            newItemTransmutation.progress = 10
+          end
+          transmutationBook.parameters.eesTransmutations["ore"][item.name] = newItemTransmutation
+          transmutationBookUpdated = true
+        elseif not itemTransmutation.known then
+          -- It's an unknown item, update book information
+          itemTransmutation.progress = itemTransmutation.progress + item.count
+          if itemTransmutation.progress >= 10 then
+            itemTransmutation.known = true
+            itemTransmutation.new = true
+            itemTransmutation.progress = 10
+          end
+          transmutationBookUpdated = true
+        end
+      end
+    end
+  end
+
+  -- If the book has been updated, give the updated version to the player.
+  if transmutationBookUpdated then
+    player.consumeTaggedItem("EES_transmutationbook", 1)
+    player.giveItem(transmutationBook)
+
+    -- Re-populate the list to refresh the changes
+    populateItemList()
+  end
 end
 
+-- Updates the ui with the info of the player's transmutation book.
+-- TODO: Seriously rethink and refactor this code. (Too long and complex)
 function populateItemList()
   -- Check if the player has an "EES_transmutationbook".
   local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
-
+  if not transmutationBook or not transmutationBook.parameters.eesTransmutations or not transmutationBook.parameters.eesTransmutations["ore"] then
+    return
+  end
   -- Get and sort all player known transmutations from the book.
   local transmutationList = transmutationBook.parameters.eesTransmutations["ore"]
   table.sort(
@@ -205,7 +249,7 @@ function itemListAreDifferent(itemList1, itemList2, startSlot, endSlot)
 end
 
 -- Calculates the EMC value of an "itemList"
--- TODO: Needs to be improved
+-- TODO: Needs to be improved to allow more complex calculations.
 function calculateItemListEmcValue(itemList, startSlot, endSlot, sellFactor)
   local emcValue = 0
   for slot = startSlot, endSlot do
@@ -222,6 +266,9 @@ function calculateItemListEmcValue(itemList, startSlot, endSlot, sellFactor)
   return emcValue
 end
 
+-- Gives the player the item slected in the itemList.
+-- Consumes EMC in the process, first the specific, then the universal.
+-- TODO: Seriously rethink and refactor this code.
 function craftSelectedWithEmc(count)
   -- Get the currently selected item.
   local selectedListItem = widget.getListSelected(self.itemList)
