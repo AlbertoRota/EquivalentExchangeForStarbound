@@ -150,6 +150,7 @@ function populateItemList()
   )
 
   -- Add all known transmutations to the list.
+  widget.clearListItems(self.itemList)
   for _, transmutation in pairs(transmutationList) do
     local itemConfig = root.itemConfig(transmutation.name).config
     local newItem = string.format("%s.%s", self.itemList, widget.addListItem(self.itemList))
