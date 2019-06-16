@@ -18,6 +18,7 @@ function init()
   endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots") + 1
 
   -- Add a dummy item to the transmutationBook.
+  -- TODO: Delete this
   initTransmutationBook()
 
   -- Populate the itemList
@@ -88,6 +89,8 @@ function getMandatoryConfig(configName)
   return value
 end
 
+-- Debug function to pre-load a "EES_transmutationbook" for the player.
+-- TODO: Delete this
 function initTransmutationBook()
   local transmutationBook = { name = "EES_transmutationbook", count = 1 }
   local itemDes = player.consumeItem(transmutationBook, false, false)
@@ -99,35 +102,51 @@ function initTransmutationBook()
     itemDes.parameters.eesTransmutations["ore"] = {}
   end
 
-  local coalore = { known = true, new = false, progress = 10 }
-  itemDes.parameters.eesTransmutations.ore["coalore"] = coalore
-  local ironore = { known = true, new = true, progress = 10 }
-  itemDes.parameters.eesTransmutations.ore["ironore"] = ironore
-  local copperore = { known = false, new = false, progress = 4 }
-  itemDes.parameters.eesTransmutations.ore["copperore"] = copperore
+  local coalore = { known = true, new = false, progress = 10, price = 2, name = "coalore" }
+  itemDes.parameters.eesTransmutations.ore[0] = coalore
+  local ironore = { known = true, new = true, progress = 10 , price = 20, name = "ironore" }
+  itemDes.parameters.eesTransmutations.ore[1] = ironore
+  local copperore = { known = false, new = false, progress = 4, price = 10, name = "copperore" }
+  itemDes.parameters.eesTransmutations.ore[2] = copperore
 
   player.giveItem(itemDes)
 end
 
 function populateItemList()
+  -- Check if the player has an "EES_transmutationbook".
   local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
   tprint(transmutationBook, "transmutationBook")
 
-  local list = "scrollArea.itemList"
-  for itemName,itemProgress in pairs(transmutationBook.parameters.eesTransmutations["ore"]) do
-    local itemConfig = root.itemConfig(itemName).config
-    tprint(itemConfig, itemName .. " - itemConfig")
-    tprint(itemProgress, itemName .. " - itemProgress")
+  -- Get and sort all player known transmutations from the book.
+  local transmutationList = transmutationBook.parameters.eesTransmutations["ore"]
+  table.sort(
+    transmutationList,
+    function(a, b)
+      if a.price ~= b.price then
+        return a.price < b.price
+      else
+        return string.lower(a.name) < string.lower(b.name)
+      end
+    end
+  )
 
+  -- Add all known transmutations to the list.
+  local list = "scrollArea.itemList"
+  for _, transmutation in pairs(transmutationList) do
+    local itemConfig = root.itemConfig(transmutation.name).config
     local newItem = string.format("%s.%s", list, widget.addListItem(list))
+
+    -- Basic info.
     widget.setText(newItem..".itemName", itemConfig.shortdescription)
     widget.setText(newItem..".priceLabel", itemConfig.price)
     widget.setItemSlotItem(
       newItem..".itemIcon",
       { name = itemConfig.itemName, count = 1 }
     )
-    widget.setVisible(newItem..".newIcon", itemProgress.new)
-    widget.setVisible(newItem..".notcraftableoverlay", not itemProgress.known)
+
+    -- Toggle element visibility.
+    widget.setVisible(newItem..".newIcon", transmutation.new)
+    widget.setVisible(newItem..".notcraftableoverlay", not transmutation.known)
   end
 end
 
