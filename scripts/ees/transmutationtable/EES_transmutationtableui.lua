@@ -17,15 +17,11 @@ function init()
   initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots") + 1
   endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots") + 1
 
-  -- Add a dummy item to the list.
-  local list = "scrollArea.itemList"
-  local newItem = string.format("%s.%s", list, widget.addListItem(list))
-  widget.setText(newItem..".itemName", "Changed itemName")
-  widget.setImage(newItem..".priceLabel", "Changed priceLabel")
+  -- Add a dummy item to the transmutationBook.
+  initTransmutationBook()
 
-  for i = 1, 12 do
-    widget.addListItem(list)
-  end
+  -- Populate the itemList
+  populateItemList()
 end
 
 -- Hook function called every "scriptDelta".
@@ -90,6 +86,42 @@ function getMandatoryConfig(configName)
     error(string.format(errMsgMissingConfig, configName))
   end
   return value
+end
+
+function initTransmutationBook()
+  local transmutationBook = { name = "EES_transmutationbook", count = 1 }
+  local itemDes = player.consumeItem(transmutationBook, false, false)
+
+  if not itemDes.parameters.eesTransmutations then
+    itemDes.parameters.eesTransmutations = {}
+  end
+  if not itemDes.parameters.eesTransmutations["ore"] then
+    itemDes.parameters.eesTransmutations["ore"] = {}
+  end
+
+  local coalore = { known = true, new = false, progress = 10 }
+  itemDes.parameters.eesTransmutations.ore["coalore"] = coalore
+  local ironore = { known = true, new = true, progress = 10 }
+  itemDes.parameters.eesTransmutations.ore["ironore"] = coalore
+  local copperore = { known = false, new = false, progress = 4 }
+  itemDes.parameters.eesTransmutations.ore["copperore"] = coalore
+
+  player.giveItem(itemDes)
+end
+
+function populateItemList()
+  local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
+  tprint(transmutationBook, "transmutationBook")
+
+  local list = "scrollArea.itemList"
+  for itemName,itemProgress in pairs(transmutationBook.parameters.eesTransmutations["ore"]) do
+    local itemConfig = root.itemConfig(itemName).config
+    tprint(itemConfig, itemName .. " - itemConfig")
+
+    local newItem = string.format("%s.%s", list, widget.addListItem(list))
+    widget.setText(newItem..".itemName", itemConfig.shortdescription)
+    widget.setImage(newItem..".priceLabel", itemConfig.price)
+  end
 end
 
 -- Compares two "itemList" to see if the have the same items in the same slots.
