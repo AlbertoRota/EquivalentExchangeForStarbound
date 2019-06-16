@@ -10,6 +10,7 @@ function init()
   lastItemGridItems = {}
   studyEmc = 0
   burnEmc = 0
+  self.itemList = "scrollArea.itemList"
 
   -- Load config from the ".object" file of the linked container.
   initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots") + 1
@@ -21,8 +22,12 @@ function init()
   -- TODO: Delete this
   initTransmutationBook()
 
-  -- Populate the itemList
+  -- Initiallize the itemList
   populateItemList()
+
+  -- Initiallize player emc
+  widget.setText("labelOreEmc", player.currency("EES_oreemc"))
+  widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
 end
 
 -- Hook function called every "scriptDelta".
@@ -73,6 +78,21 @@ function buttonBurn()
   world.sendEntityMessage(pane.containerEntityId(), "clearBurnSlots")
 end
 
+-- Gets one unit of the item selected in the list.
+function buttonGetOne()
+  craftSelectedWithEmc(1)
+end
+
+-- Gets five unit of the item selected in the list.
+function buttonGetFive()
+  craftSelectedWithEmc(5)
+end
+
+-- Gets ten unit of the item selected in the list.
+function buttonGetTen()
+  craftSelectedWithEmc(10)
+end
+
 --------------------------------------------------------------------------------
 ------------------------------ Private functions -------------------------------
 --------------------------------------------------------------------------------
@@ -115,7 +135,6 @@ end
 function populateItemList()
   -- Check if the player has an "EES_transmutationbook".
   local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
-  tprint(transmutationBook, "transmutationBook")
 
   -- Get and sort all player known transmutations from the book.
   local transmutationList = transmutationBook.parameters.eesTransmutations["ore"]
@@ -131,10 +150,9 @@ function populateItemList()
   )
 
   -- Add all known transmutations to the list.
-  local list = "scrollArea.itemList"
   for _, transmutation in pairs(transmutationList) do
     local itemConfig = root.itemConfig(transmutation.name).config
-    local newItem = string.format("%s.%s", list, widget.addListItem(list))
+    local newItem = string.format("%s.%s", self.itemList, widget.addListItem(self.itemList))
 
     -- Basic info.
     widget.setText(newItem..".itemName", itemConfig.shortdescription)
@@ -147,6 +165,9 @@ function populateItemList()
     -- Toggle element visibility.
     widget.setVisible(newItem..".newIcon", transmutation.new)
     widget.setVisible(newItem..".notcraftableoverlay", not transmutation.known)
+
+    -- Store the "transmutation" as "data", so that it can be used later.
+    widget.setData(newItem, transmutation)
   end
 end
 
@@ -194,4 +215,17 @@ function calculateItemListEmcValue(itemList, startSlot, endSlot, sellFactor)
     end
   end
   return emcValue
+end
+
+function craftSelectedWithEmc(count)
+  -- Get the currently selected item.
+  local selectedListItem = widget.getListSelected(self.itemList)
+  if selectedListItem then
+    local itemData = widget.getData(
+      string.format("%s.%s", self.itemList, selectedListItem)
+    )
+
+    -- Give the player the desired ammount of items.
+    player.giveItem({name = itemData.name, count = count})
+  end
 end
