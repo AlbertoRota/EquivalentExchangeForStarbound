@@ -112,7 +112,6 @@ function updatePlayerEmcLabels()
 end
 
 -- Updates the player's transmutation book with the info of the study slots.
--- TODO: Seriously rethink and refactor this code. (Too long and complex)
 function updateTransmutationBook()
   local transmutationBookUpdated = false
   local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
@@ -183,6 +182,7 @@ function populateItemList()
     return
   end
   -- Get and sort all player known transmutations from the book.
+  -- TODO: Check if this is working
   local transmutationList = transmutationBook.parameters.eesTransmutations["ore"]
   table.sort(
     transmutationList,
