@@ -132,19 +132,7 @@ function updateTransmutationBook()
     -- Check if the slot contains a valid item
     local itemDescriptor = self.currentItemGridItems[slot]
     if itemDescriptor then -- The slot has an item
-      local itemConfig = root.itemConfig(itemDescriptor.name)
-
-      local itemTransmutation = transmutationBook.parameters.eesTransmutations["ore"][itemDescriptor.name]
-      if not itemTransmutation then
-        -- It's a new transmutation, initiallize it.
-        itemTransmutation = {
-          known = false,
-          new = false,
-          progress = 0,
-          price = itemConfig.config.price or 5,
-          name = itemDescriptor.name
-        }
-      end
+      local idx, itemTransmutation = findTransmutationInBook(transmutationBook, itemDescriptor.name)
 
       if not itemTransmutation.known then
         -- It's an unknown item, update the transmutation information
@@ -156,7 +144,8 @@ function updateTransmutationBook()
         end
 
         -- Save that information back into the book
-        transmutationBook.parameters.eesTransmutations["ore"][itemDescriptor.name] = itemTransmutation
+        tprint(idx, "idx")
+        transmutationBook.parameters.eesTransmutations["ore"][idx] = itemTransmutation
         transmutationBookUpdated = true
       end
     end
@@ -171,6 +160,22 @@ function updateTransmutationBook()
     -- Re-populate the list to refresh the changes
     populateItemList()
   end
+end
+
+function findTransmutationInBook(transmutationBook, name)
+  -- First, try to find the transmutation in the book.
+  for i, transmutation in ipairs(transmutationBook.parameters.eesTransmutations["ore"]) do
+    -- If found, return it and it's index.
+    if transmutation.name == name then return i, transmutation end
+  end
+
+  -- If not found, return a new one and the last index.
+  local last = #transmutationBook.parameters.eesTransmutations["ore"] + 1
+  local newItemTransmutation = {
+    known = false, new = false, progress = 0, name = name,
+    price = root.itemConfig(name).config.price or 5
+  }
+  return last, newItemTransmutation
 end
 
 -- Updates the ui with the info of the player's transmutation book.
@@ -188,7 +193,7 @@ function populateItemList()
     transmutationList,
     function(a, b)
       if a.price ~= b.price then
-        return a.price < b.price
+        return a.price > b.price
       else
         return string.lower(a.name) < string.lower(b.name)
       end
