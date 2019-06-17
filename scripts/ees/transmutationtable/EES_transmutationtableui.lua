@@ -115,7 +115,6 @@ end
 function updateTransmutationBook()
   local transmutationBookUpdated = false
   local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
-  tprint(transmutationBook, "old")
 
   -- Initiallize the relevant parameters if not present.
   if not transmutationBook.parameters.eesTransmutations then
@@ -144,7 +143,6 @@ function updateTransmutationBook()
         end
 
         -- Save that information back into the book
-        tprint(idx, "idx")
         transmutationBook.parameters.eesTransmutations["ore"][idx] = itemTransmutation
         transmutationBookUpdated = true
       end
@@ -154,7 +152,6 @@ function updateTransmutationBook()
   if transmutationBookUpdated then
     -- If the book has been updated, give the updated version to the player.
     player.consumeTaggedItem("EES_transmutationbook", 1)
-    tprint(transmutationBook, "new")
     player.giveItem(transmutationBook)
 
     -- Re-populate the list to refresh the changes
