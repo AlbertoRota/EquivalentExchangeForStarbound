@@ -113,66 +113,80 @@ end
 
 -- Updates the player's transmutation book with the info of the study slots.
 function updateTransmutationBook()
-  local transmutationBookUpdated = false
-  local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
+  local updated = false
+  local book = player.itemsWithTag("EES_transmutationbook")[1]
 
   -- Initiallize the relevant parameters if not present.
-  if not transmutationBook.parameters.eesTransmutations then
-    transmutationBook.parameters.eesTransmutations = {}
-    transmutationBookUpdated = true
-  end
-  if not transmutationBook.parameters.eesTransmutations["ore"] then
-    transmutationBook.parameters.eesTransmutations["ore"] = {}
-    transmutationBookUpdated = true
-  end
+  initBook(book)
 
   -- Update the info of the transmutations.
   for slot = self.initStudySlots, self.endStudySlots do
     -- Check if the slot contains a valid item
     local itemDescriptor = self.currentItemGridItems[slot]
     if itemDescriptor then -- The slot has an item
-      local idx, itemTransmutation = findTransmutationInBook(transmutationBook, itemDescriptor.name)
-
-      if not itemTransmutation.known then
-        -- It's an unknown item, update the transmutation information
-        itemTransmutation.progress = itemTransmutation.progress + itemDescriptor.count
-        if itemTransmutation.progress >= 10 then
-          itemTransmutation.known = true
-          itemTransmutation.new = true
-          itemTransmutation.progress = 10
-        end
-
-        -- Save that information back into the book
-        transmutationBook.parameters.eesTransmutations["ore"][idx] = itemTransmutation
-        transmutationBookUpdated = true
-      end
+      local idx = findOrCreateTransmutation(book, itemDescriptor.name)
+      updated = updateProgress(book, idx, itemDescriptor.count) or updated
     end
   end
 
-  if transmutationBookUpdated then
+  if updated then
     -- If the book has been updated, give the updated version to the player.
     player.consumeTaggedItem("EES_transmutationbook", 1)
-    player.giveItem(transmutationBook)
+    player.giveItem(book)
 
     -- Re-populate the list to refresh the changes
     populateItemList()
   end
 end
 
-function findTransmutationInBook(transmutationBook, name)
-  -- First, try to find the transmutation in the book.
-  for i, transmutation in ipairs(transmutationBook.parameters.eesTransmutations["ore"]) do
-    -- If found, return it and it's index.
-    if transmutation.name == name then return i, transmutation end
+-- If not present, creates all the structure tree inside "book"
+function initBook(book)
+  if not book.parameters.eesTransmutations then
+    book.parameters.eesTransmutations = {}
+  end
+  if not book.parameters.eesTransmutations["ore"] then
+    book.parameters.eesTransmutations["ore"] = {}
+  end
+end
+
+-- Returns the index of the transmutation.
+-- If not present, creates a new one and returns it's index.
+function findOrCreateTransmutation(book, name)
+  -- First, try to find the transmutation in the book and return it's index.
+  local transmutations = book.parameters.eesTransmutations["ore"]
+  for idx, transmutation in ipairs(transmutations) do
+    if transmutation.name == name then return idx end
   end
 
-  -- If not found, return a new one and the last index.
-  local last = #transmutationBook.parameters.eesTransmutations["ore"] + 1
-  local newItemTransmutation = {
+  -- If not found, create a new one and return it's index.
+  local last = #book.parameters.eesTransmutations["ore"] + 1
+  book.parameters.eesTransmutations["ore"][last] = {
     known = false, new = false, progress = 0, name = name,
     price = root.itemConfig(name).config.price or 5
   }
-  return last, newItemTransmutation
+  return last
+end
+
+-- Updates the progress on the transmutation.
+-- Returns true if the book has changed.
+function updateProgress(book, idx, count)
+  local transmutation = book.parameters.eesTransmutations["ore"][idx]
+  if transmutation.known then
+    -- Transmutation known, no need to update it.
+    return false
+  else
+    -- It's an unknown item, update the transmutation information
+    transmutation.progress = transmutation.progress + count
+    if transmutation.progress >= 10 then
+      transmutation.known = true
+      transmutation.new = true
+      transmutation.progress = 10
+    end
+
+    -- Save that information back into the book
+    book.parameters.eesTransmutations["ore"][idx] = transmutation
+    return true
+  end
 end
 
 -- Updates the ui with the info of the player's transmutation book.
@@ -184,7 +198,6 @@ function populateItemList()
     return
   end
   -- Get and sort all player known transmutations from the book.
-  -- TODO: Check if this is working
   local transmutationList = transmutationBook.parameters.eesTransmutations["ore"]
   table.sort(
     transmutationList,
