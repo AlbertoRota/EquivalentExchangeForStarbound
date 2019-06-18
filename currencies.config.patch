@@ -9,6 +9,14 @@
   },
 	{
     "op": "add",
+    "path": "/EES_huntemc",
+    "value": {
+      "representativeItem" : "EES_huntemc",
+      "playerMax" : 9999999
+    }
+  },
+	{
+    "op": "add",
     "path": "/EES_universalemc",
     "value": {
       "representativeItem" : "EES_universalemc",
