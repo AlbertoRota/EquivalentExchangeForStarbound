@@ -3,16 +3,23 @@
   // ************************** Basic properties. *************************** //
   // ************************************************************************ //
   "objectName" : "EES_transmutationtable",
-  "colonyTags" : ["misc"],
+  "colonyTags" : ["crafting"],
   "rarity" : "Common",
+  "race" : "generic",
+  "category" : "storage",
   "objectType" : "container",
   "tooltipKind" : "container",
-  "category" : "storage",
-  "price" : 200,
-  "description" : "description",
-  "shortdescription" : "shortdescription",
-  "race" : "generic",
+
+  //this is handled by "upgradeablecraftingobject.lua"
+  "breakDropOptions" : [],
+
+  "price" : 20,
+  "description" : "baseDescription",
+  "shortdescription" : "baseShortdescription",
+
   "health" : 1.5,
+
+
 
   // ************************************************************************ //
   // ************************ Racial descriptions.. ************************* //
@@ -28,10 +35,11 @@
   // ************************************************************************ //
   // **************** Graphis and sounds related parameters. **************** //
   // ************************************************************************ //
-  "inventoryIcon" : "EES_transmutationtable.png:default.1",
+  "animation" : "EES_transmutationtable.animation",
+  "inventoryIcon" : "EES_transmutationtable.png",
   "orientations" : [
     {
-      "dualImage" : "EES_transmutationtable.png:<color>.<frame>",
+      "dualImage" : "EES_transmutationtable.png",
       "imagePosition" : [-8, 0],
 
       "spaceScan" : 0.1,
@@ -48,20 +56,82 @@
   // ************************************************************************ //
   // ********************** Script related parameters. ********************** //
   // ************************************************************************ //
-  "scripts" : [ "/scripts/ees/transmutationtable/EES_transmutationtableobj.lua" ],
+  "scripts" : [
+    "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua",
+    "/scripts/ees/transmutationtable/EES_transmutationtableobj.lua"
+  ],
   "scriptDelta" : 120,
   "containerCallback" : "containerCallback",
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 2,
+  "upgradeStages" : [
+    {
+      "animationState" : "EES_transmutationtable",
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "EES_transmutationtable.png",
+        "description" : "T1 - description",
+        "shortdescription" : "T1 - shortdescription",
+        "eesCanStudy" : {
+          "coalore" : true,
+          "ironore" : true,
+          "copperore" : true
+        }
+      },
+      "interactData" : {
+        "config" : "/interface/ees/transmutationtable/EES_transmutationtable.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : "T1 - title",
+            "subtitle" : "T1 - subtitle",
+            "icon" : {
+              "file" : "/interface/crafting/craftingfarm.png"
+            }
+          }
+        },
+        "upgradeMaterials" : [
+          { "item" : "durasteelbar", "count" : 6 },
+          { "item" : "siliconboard", "count" : 3 },
+          { "item" : "wire", "count" : 5 },
+          { "item" : "battery", "count" : 1 }
+        ]
+      },
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust"
+    },
+    {
+      "animationState" : "EES_transmutationtable2",
+      "itemSpawnParameters" : {
+        "inventoryIcon" : "EES_transmutationtable2.png",
+        "description" : "T2 - description",
+        "shortdescription" : "T2 - shortdescription",
+        "eesCanStudy" : {
+          "coalore" : true,
+          "ironore" : true,
+          "copperore" : true,
+          "silverore" : true,
+          "goldore" : true
+        }
+      },
+      "interactData" : {
+        "config" : "/interface/ees/transmutationtable/EES_transmutationtable.config",
+        "paneLayoutOverride" : {
+          "windowtitle" : {
+            "title" : "T2 - title",
+            "subtitle" : "T2 - subtitle",
+            "icon" : {
+              "file" : "/interface/crafting/craftinganvil.png"
+            }
+          }
+        }
+      },
+      "upgradeSoundEffect" : "fanfare2",
+      "upgradeParticleEffect" : "dust"
+    }
+  ],
 
   // ************************************************************************ //
   // ************************ EES custom properties. ************************ //
   // ************************************************************************ //
-  "eesCanStudy" : {
-    "coalore" : true,
-    "ironore" : true,
-    "copperore" : true,
-    "silverore" : true,
-    "goldore" : true
-  },
   "eesSlotConfig" : {
     "initStudySlots" : 0,
     "endStudySlots" : 3,

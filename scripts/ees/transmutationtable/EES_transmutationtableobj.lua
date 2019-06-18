@@ -5,7 +5,9 @@ require "/scripts/ees/EES_utils.lua"
 --------------------------------------------------------------------------------
 
 -- Hook function called when the obj is created/placed in the world.
+upgradeablecraftingobjectInit = init
 function init()
+  upgradeablecraftingobjectInit()
   container = {}
 
   -- Load config from the ".object" file.
@@ -18,10 +20,6 @@ function init()
   -- Register mesagges that will be called by the GUI.
   message.setHandler("clearStudySlots", clearStudySlots)
   message.setHandler("clearBurnSlots", clearBurnSlots)
-end
-
--- Hook function called every "scriptDelta".
-function update(dt)
 end
 
 -- Hook function called after any modification to the "itemgrid" elements.
@@ -37,14 +35,19 @@ function containerCallback()
   end
 end
 
--- Hook function called when the obj is removed from the world.
-function uninit()
-end
-
 --------------------------------------------------------------------------------
 ------------------------------- Public functions -------------------------------
 --------------------------------------------------------------------------------
+upgradeablecraftingobjectUpgradeTo = upgradeTo
+function upgradeTo(oldStage, newStage)
+  upgradeablecraftingobjectUpgradeTo(oldStage, newStage)
 
+  self.canStudy        = getMandatoryConfig("eesCanStudy")
+  self.initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots")
+  self.endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots")
+  self.initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots")
+  self.endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots")
+end
 -- Clears the Study slots.
 -- Called by "world.sendEntityMessage(entityId, 'clearStudySlots')"
 function clearStudySlots()

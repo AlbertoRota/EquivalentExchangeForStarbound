@@ -6,6 +6,7 @@ require "/scripts/ees/EES_utils.lua"
 
 -- Hook function called when the GUI is opened.
 function init()
+  traceprint("ui - init")
   container = {}
   self.currentItemGridItems = {}
   self.lastItemGridItems = {}
@@ -48,6 +49,11 @@ end
 --------------------------------------------------------------------------------
 -------------------------- Buttons hooks and functions -------------------------
 --------------------------------------------------------------------------------
+-- btnUpgrade
+function btnUpgrade()
+  world.sendEntityMessage(pane.containerEntityId(), "requestUpgrade")
+  pane.dismiss()
+end
 
 -- Adds the emcValue to the player currency and clears the study slots
 function buttonStudy()
