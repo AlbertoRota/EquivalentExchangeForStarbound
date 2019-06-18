@@ -9,11 +9,10 @@ function init()
   container = {}
   self.currentItemGridItems = {}
   self.lastItemGridItems = {}
-  self.studyEmc = 0
-  self.burnEmc = 0
   self.itemList = "scrollArea.itemList"
 
   -- Load config from the ".object" file of the linked container.
+  self.mainEmc = getMandatoryConfig("eesMainEmc")
   self.initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots") + 1
   self.endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots") + 1
   self.initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots") + 1
@@ -55,7 +54,7 @@ function buttonStudy()
   self.currentItemGridItems = widget.itemGridItems("itemGrid")
 
   -- Add the EMC and update the Book
-  player.addCurrency("EES_oreemc", calculateStudyEmcValue())
+  player.addCurrency(self.mainEmc, calculateStudyEmcValue())
   updateTransmutationBook()
 
   -- Clear the  slots
@@ -107,7 +106,7 @@ end
 
 -- Updates the labels for the player EMC with the current player EMC.
 function updatePlayerEmcLabels()
-  widget.setText("labelOreEmc", player.currency("EES_oreemc"))
+  widget.setText("labelOreEmc", player.currency(self.mainEmc))
   widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
 end
 
@@ -331,16 +330,16 @@ end
 -- Similar to "player.consumeCurrency", but for EMC.
 -- Consumes first "mainEmc", using only "universalemc" if "ammount > mainEmc".
 function consumePlayerEmc(ammount)
-  local playerOreEmc = player.currency("EES_oreemc")
+  local playerOreEmc = player.currency(self.mainEmc)
   local playerUniversalEmc = player.currency("EES_universalemc")
 
   if ammount <= playerOreEmc then
     -- Enough EMC of the main type, consume it first.
-    player.consumeCurrency("EES_oreemc", ammount)
+    player.consumeCurrency(self.mainEmc, ammount)
     return true
   elseif ammount - playerOreEmc <= playerUniversalEmc then
     -- Consume all main EMC first, the use the universal.
-    player.consumeCurrency("EES_oreemc", playerOreEmc)
+    player.consumeCurrency(self.mainEmc, playerOreEmc)
     player.consumeCurrency("EES_universalemc", ammount - playerOreEmc)
     return true
   else
