@@ -2,7 +2,7 @@
   // ************************************************************************ //
   // ************************** Basic properties. *************************** //
   // ************************************************************************ //
-  "objectName" : "EES_transmutationtable",
+  "objectName" : "EES_oretransmutationtable",
   "colonyTags" : ["misc"],
   "rarity" : "Common",
   "objectType" : "container",
@@ -28,10 +28,10 @@
   // ************************************************************************ //
   // **************** Graphis and sounds related parameters. **************** //
   // ************************************************************************ //
-  "inventoryIcon" : "EES_transmutationtable.png:default.1",
+  "inventoryIcon" : "EES_oretransmutationtable.png:default.1",
   "orientations" : [
     {
-      "dualImage" : "EES_transmutationtable.png:<color>.<frame>",
+      "dualImage" : "EES_oretransmutationtable.png:<color>.<frame>",
       "imagePosition" : [-8, 0],
 
       "spaceScan" : 0.1,

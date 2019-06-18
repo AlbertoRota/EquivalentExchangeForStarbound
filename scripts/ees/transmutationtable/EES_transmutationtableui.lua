@@ -22,6 +22,7 @@ function init()
   populateItemList()
 
   -- Initiallize player emc
+  widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
   updatePlayerEmcLabels()
 end
 
@@ -106,7 +107,7 @@ end
 
 -- Updates the labels for the player EMC with the current player EMC.
 function updatePlayerEmcLabels()
-  widget.setText("labelOreEmc", player.currency(self.mainEmc))
+  widget.setText("labelMainEmc", player.currency(self.mainEmc))
   widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
 end
 
@@ -143,8 +144,8 @@ function initBook(book)
   if not book.parameters.eesTransmutations then
     book.parameters.eesTransmutations = {}
   end
-  if not book.parameters.eesTransmutations["ore"] then
-    book.parameters.eesTransmutations["ore"] = {}
+  if not book.parameters.eesTransmutations[self.mainEmc] then
+    book.parameters.eesTransmutations[self.mainEmc] = {}
   end
 end
 
@@ -152,14 +153,14 @@ end
 -- If not present, creates a new one and returns it's index.
 function findOrCreateTransmutation(book, name)
   -- First, try to find the transmutation in the book and return it's index.
-  local transmutations = book.parameters.eesTransmutations["ore"]
+  local transmutations = book.parameters.eesTransmutations[self.mainEmc]
   for idx, transmutation in ipairs(transmutations) do
     if transmutation.name == name then return idx end
   end
 
   -- If not found, create a new one and return it's index.
-  local last = #book.parameters.eesTransmutations["ore"] + 1
-  book.parameters.eesTransmutations["ore"][last] = {
+  local last = #book.parameters.eesTransmutations[self.mainEmc] + 1
+  book.parameters.eesTransmutations[self.mainEmc][last] = {
     known = false, new = false, progress = 0, name = name,
     price = root.itemConfig(name).config.price or 5
   }
@@ -169,7 +170,7 @@ end
 -- Updates the progress on the transmutation.
 -- Returns true if the book has changed.
 function updateProgress(book, idx, count)
-  local transmutation = book.parameters.eesTransmutations["ore"][idx]
+  local transmutation = book.parameters.eesTransmutations[self.mainEmc][idx]
   if transmutation.known then
     -- Transmutation known, no need to update it.
     return false
@@ -183,7 +184,7 @@ function updateProgress(book, idx, count)
     end
 
     -- Save that information back into the book
-    book.parameters.eesTransmutations["ore"][idx] = transmutation
+    book.parameters.eesTransmutations[self.mainEmc][idx] = transmutation
     return true
   end
 end
@@ -193,11 +194,11 @@ end
 function populateItemList()
   -- Check if the player has an "EES_transmutationbook".
   local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
-  if not transmutationBook or not transmutationBook.parameters.eesTransmutations or not transmutationBook.parameters.eesTransmutations["ore"] then
+  if not transmutationBook or not transmutationBook.parameters.eesTransmutations or not transmutationBook.parameters.eesTransmutations[self.mainEmc] then
     return
   end
   -- Get and sort all player known transmutations from the book.
-  local transmutationList = transmutationBook.parameters.eesTransmutations["ore"]
+  local transmutationList = transmutationBook.parameters.eesTransmutations[self.mainEmc]
   table.sort(
     transmutationList,
     function(a, b)
@@ -330,17 +331,17 @@ end
 -- Similar to "player.consumeCurrency", but for EMC.
 -- Consumes first "mainEmc", using only "universalemc" if "ammount > mainEmc".
 function consumePlayerEmc(ammount)
-  local playerOreEmc = player.currency(self.mainEmc)
+  local playerMainEmc = player.currency(self.mainEmc)
   local playerUniversalEmc = player.currency("EES_universalemc")
 
-  if ammount <= playerOreEmc then
+  if ammount <= playerMainEmc then
     -- Enough EMC of the main type, consume it first.
     player.consumeCurrency(self.mainEmc, ammount)
     return true
-  elseif ammount - playerOreEmc <= playerUniversalEmc then
+  elseif ammount - playerMainEmc <= playerUniversalEmc then
     -- Consume all main EMC first, the use the universal.
-    player.consumeCurrency(self.mainEmc, playerOreEmc)
-    player.consumeCurrency("EES_universalemc", ammount - playerOreEmc)
+    player.consumeCurrency(self.mainEmc, playerMainEmc)
+    player.consumeCurrency("EES_universalemc", ammount - playerMainEmc)
     return true
   else
     -- Not enough EMC to consume, return error.
