@@ -6,11 +6,10 @@
   "colonyTags" : ["misc"],
   "rarity" : "Common",
   "objectType" : "container",
-  "tooltipKind" : "container",
   "category" : "storage",
   "price" : 200,
   "description" : "description",
-  "shortdescription" : "shortdescription",
+  "shortdescription" : "Hunt EMC table",
   "race" : "generic",
   "health" : 1.5,
 

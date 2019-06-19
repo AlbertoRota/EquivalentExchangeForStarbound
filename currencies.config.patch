@@ -1,9 +1,9 @@
 [
 	{
     "op": "add",
-    "path": "/EES_oreemc",
+    "path": "/EES_farmemc",
     "value": {
-      "representativeItem" : "EES_oreemc",
+      "representativeItem" : "EES_farmemc",
       "playerMax" : 9999999
     }
   },
@@ -17,9 +17,9 @@
   },
 	{
     "op": "add",
-    "path": "/EES_farmemc",
+    "path": "/EES_mineemc",
     "value": {
-      "representativeItem" : "EES_farmemc",
+      "representativeItem" : "EES_mineemc",
       "playerMax" : 9999999
     }
   },

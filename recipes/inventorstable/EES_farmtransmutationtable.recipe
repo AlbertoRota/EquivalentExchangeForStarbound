@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "money", "count" : 100 }
+  ],
+  "output" : {
+    "item" : "EES_farmtransmutationtable",
+    "count" : 1
+  },
+  "duration" : 2,
+  "groups" : [ "inventorstable", "craftingstations", "all" ]
+}

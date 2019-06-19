@@ -2,15 +2,14 @@
   // ************************************************************************ //
   // ************************** Basic properties. *************************** //
   // ************************************************************************ //
-  "objectName" : "EES_oretransmutationtable",
+  "objectName" : "EES_minetransmutationtable",
   "colonyTags" : ["misc"],
   "rarity" : "Common",
   "objectType" : "container",
-  "tooltipKind" : "container",
   "category" : "storage",
   "price" : 200,
   "description" : "description",
-  "shortdescription" : "shortdescription",
+  "shortdescription" : "Mine EMC table",
   "race" : "generic",
   "health" : 1.5,
 
@@ -28,10 +27,10 @@
   // ************************************************************************ //
   // **************** Graphis and sounds related parameters. **************** //
   // ************************************************************************ //
-  "inventoryIcon" : "EES_oretransmutationtable.png:default.1",
+  "inventoryIcon" : "EES_minetransmutationtable.png:default.1",
   "orientations" : [
     {
-      "dualImage" : "EES_oretransmutationtable.png:<color>.<frame>",
+      "dualImage" : "EES_minetransmutationtable.png:<color>.<frame>",
       "imagePosition" : [-8, 0],
 
       "spaceScan" : 0.1,
@@ -55,7 +54,7 @@
   // ************************************************************************ //
   // ************************ EES custom properties. ************************ //
   // ************************************************************************ //
-  "eesMainEmc" : "EES_oreemc",
+  "eesMainEmc" : "EES_mineemc",
   "eesCanStudy" : {
     "coalore" : true,
     "ironore" : true,

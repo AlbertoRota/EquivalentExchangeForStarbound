@@ -1,10 +1,10 @@
 {
-  "itemName" : "EES_oreemc",
+  "itemName" : "EES_mineemc",
   "rarity" : "Common",
-  "inventoryIcon" : "EES_oreemc.png",
+  "inventoryIcon" : "EES_mineemc.png",
   "description" : "Mysterious energy used by the Ancients. It pulses in harmony with the living universe.",
   "shortdescription" : "Ancient Essence",
-  "currency" : "EES_oreemc",
+  "currency" : "EES_mineemc",
   "value" : 1,
   "pickupSoundsSmall" : [ "/sfx/objects/coinstack_small1.ogg", "/sfx/objects/coinstack_small2.ogg", "/sfx/objects/coinstack_small3.ogg" ],
   "pickupSoundsMedium" : [ "/sfx/objects/coinstack_medium1.ogg", "/sfx/objects/coinstack_medium2.ogg" ],
