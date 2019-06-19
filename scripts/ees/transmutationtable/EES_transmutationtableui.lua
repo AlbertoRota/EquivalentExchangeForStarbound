@@ -21,6 +21,9 @@ function init()
   -- Initiallize the itemList
   populateItemList()
 
+  -- Initiallize the buy buttons
+  updateBuyButtons()
+
   -- Initiallize player emc
   widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
   updatePlayerEmcLabels()
@@ -58,8 +61,9 @@ function buttonStudy()
   player.addCurrency(self.mainEmc, calculateStudyEmcValue())
   updateTransmutationBook()
 
-  -- Clear the  slots
+  -- Clear the  slots and update the buy buttons
   world.sendEntityMessage(pane.containerEntityId(), "clearStudySlots")
+  updateBuyButtons()
 end
 
 -- Adds the emcValue to the player currency and clears the burn slots
@@ -70,23 +74,32 @@ function buttonBurn()
   -- Add the EMC, no need to update the Book
   player.addCurrency("EES_universalemc", calculateBurnEmcValue())
 
-  -- Clear the  slots
+  -- Clear the  slots and update the buy buttons
   world.sendEntityMessage(pane.containerEntityId(), "clearBurnSlots")
+  updateBuyButtons()
 end
 
 -- Gets one unit of the item selected in the list.
 function buttonGetOne()
   craftSelectedWithEmc(1)
+  updateBuyButtons()
 end
 
 -- Gets five unit of the item selected in the list.
 function buttonGetFive()
   craftSelectedWithEmc(5)
+  updateBuyButtons()
 end
 
 -- Gets ten unit of the item selected in the list.
 function buttonGetTen()
   craftSelectedWithEmc(10)
+  updateBuyButtons()
+end
+
+-- Update the buy buttons
+function listSelectedChanged()
+  updateBuyButtons()
 end
 
 --------------------------------------------------------------------------------
@@ -347,5 +360,32 @@ function consumePlayerEmc(ammount)
   else
     -- Not enough EMC to consume, return error.
     return false
+  end
+end
+
+-- Enables or disables the buy buttons depending on the selected item.
+function updateBuyButtons()
+  -- Get the currently selected item.
+  local transmutation = widget.getListSelected(self.itemList)
+  if transmutation then
+    local playerTotalEmc = player.currency(self.mainEmc) + player.currency("EES_universalemc")
+    local itemData = widget.getData(string.format("%s.%s", self.itemList, transmutation))
+    local itemPrice, itemKnown = itemData.price, itemData.known
+    widget.setButtonEnabled(
+      "buttonGetOne",
+      itemKnown and playerTotalEmc > (itemPrice * 1)
+    )
+    widget.setButtonEnabled(
+      "buttonGetFive",
+      itemKnown and playerTotalEmc > (itemPrice * 5)
+    )
+    widget.setButtonEnabled(
+      "buttonGetTen",
+      itemKnown and playerTotalEmc > (itemPrice * 10)
+    )
+  else
+    widget.setButtonEnabled("buttonGetOne", false)
+    widget.setButtonEnabled("buttonGetFive", false)
+    widget.setButtonEnabled("buttonGetTen", false)
   end
 end
