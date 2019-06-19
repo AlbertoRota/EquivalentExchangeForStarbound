@@ -1,0 +1,11 @@
+{
+  "input" : [
+    { "item" : "money", "count" : 100 }
+  ],
+  "output" : {
+    "item" : "EES_transmutationbook",
+    "count" : 1
+  },
+  "duration" : 2,
+  "groups" : [ "plain", "objects", "all", "tools" ]
+}

@@ -10,6 +10,7 @@ function init()
   self.currentItemGridItems = {}
   self.lastItemGridItems = {}
   self.itemList = "scrollArea.itemList"
+  self.canUse = #player.itemsWithTag("EES_transmutationbook") == 1
 
   -- Load config from the ".object" file of the linked container.
   self.mainEmc = getMandatoryConfig("eesMainEmc")
@@ -18,15 +19,20 @@ function init()
   self.initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots") + 1
   self.endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots") + 1
 
-  -- Initiallize the itemList
-  populateItemList()
+  if self.canUse then
+    -- Initiallize the itemList
+    populateItemList()
 
-  -- Initiallize the buy buttons
-  updateBuyButtons()
+    -- Initiallize the buy buttons
+    updateBuyButtons()
 
-  -- Initiallize player emc
-  widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
-  updatePlayerEmcLabels()
+    -- Initiallize player emc
+    widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
+    updatePlayerEmcLabels()
+
+    widget.setVisible("imgDisabledOverlay", false)
+    widget.setVisible("labelDisabledOverlay", false)
+  end
 end
 
 -- Hook function called every "scriptDelta".
@@ -176,7 +182,7 @@ function findOrCreateTransmutation(book, name)
   if itemPrice < 5 then itemPrice = 5 end
   local last = #book.parameters.eesTransmutations[self.mainEmc] + 1
   book.parameters.eesTransmutations[self.mainEmc][last] = {
-    known = false, new = false, progress = 0, name = name, price = itemPrice
+    known = false, progress = 0, name = name, price = itemPrice
   }
   return last
 end
@@ -193,7 +199,6 @@ function updateProgress(book, idx, count)
     transmutation.progress = transmutation.progress + count
     if transmutation.progress >= 10 then
       transmutation.known = true
-      transmutation.new = true
       transmutation.progress = 10
     end
 
@@ -239,7 +244,7 @@ function populateItemList()
     )
 
     -- Toggle element visibility.
-    widget.setVisible(newItem..".newIcon", transmutation.new)
+    widget.setVisible(newItem..".strudyMoreIcon", not transmutation.known)
     widget.setVisible(newItem..".notcraftableoverlay", not transmutation.known)
 
     -- Store the "transmutation" as "data", so that it can be used later.
