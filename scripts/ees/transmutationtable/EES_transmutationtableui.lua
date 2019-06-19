@@ -134,6 +134,7 @@ end
 function updateTransmutationBook()
   local updated = false
   local book = player.itemsWithTag("EES_transmutationbook")[1]
+  if not book then return false end
 
   -- Initiallize the relevant parameters if not present.
   initBook(book)
