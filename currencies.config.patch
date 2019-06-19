@@ -17,6 +17,14 @@
   },
 	{
     "op": "add",
+    "path": "/EES_farmemc",
+    "value": {
+      "representativeItem" : "EES_farmemc",
+      "playerMax" : 9999999
+    }
+  },
+	{
+    "op": "add",
     "path": "/EES_universalemc",
     "value": {
       "representativeItem" : "EES_universalemc",

@@ -159,10 +159,11 @@ function findOrCreateTransmutation(book, name)
   end
 
   -- If not found, create a new one and return it's index.
+  local itemPrice = root.itemConfig(name).config.price
+  if itemPrice < 5 then itemPrice = 5 end
   local last = #book.parameters.eesTransmutations[self.mainEmc] + 1
   book.parameters.eesTransmutations[self.mainEmc][last] = {
-    known = false, new = false, progress = 0, name = name,
-    price = root.itemConfig(name).config.price or 5
+    known = false, new = false, progress = 0, name = name, price = itemPrice
   }
   return last
 end
@@ -218,7 +219,7 @@ function populateItemList()
 
     -- Basic info.
     widget.setText(newItem..".itemName", itemConfig.shortdescription)
-    widget.setText(newItem..".priceLabel", itemConfig.price)
+    widget.setText(newItem..".priceLabel", transmutation.price)
     widget.setItemSlotItem(
       newItem..".itemIcon",
       { name = itemConfig.itemName, count = 1 }

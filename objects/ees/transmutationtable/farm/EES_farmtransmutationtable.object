@@ -2,7 +2,7 @@
   // ************************************************************************ //
   // ************************** Basic properties. *************************** //
   // ************************************************************************ //
-  "objectName" : "EES_hunttransmutationtable",
+  "objectName" : "EES_farmtransmutationtable",
   "colonyTags" : ["misc"],
   "rarity" : "Common",
   "objectType" : "container",
@@ -28,10 +28,10 @@
   // ************************************************************************ //
   // **************** Graphis and sounds related parameters. **************** //
   // ************************************************************************ //
-  "inventoryIcon" : "EES_hunttransmutationtable.png:default.1",
+  "inventoryIcon" : "EES_farmtransmutationtable.png:default.1",
   "orientations" : [
     {
-      "dualImage" : "EES_hunttransmutationtable.png:<color>.<frame>",
+      "dualImage" : "EES_farmtransmutationtable.png:<color>.<frame>",
       "imagePosition" : [-8, 0],
 
       "spaceScan" : 0.1,
@@ -55,12 +55,10 @@
   // ************************************************************************ //
   // ************************ EES custom properties. ************************ //
   // ************************************************************************ //
-  "eesMainEmc" : "EES_huntemc",
+  "eesMainEmc" : "EES_farmemc",
   "eesCanStudy" : {
-    "sharpenedclaw" : true,
-    "livingroot" : true,
-    "alienmeat" : true,
-    "rawpoultry" : true
+    "plantfibre" : true,
+    "cotton" : true
   },
   "eesSlotConfig" : {
     "initStudySlots" : 0,
