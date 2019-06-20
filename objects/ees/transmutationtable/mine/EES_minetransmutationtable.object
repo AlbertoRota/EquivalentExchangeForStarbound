@@ -63,7 +63,7 @@
     "ironore" : true,
     "copperore" : true,
     "silverore" : true,
-    "goldore" : true
+    "tungstenore" : true
   },
   "eesSlotConfig" : {
     "initStudySlots" : 0,
