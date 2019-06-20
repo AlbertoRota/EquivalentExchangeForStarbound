@@ -33,6 +33,9 @@
       "dualImage" : "EES_minetransmutationtable.png:<color>.<frame>",
       "imagePosition" : [-8, 0],
 
+      "frames" : 12,
+      "animationCycle" : 3.0,
+
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
