@@ -58,6 +58,11 @@ end
 -------------------------- Buttons hooks and functions -------------------------
 --------------------------------------------------------------------------------
 
+-- Move the items that can be studied from the player inventory to the slots.
+function buttonFromInventory()
+
+end
+
 -- Adds the emcValue to the player currency and clears the study slots
 function buttonStudy()
   -- Ensure that we are using the latest grid status
