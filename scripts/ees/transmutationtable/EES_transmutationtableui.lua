@@ -10,10 +10,12 @@ function init()
   self.currentItemGridItems = {}
   self.lastItemGridItems = {}
   self.itemList = "scrollArea.itemList"
+  self.defaultMaxStack = root.assetJson("/items/defaultParameters.config:defaultMaxStack")
   self.canUse = #player.itemsWithTag("EES_transmutationbook") == 1
 
   -- Load config from the ".object" file of the linked container.
-  self.mainEmc = getMandatoryConfig("eesMainEmc")
+  self.mainEmc         = getMandatoryConfig("eesMainEmc")
+  self.canStudy        = getMandatoryConfig("eesCanStudy")
   self.initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots") + 1
   self.endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots") + 1
   self.initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots") + 1
@@ -59,8 +61,68 @@ end
 --------------------------------------------------------------------------------
 
 -- Move the items that can be studied from the player inventory to the slots.
+-- TODO: Refactor this code
 function buttonFromInventory()
+  local containerFreeSlots = {}
 
+  -- First pass, stack simmilar items and return the emppty slots
+  for studySlot = self.initStudySlots - 1, self.endStudySlots - 1 do
+    local item = world.containerItemAt(pane.containerEntityId(), studySlot)
+    local slotItem = world.containerItemAt(pane.containerEntityId(), studySlot)
+		if not slotItem then
+			table.insert(containerFreeSlots, studySlot)
+		else
+      local amount = player.hasCountOfItem(slotItem, true)
+      local maxStack = root.itemConfig(slotItem.name).config.maxStack or self.defaultMaxStack
+      local missing = maxStack - slotItem.count
+
+      -- Move the maximum amount possible from player to slot
+      if missing > 0 and amount > 0 then
+        local consume = math.min(missing, amount)
+        player.consumeItem(
+          {name = slotItem.name, count = consume},
+          false,
+          true
+        )
+        world.containerItemApply(
+          pane.containerEntityId(),
+          {name = slotItem.name, count = slotItem.count + consume},
+          studySlot
+        )
+      end
+    end
+  end
+
+  -- Second pass, fill free slots
+  local canStudy={}
+  for k,v in pairs(self.canStudy) do
+    table.insert(canStudy, k)
+  end
+  for _, freeSlotsIdx in pairs(containerFreeSlots) do
+    local filled = false
+    while (not filled) and (#canStudy > 0) do
+      local slotItem = {name = table.remove(canStudy), count = 0}
+      local amount = player.hasCountOfItem(slotItem, true)
+      local maxStack = root.itemConfig(slotItem.name).config.maxStack or self.defaultMaxStack
+      local missing = maxStack - slotItem.count
+
+      -- Move the maximum amount possible from player to slot
+      if missing > 0 and amount > 0 then
+        local consume = math.min(missing, amount)
+        player.consumeItem(
+          {name = slotItem.name, count = consume},
+          false,
+          true
+        )
+        world.containerItemApply(
+          pane.containerEntityId(),
+          {name = slotItem.name, count = slotItem.count + consume},
+          freeSlotsIdx
+        )
+        filled = true
+      end
+    end
+  end
 end
 
 -- Adds the emcValue to the player currency and clears the study slots
