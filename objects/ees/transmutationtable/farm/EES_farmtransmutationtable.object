@@ -33,6 +33,9 @@
       "dualImage" : "EES_farmtransmutationtable.png:<color>.<frame>",
       "imagePosition" : [-8, 0],
 
+      "frames" : 72,
+      "animationCycle" : 7.2,
+
       "spaceScan" : 0.1,
       "anchors" : [ "bottom" ]
     }
