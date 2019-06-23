@@ -10,6 +10,7 @@ function init()
   self.currentItemGridItems = {}
   self.lastItemGridItems = {}
   self.itemList = "scrollArea.itemList"
+  self.minItemPrice = 1
   self.defaultMaxStack = root.assetJson("/items/defaultParameters.config:defaultMaxStack")
   self.canUse = #player.itemsWithTag("EES_transmutationbook") == 1
 
@@ -102,7 +103,7 @@ function buttonFromInventory()
     local filled = false
     while (not filled) and (#canStudy > 0) do
       local slotItem = {name = table.remove(canStudy), count = 0}
-      local amount = player.hasCountOfItem(slotItem, true)
+      local amount = player.hasCountOfItem(slotItem, false)
       local maxStack = root.itemConfig(slotItem.name).config.maxStack or self.defaultMaxStack
       local missing = maxStack - slotItem.count
 
@@ -112,7 +113,7 @@ function buttonFromInventory()
         player.consumeItem(
           {name = slotItem.name, count = consume},
           false,
-          true
+          false
         )
         world.containerItemApply(
           pane.containerEntityId(),
@@ -247,7 +248,7 @@ function findOrCreateTransmutation(book, name)
 
   -- If not found, create a new one and return it's index.
   local itemPrice = root.itemConfig(name).config.price
-  if itemPrice < 5 then itemPrice = 5 end
+  if itemPrice < self.minItemPrice then itemPrice = self.minItemPrice end
   local last = #book.parameters.eesTransmutations[self.mainEmc] + 1
   book.parameters.eesTransmutations[self.mainEmc][last] = {
     known = false, progress = 0, name = name, price = itemPrice
@@ -387,7 +388,7 @@ function calculateItemEmc(itemDescriptor , discountFactor)
 
   -- Obtain the value of a single item
   -- TODO: Improve the EMC calculation (Water should be worthless)
-  if not itemPrice or itemPrice < 5 then itemPrice = 5 end
+  if not itemPrice or itemPrice < self.minItemPrice then itemPrice = self.minItemPrice end
 
   -- Calculate the value of all the items in the "itemDescriptor"
   return math.floor(itemPrice * itemDescriptor.count * discountFactor)
