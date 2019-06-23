@@ -59,11 +59,16 @@
   // ************************************************************************ //
   "eesMainEmc" : "EES_mineemc",
   "eesCanStudy" : {
+    // Vanilla - Start
     "coalore" : true,
     "ironore" : true,
     "copperore" : true,
     "silverore" : true,
     "tungstenore" : true
+    // Vanilla - end
+
+    // Elithian Races Mod - Start
+    // Elithian Races Mod - end
   },
   "eesSlotConfig" : {
     "initStudySlots" : 0,

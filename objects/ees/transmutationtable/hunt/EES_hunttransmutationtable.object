@@ -56,10 +56,28 @@
   // ************************************************************************ //
   "eesMainEmc" : "EES_huntemc",
   "eesCanStudy" : {
+    // Vanilla - Start
     "sharpenedclaw" : true,
     "livingroot" : true,
+    "leather" : true,
+    "hardenedcarapace" : true,
+
     "alienmeat" : true,
-    "rawpoultry" : true
+    "rawpoultry" : true,
+    "rawfish" : true,
+    "rawribmeat" : true,
+    "egg" : true,
+    // Vanilla - End
+
+    // Elithian Races Mod - Start
+    "sandcrawlermeat" : true,
+
+    "valahrgland" : true,
+    "sandcrawlertooth" : true,
+    "monsterbone" : true,
+    "monsterhide" : true,
+    "monsterscales" : true
+    // Elithian Races Mod - end
   },
   "eesSlotConfig" : {
     "initStudySlots" : 0,

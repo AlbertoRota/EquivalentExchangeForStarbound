@@ -59,8 +59,37 @@
   // ************************************************************************ //
   "eesMainEmc" : "EES_farmemc",
   "eesCanStudy" : {
+    // Vanilla - Start
     "plantfibre" : true,
-    "cotton" : true
+    "petalblue" : true,
+    "petalred" : true,
+    "petalyellow" : true,
+
+    "rice" : true,
+    "corn" : true,
+    "wheat" : true,
+    "potato" : true,
+    "tomato" : true,
+    "cocoa" : true,
+    "carrot" : true,
+    "pearlpea" : true,
+    "cacti" : true,
+    "thornfruit" : true,
+    "banana" : true,
+    "avesmingo" : true,
+
+    "cotton" : true,
+    "giantflowerpetal" : true, // TODO: Should this be here?
+    // Vanilla - End
+
+    // Elithian Races Mod - Start
+    "ambrumfiber" : true,
+    "selvasextract" : true,
+    "bolbohn" : true,
+    "avikanspices" : true,
+    "dunestalk" : true,
+    "kadavancactus" : true
+    // Elithian Races Mod - end
   },
   "eesSlotConfig" : {
     "initStudySlots" : 0,
