@@ -71,8 +71,11 @@
     "endBurnSlots" : 7
   },
   "eesUpgradeMaterials" : [
-    { "item" : "coalore", "count" : 12 },
-    { "item" : "ironore", "count" : 1 }
+    // T1 to T2  upgrade materials
+    { "item" : "titaniumore", "count" : 12 },
+    { "item" : "darkwoodmaterial", "count" : 5 },
+    { "item" : "silverore", "count" : 10 },
+    { "item" : "coalore", "count" : 5 }
   ],
   "eesCanStudy" : {
     // Vanilla - Start
@@ -126,8 +129,11 @@
         // ********************* EES custom properties. ********************* //
         // ****************************************************************** //
         "eesUpgradeMaterials" : [
-          { "item" : "coalore", "count" : 12 },
-          { "item" : "ironore", "count" : 1 }
+          // T1 to T2  upgrade materials
+          { "item" : "titaniumore", "count" : 12 },
+          { "item" : "darkwoodmaterial", "count" : 5 },
+          { "item" : "silverore", "count" : 10 },
+          { "item" : "coalore", "count" : 5 }
         ],
         "eesCanStudy" : {
           // Vanilla - Start
@@ -174,10 +180,11 @@
         // ****************************************************************** //
         // ********************* EES custom properties. ********************* //
         // ****************************************************************** //
-        "eesUpgradeMaterials" : [
-          { "item" : "durasteelore", "count" : 12 },
-          { "item" : "goldore", "count" : 6 }
-        ],
+        // "eesUpgradeMaterials" : [
+        //   // T2 to T3  upgrade materials
+        //   { "item" : "durasteelore", "count" : 12 },
+        //   { "item" : "goldore", "count" : 6 }
+        // ],
         "eesCanStudy" : {
           // Vanilla - Start
           "coalore" : true,
