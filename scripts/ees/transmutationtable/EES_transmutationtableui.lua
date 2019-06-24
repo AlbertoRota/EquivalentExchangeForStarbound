@@ -53,13 +53,14 @@ function update(dt)
   end
 end
 
--- Hook function called when the GUI is opened.
-function uninit()
-end
-
 --------------------------------------------------------------------------------
 -------------------------- Buttons hooks and functions -------------------------
 --------------------------------------------------------------------------------
+-- btnUpgrade
+function btnUpgrade()
+  world.sendEntityMessage(pane.containerEntityId(), "requestUpgrade")
+  pane.dismiss()
+end
 
 -- Move the items that can be studied from the player inventory to the slots.
 -- TODO: Refactor this code

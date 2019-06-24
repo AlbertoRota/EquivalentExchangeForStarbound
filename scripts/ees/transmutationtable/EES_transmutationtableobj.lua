@@ -5,7 +5,10 @@ require "/scripts/ees/EES_utils.lua"
 --------------------------------------------------------------------------------
 
 -- Hook function called when the obj is created/placed in the world.
+EES_superInit = init
 function init()
+  if EES_superInit then EES_superInit() end
+
   container = {}
 
   -- Load config from the ".object" file.
@@ -18,10 +21,6 @@ function init()
   -- Register mesagges that will be called by the GUI.
   message.setHandler("clearStudySlots", clearStudySlots)
   message.setHandler("clearBurnSlots", clearBurnSlots)
-end
-
--- Hook function called every "scriptDelta".
-function update(dt)
 end
 
 -- Hook function called after any modification to the "itemgrid" elements.
@@ -37,13 +36,14 @@ function containerCallback()
   end
 end
 
--- Hook function called when the obj is removed from the world.
-function uninit()
-end
-
 --------------------------------------------------------------------------------
 ------------------------------- Public functions -------------------------------
 --------------------------------------------------------------------------------
+EES_superUpgradeTo = upgradeTo
+function upgradeTo(oldStage, newStage)
+  if EES_superUpgradeTo then EES_superUpgradeTo(oldStage, newStage) end
+  self.canStudy = getMandatoryConfig("eesCanStudy")
+end
 
 -- Clears the Study slots.
 -- Called by "world.sendEntityMessage(entityId, 'clearStudySlots')"
