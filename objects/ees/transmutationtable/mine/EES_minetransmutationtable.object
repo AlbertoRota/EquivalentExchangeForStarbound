@@ -3,45 +3,48 @@
   // ************************** Basic properties. *************************** //
   // ************************************************************************ //
   "objectName" : "EES_minetransmutationtable",
-  "colonyTags" : ["misc"],
+  "colonyTags" : ["crafting"],
   "rarity" : "Common",
   "objectType" : "container",
   "category" : "storage",
-  "price" : 200,
+  "price" : 350,
   "description" : "description",
-  "shortdescription" : "Mine EMC table",
+  "shortdescription" : "^orange;Mine EMC table^white;",
   "race" : "generic",
   "health" : 1.5,
 
   // ************************************************************************ //
   // ************************ Racial descriptions.. ************************* //
   // ************************************************************************ //
-  "apexDescription" : "apexDescription",
-  "avianDescription" : "avianDescription",
-  "floranDescription" : "floranDescription",
-  "glitchDescription" : "glitchDescription",
-  "humanDescription" : "humanDescription",
-  "hylotlDescription" : "hylotlDescription",
-  "novakidDescription" : "novakidDescription",
+  "apexDescription" : "T1 - apexDescription",
+  "avianDescription" : "T1 - avianDescription",
+  "floranDescription" : "T1 - floranDescription",
+  "glitchDescription" : "T1 - glitchDescription",
+  "humanDescription" : "T1 - humanDescription",
+  "hylotlDescription" : "T1 - hylotlDescription",
+  "novakidDescription" : "T1 - novakidDescription",
 
   // ************************************************************************ //
   // **************** Graphis and sounds related parameters. **************** //
   // ************************************************************************ //
-  "inventoryIcon" : "EES_minetransmutationtable.png:default.1",
+  "inventoryIcon" : "EES_minetransmutationtableicon.png",
+  "placementImage" : "EES_minetransmutationtable.png:default.1",
+  "placementImagePosition" : [-16, 0],
+  "animation" : "EES_minetransmutationtable.animation",
   "orientations" : [
     {
       "dualImage" : "EES_minetransmutationtable.png:<color>.<frame>",
-      "imagePosition" : [-8, 0],
-
-      "frames" : 12,
-      "animationCycle" : 3.0,
-
-      "spaceScan" : 0.1,
+      "imagePosition" : [-16, 0],
+      "animationPosition" : [0, 16],
+      "spaces" : [
+        [-2, 3], [-1, 3], [0, 3], [1, 3],
+        [-2, 2], [-1, 2], [0, 2], [1, 2],
+        [-2, 1], [-1, 1], [0, 1], [1, 1],
+        [-2, 0], [-1, 0], [0, 0], [1, 0]
+      ],
       "anchors" : [ "bottom" ]
     }
   ],
-  "openSounds" : [ "/sfx/objects/chest_medium_open.ogg" ],
-  "closeSounds" : [ "/sfx/objects/chest_medium_close.ogg" ],
   "slotCount" : 8,
   "uiConfig" : "/interface/ees/transmutationtable/EES_transmutationtable.config",
   "frameCooldown" : 5,
@@ -50,7 +53,10 @@
   // ************************************************************************ //
   // ********************** Script related parameters. ********************** //
   // ************************************************************************ //
-  "scripts" : [ "/scripts/ees/transmutationtable/EES_transmutationtableobj.lua" ],
+  "scripts" : [
+    "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua",
+    "/scripts/ees/transmutationtable/EES_transmutationtableobj.lua"
+  ],
   "scriptDelta" : 120,
   "containerCallback" : "containerCallback",
 
@@ -75,5 +81,107 @@
     "endStudySlots" : 3,
     "initBurnSlots" : 4,
     "endBurnSlots" : 7
-  }
+  },
+
+  // ************************************************************************ //
+  // ***************** Upgrade and stage related properties. **************** //
+  // ************************************************************************ //
+  "breakDropOptions" : [],
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+  "upgradeStages" : [
+    {
+      "animationState" : "EES_minetransmutationtable",
+      "itemSpawnParameters" : {
+        // ****************************************************************** //
+        // *********************** Basic properties. ************************ //
+        // ****************************************************************** //
+        "price" : 350,
+        "description" : "description",
+        "shortdescription" : "^orange;Mine EMC table^white;",
+
+        // ****************************************************************** //
+        // ********************* Racial descriptions.. ********************** //
+        // ****************************************************************** //
+        "apexDescription" : "T1 - apexDescription",
+        "avianDescription" : "T1 - avianDescription",
+        "floranDescription" : "T1 - floranDescription",
+        "glitchDescription" : "T1 - glitchDescription",
+        "humanDescription" : "T1 - humanDescription",
+        "hylotlDescription" : "T1 - hylotlDescription",
+        "novakidDescription" : "T1 - novakidDescription",
+
+        // ****************************************************************** //
+        // ************* Graphis and sounds related parameters. ************* //
+        // ****************************************************************** //
+        "inventoryIcon" : "EES_minetransmutationtableicon.png",
+        "placementImage" : "EES_minetransmutationtable.png:default.1",
+        "placementImagePosition" : [-16, 0],
+
+        // ****************************************************************** //
+        // ********************* EES custom properties. ********************* //
+        // ****************************************************************** //
+        "eesCanStudy" : {
+          // Vanilla - Start
+          "coalore" : true,
+          "ironore" : true,
+          "copperore" : true,
+          "silverore" : true,
+          "tungstenore" : true
+          // Vanilla - end
+
+          // Elithian Races Mod - Start
+          // Elithian Races Mod - end
+        }
+      }
+    },
+    {
+      "animationState" : "EES_minetransmutationtable2",
+      "itemSpawnParameters" : {
+        // ****************************************************************** //
+        // *********************** Basic properties. ************************ //
+        // ****************************************************************** //
+        "price" : 350,
+        "description" : "description",
+        "shortdescription" : "^orange;Mine EMC table^white;",
+
+        // ****************************************************************** //
+        // ********************* Racial descriptions.. ********************** //
+        // ****************************************************************** //
+        "apexDescription" : "T2 - apexDescription",
+        "avianDescription" : "T2 - avianDescription",
+        "floranDescription" : "T2 - floranDescription",
+        "glitchDescription" : "T2 - glitchDescription",
+        "humanDescription" : "T2 - humanDescription",
+        "hylotlDescription" : "T2 - hylotlDescription",
+        "novakidDescription" : "T2 - novakidDescription",
+
+        // ****************************************************************** //
+        // ************* Graphis and sounds related parameters. ************* //
+        // ****************************************************************** //
+        "inventoryIcon" : "EES_minetransmutationtable2icon.png",
+        "placementImage" : "EES_minetransmutationtable2.png:default.1",
+        "placementImagePosition" : [-16, 0],
+
+        // ****************************************************************** //
+        // ********************* EES custom properties. ********************* //
+        // ****************************************************************** //
+        "eesCanStudy" : {
+          // Vanilla - Start
+          "coalore" : true,
+          "ironore" : true,
+          "copperore" : true,
+          "silverore" : true,
+          "tungstenore" : true,
+
+          "goldore" : true
+          // Vanilla - end
+
+          // Elithian Races Mod - Start
+          // Elithian Races Mod - end
+        }
+      }
+    }
+  ]
+
 }
