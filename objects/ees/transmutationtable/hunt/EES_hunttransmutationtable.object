@@ -31,7 +31,7 @@
   "placementImage" : "EES_hunttransmutationtable.png:default.1",
   "placementImagePosition" : [-24, 0],
   "animation" : "EES_hunttransmutationtable.animation",
-  "animationPosition" : [0, 12],
+  "animationPosition" : [0, 14],
   "orientations" : [
     {
       "image" : "EES_hunttransmutationtable.png:<color>.<frame>",
