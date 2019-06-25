@@ -5,12 +5,17 @@
         "default" : "EES_minetransmutationtable",
         "states" : {
           "EES_minetransmutationtable" : {
-            "frames" : 11,
+            "frames" : 14,
             "cycle" : 3,
             "mode" : "loop"
           },
           "EES_minetransmutationtable2" : {
-            "frames" : 11,
+            "frames" : 14,
+            "cycle" : 3,
+            "mode" : "loop"
+          },
+          "EES_minetransmutationtable3" : {
+            "frames" : 14,
             "cycle" : 3,
             "mode" : "loop"
           }
@@ -34,6 +39,11 @@
             "EES_minetransmutationtable2" : {
               "properties" : {
                 "image" : "EES_minetransmutationtable2.png:<color>.<frame>"
+              }
+            },
+            "EES_minetransmutationtable3" : {
+              "properties" : {
+                "image" : "EES_minetransmutationtable3.png:<color>.<frame>"
               }
             }
           }
