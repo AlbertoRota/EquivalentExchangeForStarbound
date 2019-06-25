@@ -1,0 +1,68 @@
+{
+  "animatedParts" : {
+    "stateTypes" : {
+      "stage" : {
+        "default" : "EES_hunttransmutationtable",
+        "states" : {
+          "EES_hunttransmutationtable" : {
+            "frames" : 14,
+            "cycle" : 3,
+            "mode" : "loop"
+          },
+          "EES_hunttransmutationtable2" : {
+            "frames" : 14,
+            "cycle" : 3,
+            "mode" : "loop"
+          },
+          "EES_hunttransmutationtable3" : {
+            "frames" : 14,
+            "cycle" : 3,
+            "mode" : "loop"
+          }
+        }
+      }
+    },
+
+    "parts" : {
+      "chassis" : {
+        "properties" : {
+          "centered" : true,
+          "zLevel" : 1
+        },
+        "partStates" : {
+          "stage" : {
+            "EES_hunttransmutationtable" : {
+              "properties" : {
+                "image" : "EES_hunttransmutationtable.png:<color>.<frame>"
+              }
+            },
+            "EES_hunttransmutationtable2" : {
+              "properties" : {
+                "image" : "EES_hunttransmutationtable2.png:<color>.<frame>"
+              }
+            },
+            "EES_hunttransmutationtable3" : {
+              "properties" : {
+                "image" : "EES_hunttransmutationtable3.png:<color>.<frame>"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sounds" : {
+    "fanfare" : ["/sfx/cinematics/mission_unlock_event.ogg"],
+    "fanfare2" : ["/sfx/cinematics/license_acquired_event.ogg"]
+  },
+
+  "particleEmitters" : {
+    "dust" : {
+      "emissionRate" : 0.0,
+      "burstCount"  : 10,
+      "offsetRegion" : [-2, -2, 2, 2],
+      "particles" : [{ "particle" : "dust2"}]
+    }
+  }
+}

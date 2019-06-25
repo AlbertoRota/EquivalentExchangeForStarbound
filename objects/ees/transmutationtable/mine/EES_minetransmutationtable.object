@@ -84,10 +84,10 @@
   },
   "eesUpgradeMaterials" : [
     // T1 to T2  upgrade materials
-    { "item" : "titaniumore", "count" : 12 },
-    { "item" : "darkwoodmaterial", "count" : 5 },
-    { "item" : "silverore", "count" : 10 },
-    { "item" : "coalore", "count" : 5 }
+    { "item" : "titaniumbar", "count" : 3 },
+    { "item" : "glass", "count" : 2 },
+    { "item" : "smallbattery", "count" : 3 },
+    { "item" : "goldbar", "count" : 1 }
   ],
   "eesCanStudy" : {
     // Vanilla - Start
@@ -246,6 +246,7 @@
         // ****************************************************************** //
         // ********************* EES custom properties. ********************* //
         // ****************************************************************** //
+        "eesUpgradeMaterials" : [ /* No further upgrades available */ ],
         "eesCanStudy" : {
           // Vanilla - Start
           "coalore" : true,
