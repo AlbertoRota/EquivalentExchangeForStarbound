@@ -9,5 +9,10 @@
   "inventoryIcon" : "EES_transmutationbook.png",
   "description" : "This book contains all your knowledge about transmutation.",
   "shortdescription" : "Transmutation book",
-  "itemTags" : ["EES_transmutationbook"]
+  "itemTags" : ["EES_transmutationbook"],
+  "learnBlueprintsOnPickup" : [
+    "EES_minetransmutationtable",
+    "EES_farmtransmutationtable",
+    "EES_hunttransmutationtable"
+  ]
 }

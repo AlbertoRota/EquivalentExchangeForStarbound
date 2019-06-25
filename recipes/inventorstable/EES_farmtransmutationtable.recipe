@@ -1,6 +1,11 @@
 {
   "input" : [
-    { "item" : "money", "count" : 100 }
+    { "item" : "campfire", "count" : 1 },
+    { "item" : "logblock", "count" : 2 },
+    { "item" : "riceseed", "count" : 1 },
+    { "item" : "potatoseed", "count" : 1 },
+    { "item" : "cottonseed", "count" : 1 },
+    { "item" : "livingroot", "count" : 1 }
   ],
   "output" : {
     "item" : "EES_farmtransmutationtable",

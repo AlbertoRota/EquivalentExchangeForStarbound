@@ -1,6 +1,3 @@
 [
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "EES_transmutationbook" }},
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "EES_farmtransmutationtable" }},
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "EES_hunttransmutationtable" }},
-	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "EES_minetransmutationtable" }}
+	{ "op": "add", "path": "/defaultBlueprints/tier1/-", "value": { "item" : "EES_transmutationbook" }}
 ]

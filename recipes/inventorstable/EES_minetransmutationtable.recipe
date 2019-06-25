@@ -1,6 +1,9 @@
 {
   "input" : [
-    { "item" : "money", "count" : 100 }
+    { "item" : "campfire", "count" : 1 },
+    { "item" : "logblock", "count" : 2 },
+    { "item" : "copperore", "count" : 1 },
+    { "item" : "corefragmentore", "count" : 1 }
   ],
   "output" : {
     "item" : "EES_minetransmutationtable",
