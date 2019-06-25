@@ -3,45 +3,60 @@
   // ************************** Basic properties. *************************** //
   // ************************************************************************ //
   "objectName" : "EES_farmtransmutationtable",
-  "colonyTags" : ["misc"],
+  "colonyTags" : ["crafting"],
   "rarity" : "Common",
   "objectType" : "container",
   "category" : "storage",
-  "price" : 200,
+  "price" : 350,
   "description" : "description",
-  "shortdescription" : "Farm EMC table",
+  "shortdescription" : "^orange;Farm EMC table^white;",
   "race" : "generic",
   "health" : 1.5,
 
   // ************************************************************************ //
   // ************************ Racial descriptions.. ************************* //
   // ************************************************************************ //
-  "apexDescription" : "apexDescription",
-  "avianDescription" : "avianDescription",
-  "floranDescription" : "floranDescription",
-  "glitchDescription" : "glitchDescription",
-  "humanDescription" : "humanDescription",
-  "hylotlDescription" : "hylotlDescription",
-  "novakidDescription" : "novakidDescription",
+  "apexDescription" : "T1 - apexDescription",
+  "avianDescription" : "T1 - avianDescription",
+  "floranDescription" : "T1 - floranDescription",
+  "glitchDescription" : "T1 - glitchDescription",
+  "humanDescription" : "T1 - humanDescription",
+  "hylotlDescription" : "T1 - hylotlDescription",
+  "novakidDescription" : "T1 - novakidDescription",
 
   // ************************************************************************ //
   // **************** Graphis and sounds related parameters. **************** //
   // ************************************************************************ //
   "inventoryIcon" : "EES_farmtransmutationtable.png:default.1",
+  "placementImage" : "EES_farmtransmutationtable.png:default.1",
+  "placementImagePosition" : [-24, 0],
+  "animation" : "EES_farmtransmutationtable.animation",
+  "animationPosition" : [0, 12],
   "orientations" : [
     {
-      "dualImage" : "EES_farmtransmutationtable.png:<color>.<frame>",
-      "imagePosition" : [-8, 0],
-
-      "frames" : 72,
-      "animationCycle" : 7.2,
-
-      "spaceScan" : 0.1,
+      "image" : "EES_farmtransmutationtable.png:<color>.<frame>",
+      "imagePosition" : [-24, 0],
+      "direction" : "left",
+      "flipImages" : true,
+      "spaces" : [
+        [-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],
+        [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],
+        [-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0]
+      ],
+      "anchors" : [ "bottom" ]
+    },
+    {
+      "image" : "EES_farmtransmutationtable.png:<color>.<frame>",
+      "imagePosition" : [-24, 0],
+      "direction" : "right",
+      "spaces" : [
+        [-3, 2], [-2, 2], [-1, 2], [0, 2], [1, 2], [2, 2],
+        [-3, 1], [-2, 1], [-1, 1], [0, 1], [1, 1], [2, 1],
+        [-3, 0], [-2, 0], [-1, 0], [0, 0], [1, 0], [2, 0]
+      ],
       "anchors" : [ "bottom" ]
     }
   ],
-  "openSounds" : [ "/sfx/objects/chest_medium_open.ogg" ],
-  "closeSounds" : [ "/sfx/objects/chest_medium_close.ogg" ],
   "slotCount" : 8,
   "uiConfig" : "/interface/ees/transmutationtable/EES_transmutationtable.config",
   "frameCooldown" : 5,
@@ -50,7 +65,10 @@
   // ************************************************************************ //
   // ********************** Script related parameters. ********************** //
   // ************************************************************************ //
-  "scripts" : [ "/scripts/ees/transmutationtable/EES_transmutationtableobj.lua" ],
+  "scripts" : [
+    "/objects/crafting/upgradeablecraftingobjects/upgradeablecraftingobject.lua",
+    "/scripts/ees/transmutationtable/EES_transmutationtableobj.lua"
+  ],
   "scriptDelta" : 120,
   "containerCallback" : "containerCallback",
 
@@ -58,6 +76,19 @@
   // ************************ EES custom properties. ************************ //
   // ************************************************************************ //
   "eesMainEmc" : "EES_farmemc",
+  "eesSlotConfig" : {
+    "initStudySlots" : 0,
+    "endStudySlots" : 3,
+    "initBurnSlots" : 4,
+    "endBurnSlots" : 7
+  },
+  "eesUpgradeMaterials" : [
+    // T1 to T2  upgrade materials
+    { "item" : "titaniumbar", "count" : 3 },
+    { "item" : "glass", "count" : 2 },
+    { "item" : "smallbattery", "count" : 3 },
+    { "item" : "liquidfuel", "count" : 20 }
+  ],
   "eesCanStudy" : {
     // Vanilla - Start
     "plantfibre" : true,
@@ -93,10 +124,229 @@
     "vahlberries" : true
     // Elithian Races Mod - end
   },
-  "eesSlotConfig" : {
-    "initStudySlots" : 0,
-    "endStudySlots" : 3,
-    "initBurnSlots" : 4,
-    "endBurnSlots" : 7
-  }
+
+  // ************************************************************************ //
+  // ***************** Upgrade and stage related properties. **************** //
+  // ************************************************************************ //
+  "breakDropOptions" : [],
+  "startingUpgradeStage" : 1,
+  "maxUpgradeStage" : 3,
+  "upgradeStages" : [
+    {
+      "animationState" : "EES_farmtransmutationtable",
+      "itemSpawnParameters" : {
+        // ****************************************************************** //
+        // *********************** Basic properties. ************************ //
+        // ****************************************************************** //
+        "price" : 350,
+        "description" : "description",
+        "shortdescription" : "^orange;Farm EMC table^white;",
+
+        // ****************************************************************** //
+        // ********************* Racial descriptions.. ********************** //
+        // ****************************************************************** //
+        "apexDescription" : "T1 - apexDescription",
+        "avianDescription" : "T1 - avianDescription",
+        "floranDescription" : "T1 - floranDescription",
+        "glitchDescription" : "T1 - glitchDescription",
+        "humanDescription" : "T1 - humanDescription",
+        "hylotlDescription" : "T1 - hylotlDescription",
+        "novakidDescription" : "T1 - novakidDescription",
+
+        // ****************************************************************** //
+        // ************* Graphis and sounds related parameters. ************* //
+        // ****************************************************************** //
+        "inventoryIcon" : "EES_farmtransmutationtable.png:default.1",
+        "placementImage" : "EES_farmtransmutationtable.png:default.1",
+        "placementImagePosition" : [-24, 0],
+
+        // ****************************************************************** //
+        // ********************* EES custom properties. ********************* //
+        // ****************************************************************** //
+        "eesUpgradeMaterials" : [
+          // T1 to T2  upgrade materials
+          { "item" : "titaniumbar", "count" : 3 },
+          { "item" : "glass", "count" : 2 },
+          { "item" : "smallbattery", "count" : 3 },
+          { "item" : "liquidfuel", "count" : 20 }
+        ],
+        "eesCanStudy" : {
+          // Vanilla - Start
+          "plantfibre" : true,
+          "petalblue" : true,
+          "petalred" : true,
+          "petalyellow" : true,
+
+          "rice" : true,
+          "corn" : true,
+          "wheat" : true,
+          "potato" : true,
+          "tomato" : true,
+          "cocoa" : true,
+          "carrot" : true,
+          "pearlpea" : true,
+          "cacti" : true,
+          "thornfruit" : true,
+          "banana" : true,
+          "avesmingo" : true,
+
+          "cotton" : true,
+          // Vanilla - End
+
+          // Elithian Races Mod - Start
+          "ambrumfiber" : true,
+          "selvasextract" : true,
+          "bolbohn" : true,
+          "avikanspices" : true,
+          "dunestalk" : true,
+          "kadavancactus" : true,
+          "borato" : true,
+          "vahlberries" : true
+          // Elithian Races Mod - end
+        }
+      }
+    },
+    {
+      "animationState" : "EES_farmtransmutationtable2",
+      "itemSpawnParameters" : {
+        // ****************************************************************** //
+        // *********************** Basic properties. ************************ //
+        // ****************************************************************** //
+        "price" : 350,
+        "description" : "description",
+        "shortdescription" : "^orange;Farm EMC table^white;",
+
+        // ****************************************************************** //
+        // ********************* Racial descriptions.. ********************** //
+        // ****************************************************************** //
+        "apexDescription" : "T2 - apexDescription",
+        "avianDescription" : "T2 - avianDescription",
+        "floranDescription" : "T2 - floranDescription",
+        "glitchDescription" : "T2 - glitchDescription",
+        "humanDescription" : "T2 - humanDescription",
+        "hylotlDescription" : "T2 - hylotlDescription",
+        "novakidDescription" : "T2 - novakidDescription",
+
+        // ****************************************************************** //
+        // ************* Graphis and sounds related parameters. ************* //
+        // ****************************************************************** //
+        "inventoryIcon" : "EES_farmtransmutationtable2.png:default.1",
+        "placementImage" : "EES_farmtransmutationtable2.png:default.1",
+        "placementImagePosition" : [-24, 0],
+
+        // ****************************************************************** //
+        // ********************* EES custom properties. ********************* //
+        // ****************************************************************** //
+        "eesUpgradeMaterials" : [
+          // T2 to T3  upgrade materials
+          { "item" : "refinedaegisalt", "count" : 3 },
+          { "item" : "siliconboard", "count" : 1 },
+          { "item" : "wire", "count" : 5 },
+          { "item" : "syringe", "count" : 1 }
+        ],
+        "eesCanStudy" : {
+          // Vanilla - Start
+          "plantfibre" : true,
+          "petalblue" : true,
+          "petalred" : true,
+          "petalyellow" : true,
+
+          "rice" : true,
+          "corn" : true,
+          "wheat" : true,
+          "potato" : true,
+          "tomato" : true,
+          "cocoa" : true,
+          "carrot" : true,
+          "pearlpea" : true,
+          "cacti" : true,
+          "thornfruit" : true,
+          "banana" : true,
+          "avesmingo" : true,
+
+          "cotton" : true,
+          // Vanilla - End
+
+          // Elithian Races Mod - Start
+          "ambrumfiber" : true,
+          "selvasextract" : true,
+          "bolbohn" : true,
+          "avikanspices" : true,
+          "dunestalk" : true,
+          "kadavancactus" : true,
+          "borato" : true,
+          "vahlberries" : true
+          // Elithian Races Mod - end
+        }
+      }
+    },
+    {
+      "animationState" : "EES_farmtransmutationtable3",
+      "itemSpawnParameters" : {
+        // ****************************************************************** //
+        // *********************** Basic properties. ************************ //
+        // ****************************************************************** //
+        "price" : 350,
+        "description" : "description",
+        "shortdescription" : "^orange;Farm EMC table^white;",
+
+        // ****************************************************************** //
+        // ********************* Racial descriptions.. ********************** //
+        // ****************************************************************** //
+        "apexDescription" : "T3 - apexDescription",
+        "avianDescription" : "T3 - avianDescription",
+        "floranDescription" : "T3 - floranDescription",
+        "glitchDescription" : "T3 - glitchDescription",
+        "humanDescription" : "T3 - humanDescription",
+        "hylotlDescription" : "T3 - hylotlDescription",
+        "novakidDescription" : "T3 - novakidDescription",
+
+        // ****************************************************************** //
+        // ************* Graphis and sounds related parameters. ************* //
+        // ****************************************************************** //
+        "inventoryIcon" : "EES_farmtransmutationtable3.png:default.1",
+        "placementImage" : "EES_farmtransmutationtable3.png:default.1",
+        "placementImagePosition" : [-24, 0],
+
+        // ****************************************************************** //
+        // ********************* EES custom properties. ********************* //
+        // ****************************************************************** //
+        "eesUpgradeMaterials" : [ /* No further upgrades available */ ],
+        "eesCanStudy" : {
+          // Vanilla - Start
+          "plantfibre" : true,
+          "petalblue" : true,
+          "petalred" : true,
+          "petalyellow" : true,
+
+          "rice" : true,
+          "corn" : true,
+          "wheat" : true,
+          "potato" : true,
+          "tomato" : true,
+          "cocoa" : true,
+          "carrot" : true,
+          "pearlpea" : true,
+          "cacti" : true,
+          "thornfruit" : true,
+          "banana" : true,
+          "avesmingo" : true,
+
+          "cotton" : true,
+          // Vanilla - End
+
+          // Elithian Races Mod - Start
+          "ambrumfiber" : true,
+          "selvasextract" : true,
+          "bolbohn" : true,
+          "avikanspices" : true,
+          "dunestalk" : true,
+          "kadavancactus" : true,
+          "borato" : true,
+          "vahlberries" : true
+          // Elithian Races Mod - end
+        }
+      }
+    }
+  ]
 }
