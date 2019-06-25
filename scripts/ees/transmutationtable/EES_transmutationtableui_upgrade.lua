@@ -7,7 +7,7 @@ EES_superInit = init
 function init()
   if EES_superInit then EES_superInit() end
   self.upgradeMaterials = world.getObjectParameter(pane.containerEntityId(), "eesUpgradeMaterials")
-  self.canUpgrade = playerCanUpgrade()
+  self.canUpgrade = playerCanUpgrade() or player.isAdmin()
 
   initUpgradeTooltip()
 end
@@ -23,7 +23,7 @@ end
 
 -- btnUpgrade
 function btnUpgrade()
-  if consumeUpgradeMaterials() then
+  if consumeUpgradeMaterials() or player.isAdmin() then
     world.sendEntityMessage(pane.containerEntityId(), "requestUpgrade")
     pane.dismiss()
   end
@@ -34,8 +34,13 @@ end
 --------------------------------------------------------------------------------
 
 function initUpgradeTooltip()
-  if not self.upgradeMaterials then return false end
   local numItems = #self.upgradeMaterials
+
+  -- No further upgrades, remove the button and return.
+  if numItems == 0 then
+    widget.setVisible("checkBoxUpgrade", false)
+    return false
+  end
 
   -- Set the correct images for "Upgrade" checkbox.
   if self.canUpgrade then
