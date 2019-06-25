@@ -5,8 +5,8 @@
         "default" : "EES_hunttransmutationtable",
         "states" : {
           "EES_hunttransmutationtable" : {
-            "frames" : 14,
-            "cycle" : 3,
+            "frames" : 95,
+            "cycle" : 9.5,
             "mode" : "loop"
           },
           "EES_hunttransmutationtable2" : {
