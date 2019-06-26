@@ -5,8 +5,8 @@
         "default" : "EES_minetransmutationtable",
         "states" : {
           "EES_minetransmutationtable" : {
-            "frames" : 14,
-            "cycle" : 3,
+            "frames" : 59,
+            "cycle" : 6,
             "mode" : "loop"
           },
           "EES_minetransmutationtable2" : {
