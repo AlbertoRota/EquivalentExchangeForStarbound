@@ -110,6 +110,7 @@
 
     "valahrgland" : true,
     "sandcrawlertooth" : true,
+    "farythscale" : true,
     "monsterbone" : true,
     "monsterhide" : true,
     "monsterscales" : true
@@ -183,6 +184,7 @@
 
           "valahrgland" : true,
           "sandcrawlertooth" : true,
+          "farythscale" : true,
           "monsterbone" : true,
           "monsterhide" : true,
           "monsterscales" : true
@@ -250,6 +252,7 @@
 
           "valahrgland" : true,
           "sandcrawlertooth" : true,
+          "farythscale" : true,
           "monsterbone" : true,
           "monsterhide" : true,
           "monsterscales" : true
@@ -311,6 +314,7 @@
 
           "valahrgland" : true,
           "sandcrawlertooth" : true,
+          "farythscale" : true,
           "monsterbone" : true,
           "monsterhide" : true,
           "monsterscales" : true
