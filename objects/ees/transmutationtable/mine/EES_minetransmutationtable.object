@@ -4,12 +4,12 @@
   // ************************************************************************ //
   "objectName" : "EES_minetransmutationtable",
   "colonyTags" : ["crafting"],
-  "rarity" : "Common",
+  "rarity" : "Uncommon",
   "objectType" : "container",
   "category" : "storage",
   "price" : 350,
   "description" : "description",
-  "shortdescription" : "^orange;Mine EMC table^white;",
+  "shortdescription" : "^green;Basic mine EMC table^white;",
   "race" : "generic",
   "health" : 1.5,
 
@@ -117,7 +117,8 @@
         // ****************************************************************** //
         "price" : 350,
         "description" : "description",
-        "shortdescription" : "^orange;Mine EMC table^white;",
+        "rarity" : "Uncommon",
+        "shortdescription" : "^green;Basic mine EMC table^white;",
 
         // ****************************************************************** //
         // ********************* Racial descriptions.. ********************** //
@@ -169,7 +170,8 @@
         // ****************************************************************** //
         "price" : 350,
         "description" : "description",
-        "shortdescription" : "^orange;Mine EMC table^white;",
+        "rarity" : "Rare",
+        "shortdescription" : "^cyan;Advanced mine EMC table^white;",
 
         // ****************************************************************** //
         // ********************* Racial descriptions.. ********************** //
@@ -223,7 +225,8 @@
         // ****************************************************************** //
         "price" : 350,
         "description" : "description",
-        "shortdescription" : "^orange;Mine EMC table^white;",
+        "rarity" : "Esential",
+        "shortdescription" : "^orange;Expert mine EMC table^white;",
 
         // ****************************************************************** //
         // ********************* Racial descriptions.. ********************** //

@@ -4,12 +4,12 @@
   // ************************************************************************ //
   "objectName" : "EES_farmtransmutationtable",
   "colonyTags" : ["crafting"],
-  "rarity" : "Common",
+  "rarity" : "Uncommon",
   "objectType" : "container",
   "category" : "storage",
   "price" : 350,
   "description" : "description",
-  "shortdescription" : "^orange;Farm EMC table^white;",
+  "shortdescription" : "^green;Basic farm EMC table^white;",
   "race" : "generic",
   "health" : 1.5,
 
@@ -140,7 +140,8 @@
         // ****************************************************************** //
         "price" : 350,
         "description" : "description",
-        "shortdescription" : "^orange;Farm EMC table^white;",
+        "rarity" : "Uncommon",
+        "shortdescription" : "^green;Basic farm EMC table^white;",
 
         // ****************************************************************** //
         // ********************* Racial descriptions.. ********************** //
@@ -214,7 +215,8 @@
         // ****************************************************************** //
         "price" : 350,
         "description" : "description",
-        "shortdescription" : "^orange;Farm EMC table^white;",
+        "rarity" : "Rare",
+        "shortdescription" : "^cyan;Advanced farm EMC table^white;",
 
         // ****************************************************************** //
         // ********************* Racial descriptions.. ********************** //
@@ -288,7 +290,8 @@
         // ****************************************************************** //
         "price" : 350,
         "description" : "description",
-        "shortdescription" : "^orange;Farm EMC table^white;",
+        "rarity" : "Esential",
+        "shortdescription" : "^orange;Expert farm EMC table^white;",
 
         // ****************************************************************** //
         // ********************* Racial descriptions.. ********************** //
