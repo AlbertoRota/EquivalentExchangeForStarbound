@@ -209,7 +209,9 @@
           "silverore" : true,
           "tungstenore" : true,
 
-          "goldore" : true
+          "goldore" : true,
+          "titaniumore" : true,
+          "durasteelore" : true
           // Vanilla - end
 
           // Elithian Races Mod - Start
@@ -258,7 +260,15 @@
           "silverore" : true,
           "tungstenore" : true,
 
-          "goldore" : true
+          "goldore" : true,
+          "titaniumore" : true,
+          "durasteelore" : true,
+
+          "diamond" : true,
+          "aegisaltore" : true,
+          "feroziumore" : true,
+          "violiumore" : true,
+          "solariumore" : true
           // Vanilla - end
 
           // Elithian Races Mod - Start
