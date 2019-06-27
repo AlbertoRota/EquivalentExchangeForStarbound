@@ -95,6 +95,8 @@
     "livingroot" : true,
     "leather" : true,
     "hardenedcarapace" : true,
+    "phasematter" : true,
+    "venomsample" : true,
 
     "alienmeat" : true,
     "rawpoultry" : true,
@@ -166,6 +168,8 @@
           "livingroot" : true,
           "leather" : true,
           "hardenedcarapace" : true,
+          "phasematter" : true,
+          "venomsample" : true,
 
           "alienmeat" : true,
           "rawpoultry" : true,
@@ -231,6 +235,8 @@
           "livingroot" : true,
           "leather" : true,
           "hardenedcarapace" : true,
+          "phasematter" : true,
+          "venomsample" : true,
 
           "alienmeat" : true,
           "rawpoultry" : true,
@@ -290,6 +296,8 @@
           "livingroot" : true,
           "leather" : true,
           "hardenedcarapace" : true,
+          "phasematter" : true,
+          "venomsample" : true,
 
           "alienmeat" : true,
           "rawpoultry" : true,
