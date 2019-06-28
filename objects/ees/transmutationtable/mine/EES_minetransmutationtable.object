@@ -92,6 +92,7 @@
   "eesCanStudy" : {
     // Vanilla - Start
     "coalore" : true,
+    "corefragmentore" : true,
     "ironore" : true,
     "copperore" : true,
     "silverore" : true,
@@ -151,6 +152,7 @@
         "eesCanStudy" : {
           // Vanilla - Start
           "coalore" : true,
+          "corefragmentore" : true,
           "ironore" : true,
           "copperore" : true,
           "silverore" : true,
@@ -204,6 +206,7 @@
         "eesCanStudy" : {
           // Vanilla - Start
           "coalore" : true,
+          "corefragmentore" : true,
           "ironore" : true,
           "copperore" : true,
           "silverore" : true,
@@ -255,6 +258,7 @@
         "eesCanStudy" : {
           // Vanilla - Start
           "coalore" : true,
+          "corefragmentore" : true,
           "ironore" : true,
           "copperore" : true,
           "silverore" : true,

@@ -111,6 +111,7 @@
     "valahrgland" : true,
     "sandcrawlertooth" : true,
     "farythscale" : true,
+    "kelbethide" : true,
     "monsterbone" : true,
     "monsterhide" : true,
     "monsterscales" : true
@@ -185,6 +186,7 @@
           "valahrgland" : true,
           "sandcrawlertooth" : true,
           "farythscale" : true,
+          "kelbethide" : true,
           "monsterbone" : true,
           "monsterhide" : true,
           "monsterscales" : true
@@ -253,9 +255,13 @@
           "valahrgland" : true,
           "sandcrawlertooth" : true,
           "farythscale" : true,
+          "kelbethide" : true,
           "monsterbone" : true,
           "monsterhide" : true,
-          "monsterscales" : true
+          "monsterscales" : true,
+
+          "monsterclaws" : true,
+          "monsterplate" : true
           // Elithian Races Mod - end
         }
       }
@@ -315,9 +321,13 @@
           "valahrgland" : true,
           "sandcrawlertooth" : true,
           "farythscale" : true,
+          "kelbethide" : true,
           "monsterbone" : true,
           "monsterhide" : true,
-          "monsterscales" : true
+          "monsterscales" : true,
+
+          "monsterclaws" : true,
+          "monsterplate" : true
           // Elithian Races Mod - end
         }
       }
