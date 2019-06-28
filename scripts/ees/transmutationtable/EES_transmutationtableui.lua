@@ -5,7 +5,9 @@ require "/scripts/ees/EES_utils.lua"
 --------------------------------------------------------------------------------
 
 -- Hook function called when the GUI is opened.
+EES_superInit = init
 function init()
+  if EES_superInit then EES_superInit() end
   container = {}
   self.currentItemGridItems = {}
   self.lastItemGridItems = {}
@@ -39,7 +41,9 @@ function init()
 end
 
 -- Hook function called every "scriptDelta".
+EES_superUpdate = update
 function update(dt)
+  if EES_superUpdate then EES_superUpdate() end
   -- Pool the itemGrid to check if the inventory has changed
   if itemGridHasChanged() then
     -- Re-calculate and display the "studyEmc" value
@@ -298,22 +302,26 @@ function populateItemList()
   widget.clearListItems(self.itemList)
   for _, transmutation in pairs(transmutationList) do
     local itemConfig = root.itemConfig(transmutation.name).config
-    local newItem = string.format("%s.%s", self.itemList, widget.addListItem(self.itemList))
 
-    -- Basic info.
-    widget.setText(newItem..".itemName", itemConfig.shortdescription)
-    widget.setText(newItem..".priceLabel", transmutation.price)
-    widget.setItemSlotItem(
-      newItem..".itemIcon",
-      { name = itemConfig.itemName, count = 1 }
-    )
+    -- Skip the items that do not match the searchFilter
+    if  not EES_itemMatchFilter or EES_itemMatchFilter(itemConfig) then
+      local newItem = string.format("%s.%s", self.itemList, widget.addListItem(self.itemList))
 
-    -- Toggle element visibility.
-    widget.setVisible(newItem..".strudyMoreIcon", not transmutation.known)
-    widget.setVisible(newItem..".notcraftableoverlay", not transmutation.known)
+      -- Basic info.
+      widget.setText(newItem..".itemName", itemConfig.shortdescription)
+      widget.setText(newItem..".priceLabel", transmutation.price)
+      widget.setItemSlotItem(
+        newItem..".itemIcon",
+        { name = itemConfig.itemName, count = 1 }
+      )
 
-    -- Store the "transmutation" as "data", so that it can be used later.
-    widget.setData(newItem, transmutation)
+      -- Toggle element visibility.
+      widget.setVisible(newItem..".strudyMoreIcon", not transmutation.known)
+      widget.setVisible(newItem..".notcraftableoverlay", not transmutation.known)
+
+      -- Store the "transmutation" as "data", so that it can be used later.
+      widget.setData(newItem, transmutation)
+    end
   end
 end
 

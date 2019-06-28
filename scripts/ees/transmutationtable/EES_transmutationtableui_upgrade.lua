@@ -3,9 +3,9 @@
 --------------------------------------------------------------------------------
 
 -- Hook function called when the GUI is opened.
-EES_superInit = init
+EES_upgradeSuperInit = init
 function init()
-  if EES_superInit then EES_superInit() end
+  if EES_upgradeSuperInit then EES_upgradeSuperInit() end
   self.upgradeMaterials = world.getObjectParameter(pane.containerEntityId(), "eesUpgradeMaterials")
   self.canUpgrade = playerCanUpgrade() or player.isAdmin()
 
