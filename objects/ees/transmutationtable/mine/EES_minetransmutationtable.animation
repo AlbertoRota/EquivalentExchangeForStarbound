@@ -10,8 +10,8 @@
             "mode" : "loop"
           },
           "EES_minetransmutationtable2" : {
-            "frames" : 14,
-            "cycle" : 3,
+            "frames" : 39,
+            "cycle" : 4,
             "mode" : "loop"
           },
           "EES_minetransmutationtable3" : {
