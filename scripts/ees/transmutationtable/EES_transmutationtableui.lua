@@ -315,9 +315,11 @@ function populateItemList()
         { name = itemConfig.itemName, count = 1 }
       )
 
-      -- Toggle element visibility.
-      widget.setVisible(newItem..".strudyMoreIcon", not transmutation.known)
+      -- Toggle element visibility
       widget.setVisible(newItem..".notcraftableoverlay", not transmutation.known)
+      widget.setVisible(newItem..".strudyMoreLabel", not transmutation.known)
+      widget.setVisible(newItem..".strudyMoreImage", not transmutation.known)
+      widget.setText(newItem..".strudyMoreLabel", transmutation.progress .. "/10")
 
       -- Store the "transmutation" as "data", so that it can be used later.
       widget.setData(newItem, transmutation)
