@@ -14,17 +14,6 @@
   "health" : 1.5,
 
   // ************************************************************************ //
-  // ************************ Racial descriptions.. ************************* //
-  // ************************************************************************ //
-  "apexDescription" : "T1 - apexDescription",
-  "avianDescription" : "T1 - avianDescription",
-  "floranDescription" : "T1 - floranDescription",
-  "glitchDescription" : "T1 - glitchDescription",
-  "humanDescription" : "T1 - humanDescription",
-  "hylotlDescription" : "T1 - hylotlDescription",
-  "novakidDescription" : "T1 - novakidDescription",
-
-  // ************************************************************************ //
   // **************** Graphis and sounds related parameters. **************** //
   // ************************************************************************ //
   "inventoryIcon" : "EES_farmtransmutationtable.png:default.1",
@@ -82,48 +71,6 @@
     "initBurnSlots" : 4,
     "endBurnSlots" : 7
   },
-  "eesUpgradeMaterials" : [
-    // T1 to T2  upgrade materials
-    { "item" : "titaniumbar", "count" : 3 },
-    { "item" : "glass", "count" : 2 },
-    { "item" : "smallbattery", "count" : 3 },
-    { "item" : "liquidfuel", "count" : 20 }
-  ],
-  "eesCanStudy" : {
-    // Vanilla - Start
-    "plantfibre" : true,
-    "petalblue" : true,
-    "petalred" : true,
-    "petalyellow" : true,
-
-    "rice" : true,
-    "corn" : true,
-    "wheat" : true,
-    "potato" : true,
-    "tomato" : true,
-    "cocoa" : true,
-    "carrot" : true,
-    "pearlpea" : true,
-    "cacti" : true,
-    "thornfruit" : true,
-    "banana" : true,
-    "avesmingo" : true,
-
-    "cotton" : true,
-    "giantflowerpetal" : true, // TODO: Should this be here?
-    // Vanilla - End
-
-    // Elithian Races Mod - Start
-    "ambrumfiber" : true,
-    "selvasextract" : true,
-    "bolbohn" : true,
-    "avikanspices" : true,
-    "dunestalk" : true,
-    "kadavancactus" : true,
-    "borato" : true,
-    "vahlberries" : true
-    // Elithian Races Mod - end
-  },
 
   // ************************************************************************ //
   // ***************** Upgrade and stage related properties. **************** //
@@ -133,10 +80,15 @@
   "maxUpgradeStage" : 3,
   "upgradeStages" : [
     {
+      // ******************************************************************** //
+      // ******* T1: Lust and Forest planets, Lunar and Floran quest. ******* //
+      // ******************************************************************** //
       "animationState" : "EES_farmtransmutationtable",
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust",
       "itemSpawnParameters" : {
         // ****************************************************************** //
-        // *********************** Basic properties. ************************ //
+        // ********************* T1: Basic properties. ********************** //
         // ****************************************************************** //
         "price" : 350,
         "description" : "description",
@@ -144,7 +96,7 @@
         "shortdescription" : "^green;Basic farm EMC table^white;",
 
         // ****************************************************************** //
-        // ********************* Racial descriptions.. ********************** //
+        // ******************** T1: Racial descriptions. ******************** //
         // ****************************************************************** //
         "apexDescription" : "T1 - apexDescription",
         "avianDescription" : "T1 - avianDescription",
@@ -155,14 +107,14 @@
         "novakidDescription" : "T1 - novakidDescription",
 
         // ****************************************************************** //
-        // ************* Graphis and sounds related parameters. ************* //
+        // *********** T1: Graphis and sounds related parameters. *********** //
         // ****************************************************************** //
         "inventoryIcon" : "EES_farmtransmutationtable.png:default.1",
         "placementImage" : "EES_farmtransmutationtable.png:default.1",
         "placementImagePosition" : [-24, 0],
 
         // ****************************************************************** //
-        // ********************* EES custom properties. ********************* //
+        // ******************* T1: EES custom properties. ******************* //
         // ****************************************************************** //
         "eesUpgradeMaterials" : [
           // T1 to T2  upgrade materials
@@ -208,10 +160,15 @@
       }
     },
     {
+      // ******************************************************************** //
+      // ******* T2: Ocean and Jungle planets, Hylotl and Avian quest ******* //
+      // ******************************************************************** //
       "animationState" : "EES_farmtransmutationtable2",
+      "upgradeSoundEffect" : "fanfare",
+      "upgradeParticleEffect" : "dust",
       "itemSpawnParameters" : {
         // ****************************************************************** //
-        // *********************** Basic properties. ************************ //
+        // ********************* T2: Basic properties. ********************** //
         // ****************************************************************** //
         "price" : 350,
         "description" : "description",
@@ -219,7 +176,7 @@
         "shortdescription" : "^cyan;Advanced farm EMC table^white;",
 
         // ****************************************************************** //
-        // ********************* Racial descriptions.. ********************** //
+        // ******************* T2: Racial descriptions.. ******************** //
         // ****************************************************************** //
         "apexDescription" : "T2 - apexDescription",
         "avianDescription" : "T2 - avianDescription",
@@ -230,14 +187,14 @@
         "novakidDescription" : "T2 - novakidDescription",
 
         // ****************************************************************** //
-        // ************* Graphis and sounds related parameters. ************* //
+        // *********** T2: Graphis and sounds related parameters. *********** //
         // ****************************************************************** //
         "inventoryIcon" : "EES_farmtransmutationtable2.png:default.1",
         "placementImage" : "EES_farmtransmutationtable2.png:default.1",
         "placementImagePosition" : [-24, 0],
 
         // ****************************************************************** //
-        // ********************* EES custom properties. ********************* //
+        // ******************* T2: EES custom properties. ******************* //
         // ****************************************************************** //
         "eesUpgradeMaterials" : [
           // T2 to T3  upgrade materials
@@ -289,10 +246,13 @@
       }
     },
     {
+      // ******************************************************************** //
+      // ****** T3: Frozen and Volcanic planets, Apex and Glitch quest ****** //
+      // ******************************************************************** //
       "animationState" : "EES_farmtransmutationtable3",
       "itemSpawnParameters" : {
         // ****************************************************************** //
-        // *********************** Basic properties. ************************ //
+        // ********************* T3: Basic properties. ********************** //
         // ****************************************************************** //
         "price" : 350,
         "description" : "description",
@@ -300,7 +260,7 @@
         "shortdescription" : "^orange;Expert farm EMC table^white;",
 
         // ****************************************************************** //
-        // ********************* Racial descriptions.. ********************** //
+        // ******************* T3: Racial descriptions.. ******************** //
         // ****************************************************************** //
         "apexDescription" : "T3 - apexDescription",
         "avianDescription" : "T3 - avianDescription",
@@ -311,14 +271,14 @@
         "novakidDescription" : "T3 - novakidDescription",
 
         // ****************************************************************** //
-        // ************* Graphis and sounds related parameters. ************* //
+        // *********** T3: Graphis and sounds related parameters. *********** //
         // ****************************************************************** //
         "inventoryIcon" : "EES_farmtransmutationtable3.png:default.1",
         "placementImage" : "EES_farmtransmutationtable3.png:default.1",
         "placementImagePosition" : [-24, 0],
 
         // ****************************************************************** //
-        // ********************* EES custom properties. ********************* //
+        // ******************* T3: EES custom properties. ******************* //
         // ****************************************************************** //
         "eesUpgradeMaterials" : [ /* No further upgrades available */ ],
         "eesCanStudy" : {
