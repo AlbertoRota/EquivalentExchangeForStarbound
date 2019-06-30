@@ -10,8 +10,8 @@
             "mode" : "loop"
           },
           "EES_farmtransmutationtable2" : {
-            "frames" : 14,
-            "cycle" : 3,
+            "frames" : 47,
+            "cycle" : 4.8,
             "mode" : "loop"
           },
           "EES_farmtransmutationtable3" : {
