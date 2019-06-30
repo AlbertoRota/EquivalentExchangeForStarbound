@@ -283,6 +283,9 @@
           "rawfish" : true,
           "rawribmeat" : true,
           "egg" : true,
+
+          "stickofram" : true,
+          "staticcell" : true,
           // Vanilla - End
 
           // Elithian Races Mod - Start
