@@ -15,8 +15,8 @@
             "mode" : "loop"
           },
           "EES_hunttransmutationtable3" : {
-            "frames" : 14,
-            "cycle" : 3,
+            "frames" : 55,
+            "cycle" : 5.5,
             "mode" : "loop"
           }
         }
