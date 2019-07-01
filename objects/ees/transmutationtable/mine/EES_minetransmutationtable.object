@@ -124,17 +124,13 @@
           { "item" : "goldbar", "count" : 1 }
         ],
         "eesCanStudy" : {
-          // Vanilla - Start
+          // Vanilla - T1 - Ores
           "coalore" : true,
           "corefragmentore" : true,
           "ironore" : true,
           "copperore" : true,
           "silverore" : true,
           "tungstenore" : true
-          // Vanilla - end
-
-          // Elithian Races Mod - Start
-          // Elithian Races Mod - end
         }
       }
     },
@@ -183,7 +179,7 @@
           { "item" : "diamond", "count" : 1 }
         ],
         "eesCanStudy" : {
-          // Vanilla - Start
+          // Vanilla - T1 - Ores
           "coalore" : true,
           "corefragmentore" : true,
           "ironore" : true,
@@ -191,13 +187,10 @@
           "silverore" : true,
           "tungstenore" : true,
 
+          // Vanilla - T2 - Ores
           "goldore" : true,
           "titaniumore" : true,
           "durasteelore" : true
-          // Vanilla - end
-
-          // Elithian Races Mod - Start
-          // Elithian Races Mod - end
         }
       }
     },
@@ -238,7 +231,7 @@
         // ****************************************************************** //
         "eesUpgradeMaterials" : [ /* No further upgrades available */ ],
         "eesCanStudy" : {
-          // Vanilla - Start
+          // Vanilla - T1 - Ores
           "coalore" : true,
           "corefragmentore" : true,
           "ironore" : true,
@@ -246,19 +239,17 @@
           "silverore" : true,
           "tungstenore" : true,
 
+          // Vanilla - T2 - Ores
           "goldore" : true,
           "titaniumore" : true,
           "durasteelore" : true,
 
+          // Vanilla - T3 - Ores
           "diamond" : true,
           "aegisaltore" : true,
           "feroziumore" : true,
           "violiumore" : true,
           "solariumore" : true
-          // Vanilla - end
-
-          // Elithian Races Mod - Start
-          // Elithian Races Mod - end
         }
       }
     }
