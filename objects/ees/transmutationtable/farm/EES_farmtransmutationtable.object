@@ -124,38 +124,44 @@
           { "item" : "liquidfuel", "count" : 20 }
         ],
         "eesCanStudy" : {
-          // Vanilla - Start
+          // Vanilla - T1 - Materials
           "plantfibre" : true,
+          "cotton" : true,
           "petalblue" : true,
           "petalred" : true,
           "petalyellow" : true,
 
-          "rice" : true,
-          "corn" : true,
-          "wheat" : true,
-          "potato" : true,
-          "tomato" : true,
-          "cocoa" : true,
+          // Vanilla - T1 - Human food
           "carrot" : true,
-          "pearlpea" : true,
-          "cacti" : true,
-          "thornfruit" : true,
-          "banana" : true,
-          "avesmingo" : true,
+          "chili" : true,
+          "coffeebeans" : true,
+          "potato" : true,
+          "redapple" : true,
+          "rice" : true,
+          "shroom" : true,
+          "tomato" : true,
+          "wheat" : true,
 
-          "cotton" : true,
-          // Vanilla - End
+          // Vanilla - T1 - Floran food
+          "boneboo" : true,
+          "eggshoot" : true,
+          "oculemon" : true,
+          "pussplum" : true,
+          "wartweed" : true,
 
-          // Elithian Races Mod - Start
+          // Elithian Races Mod - T1- Aegi
           "ambrumfiber" : true,
-          "selvasextract" : true,
-          "bolbohn" : true,
-          "avikanspices" : true,
-          "dunestalk" : true,
-          "kadavancactus" : true,
           "borato" : true,
-          "vahlberries" : true
-          // Elithian Races Mod - end
+          "selvasextract" : true,
+          "loftgrain" : true,
+          "mellowroot" : true,
+          "vahlberries" : true,
+
+          // Elithian Races Mod - T1- Avikan
+          "avikanspices" : true,
+          "bolbohn" : true,
+          "dunestalk" : true,
+          "kadavancactus" : true
         }
       }
     },
@@ -204,44 +210,60 @@
           { "item" : "syringe", "count" : 1 }
         ],
         "eesCanStudy" : {
-          // Vanilla - Start
+          // Vanilla - T1 - Materials
           "plantfibre" : true,
+          "cotton" : true,
           "petalblue" : true,
           "petalred" : true,
           "petalyellow" : true,
 
-          "rice" : true,
-          "corn" : true,
-          "wheat" : true,
-          "potato" : true,
-          "tomato" : true,
-          "cocoa" : true,
+          // Vanilla - T1 - Human food
           "carrot" : true,
-          "pearlpea" : true,
-          "cacti" : true,
-          "thornfruit" : true,
-          "banana" : true,
-          "avesmingo" : true,
+          "chili" : true,
+          "coffeebeans" : true,
+          "potato" : true,
+          "redapple" : true,
+          "rice" : true,
+          "shroom" : true,
+          "tomato" : true,
+          "wheat" : true,
 
-          "cotton" : true,
+          // Vanilla - T1 - Floran food
+          "boneboo" : true,
+          "eggshoot" : true,
+          "oculemon" : true,
+          "pussplum" : true,
+          "wartweed" : true,
 
+          // Vanilla - T2 - Hylotl food
           "coralcreep" : true,
-          "reefpod" : true,
+          "dirturchin" : true,
           "kelp" : true,
-          "pineapple" : true,
-          "coconut" : true,
-          // Vanilla - End
+          "reefpod" : true,
+          "toxictop" : true,
 
-          // Elithian Races Mod - Start
+          // Vanilla - T2 - Avian food
+          "avesmingo" : true,
+          "beakseed" : true,
+          "cacti" : true,
+          "corn" : true,
+          "feathercrown" : true,
+          "pearlpea" : true,
+          "thornfruit" : true,
+
+          // Elithian Races Mod - T1- Aegi
           "ambrumfiber" : true,
-          "selvasextract" : true,
-          "bolbohn" : true,
-          "avikanspices" : true,
-          "dunestalk" : true,
-          "kadavancactus" : true,
           "borato" : true,
-          "vahlberries" : true
-          // Elithian Races Mod - end
+          "selvasextract" : true,
+          "loftgrain" : true,
+          "mellowroot" : true,
+          "vahlberries" : true,
+
+          // Elithian Races Mod - T1- Avikan
+          "avikanspices" : true,
+          "bolbohn" : true,
+          "dunestalk" : true,
+          "kadavancactus" : true
         }
       }
     },
@@ -282,44 +304,76 @@
         // ****************************************************************** //
         "eesUpgradeMaterials" : [ /* No further upgrades available */ ],
         "eesCanStudy" : {
-          // Vanilla - Start
+          // Vanilla - T1 - Materials
           "plantfibre" : true,
+          "cotton" : true,
           "petalblue" : true,
           "petalred" : true,
           "petalyellow" : true,
 
-          "rice" : true,
-          "corn" : true,
-          "wheat" : true,
-          "potato" : true,
-          "tomato" : true,
-          "cocoa" : true,
+          // Vanilla - T1 - Human food
           "carrot" : true,
-          "pearlpea" : true,
-          "cacti" : true,
-          "thornfruit" : true,
-          "banana" : true,
-          "avesmingo" : true,
+          "chili" : true,
+          "coffeebeans" : true,
+          "potato" : true,
+          "redapple" : true,
+          "rice" : true,
+          "shroom" : true,
+          "tomato" : true,
+          "wheat" : true,
 
-          "cotton" : true,
+          // Vanilla - T1 - Floran food
+          "boneboo" : true,
+          "eggshoot" : true,
+          "oculemon" : true,
+          "pussplum" : true,
+          "wartweed" : true,
 
+          // Vanilla - T2 - Hylotl food
           "coralcreep" : true,
-          "reefpod" : true,
+          "dirturchin" : true,
           "kelp" : true,
-          "pineapple" : true,
-          "coconut" : true,
-          // Vanilla - End
+          "reefpod" : true,
+          "toxictop" : true,
 
-          // Elithian Races Mod - Start
+          // Vanilla - T2 - Avian food
+          "avesmingo" : true,
+          "beakseed" : true,
+          "cacti" : true,
+          "corn" : true,
+          "feathercrown" : true,
+          "pearlpea" : true,
+          "thornfruit" : true,
+
+          // Vanilla - T3 - Apex food
+          "alienfruit" : true,
+          "banana" : true,
+          "cocoa" : true,
+          "grapes" : true,
+          "kiwi" : true,
+          "neonmelon" : true,
+          "pineapple" : true,
+          "sugar" : true,
+
+          // Vanilla - T3 - Glitch food
+          "automato" : true,
+          "boltbulb" : true,
+          "currentcorn" : true,
+          "diodia" : true,
+
+          // Elithian Races Mod - T1- Aegi
           "ambrumfiber" : true,
-          "selvasextract" : true,
-          "bolbohn" : true,
-          "avikanspices" : true,
-          "dunestalk" : true,
-          "kadavancactus" : true,
           "borato" : true,
-          "vahlberries" : true
-          // Elithian Races Mod - end
+          "selvasextract" : true,
+          "loftgrain" : true,
+          "mellowroot" : true,
+          "vahlberries" : true,
+
+          // Elithian Races Mod - T1- Avikan
+          "avikanspices" : true,
+          "bolbohn" : true,
+          "dunestalk" : true,
+          "kadavancactus" : true
         }
       }
     }
