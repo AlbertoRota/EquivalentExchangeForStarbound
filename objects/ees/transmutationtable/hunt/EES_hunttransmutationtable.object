@@ -124,32 +124,33 @@
           { "item" : "robothenegg", "count" : 1 }
         ],
         "eesCanStudy" : {
-          // Vanilla - Start
-          "sharpenedclaw" : true,
-          "livingroot" : true,
-          "leather" : true,
-          "hardenedcarapace" : true,
-          "phasematter" : true,
-          "venomsample" : true,
-
+          // Vanilla - T1 - Food
           "alienmeat" : true,
-          "rawpoultry" : true,
-          "rawfish" : true,
-          "rawribmeat" : true,
           "egg" : true,
-          // Vanilla - End
+          "rawbacon" : true,
+          "rawfish" : true,
+          "rawpoultry" : true,
+          "rawribmeat" : true,
+          "rawtentacle" : true,
 
-          // Elithian Races Mod - Start
-          "sandcrawlermeat" : true,
+          // Vanilla - T1 - Materials
+          "hardenedcarapace" : true,
+          "leather" : true,
+          "livingroot" : true,
+          "phasematter" : true,
+          "sharpenedclaw" : true,
 
-          "valahrgland" : true,
-          "sandcrawlertooth" : true,
+          // Elithian Races Mod - T1 - Aegi
           "farythscale" : true,
           "kelbethide" : true,
+
+          // Elithian Races Mod - T1 - Avikan
           "monsterbone" : true,
           "monsterhide" : true,
-          "monsterscales" : true
-          // Elithian Races Mod - end
+          "monsterscales" : true,
+          "sandcrawlermeat" : true,
+          "sandcrawlertooth" : true,
+          "valahrgland" : true
         }
       }
     },
@@ -198,38 +199,42 @@
           { "item" : "capturepod", "count" : 1 }
         ],
         "eesCanStudy" : {
-          // Vanilla - Start
-          "sharpenedclaw" : true,
-          "livingroot" : true,
-          "leather" : true,
+          // Vanilla - T1 - Food
+          "alienmeat" : true,
+          "egg" : true,
+          "rawbacon" : true,
+          "rawfish" : true,
+          "rawpoultry" : true,
+          "rawribmeat" : true,
+          "rawtentacle" : true,
+
+          // Vanilla - T1 - Materials
           "hardenedcarapace" : true,
+          "leather" : true,
+          "livingroot" : true,
           "phasematter" : true,
+          "sharpenedclaw" : true,
+
+          // Vanilla - T2 - Materials
+          "staticcell" : true,
+          "stickofram" : true,
           "venomsample" : true,
 
-          "alienmeat" : true,
-          "rawpoultry" : true,
-          "rawfish" : true,
-          "rawribmeat" : true,
-          "egg" : true,
-
-          "stickofram" : true,
-          "staticcell" : true,
-          // Vanilla - End
-
-          // Elithian Races Mod - Start
-          "sandcrawlermeat" : true,
-
-          "valahrgland" : true,
-          "sandcrawlertooth" : true,
+          // Elithian Races Mod - T1 - Aegi
           "farythscale" : true,
           "kelbethide" : true,
+
+          // Elithian Races Mod - T1 - Avikan
           "monsterbone" : true,
           "monsterhide" : true,
           "monsterscales" : true,
+          "sandcrawlermeat" : true,
+          "sandcrawlertooth" : true,
+          "valahrgland" : true,
 
+          // Elithian Races Mod - T2 - Avikan
           "monsterclaws" : true,
           "monsterplate" : true
-          // Elithian Races Mod - end
         }
       }
     },
@@ -270,38 +275,50 @@
         // ****************************************************************** //
         "eesUpgradeMaterials" : [ /* No further upgrades available */ ],
         "eesCanStudy" : {
-          // Vanilla - Start
-          "sharpenedclaw" : true,
-          "livingroot" : true,
-          "leather" : true,
+          // Vanilla - T1 - Food
+          "alienmeat" : true,
+          "egg" : true,
+          "rawbacon" : true,
+          "rawfish" : true,
+          "rawpoultry" : true,
+          "rawribmeat" : true,
+          "rawtentacle" : true,
+
+          // Vanilla - T1 - Materials
           "hardenedcarapace" : true,
+          "leather" : true,
+          "livingroot" : true,
           "phasematter" : true,
+          "sharpenedclaw" : true,
+
+          // Vanilla - T2 - Materials
+          "staticcell" : true,
+          "stickofram" : true,
           "venomsample" : true,
 
-          "alienmeat" : true,
-          "rawpoultry" : true,
-          "rawfish" : true,
-          "rawribmeat" : true,
-          "egg" : true,
+          // Vanilla - T3 - Materials
+          "cryonicextract" : true,
+          "scorchedcore" : true,
 
-          "stickofram" : true,
-          "staticcell" : true,
-          // Vanilla - End
-
-          // Elithian Races Mod - Start
-          "sandcrawlermeat" : true,
-
-          "valahrgland" : true,
-          "sandcrawlertooth" : true,
+          // Elithian Races Mod - T1- Aegi
           "farythscale" : true,
           "kelbethide" : true,
+
+          // Elithian Races Mod - T1- Avikan
           "monsterbone" : true,
           "monsterhide" : true,
           "monsterscales" : true,
+          "sandcrawlermeat" : true,
+          "sandcrawlertooth" : true,
+          "valahrgland" : true,
 
+          // Elithian Races Mod - T2 - Avikan
           "monsterclaws" : true,
-          "monsterplate" : true
-          // Elithian Races Mod - end
+          "monsterplate" : true,
+
+          // Elithian Races Mod - T3 - Avikan
+          "greatmonsterbone" : true,
+          "monsterspine" : true
         }
       }
     }
