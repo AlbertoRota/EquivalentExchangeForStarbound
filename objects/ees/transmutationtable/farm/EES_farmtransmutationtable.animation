@@ -15,8 +15,8 @@
             "mode" : "loop"
           },
           "EES_farmtransmutationtable3" : {
-            "frames" : 14,
-            "cycle" : 3,
+            "frames" : 111,
+            "cycle" : 11.2,
             "mode" : "loop"
           }
         }
