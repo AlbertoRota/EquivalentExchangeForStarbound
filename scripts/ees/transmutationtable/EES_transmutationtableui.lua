@@ -347,7 +347,9 @@ function craftSelectedWithEmc(count)
 
     local totalPrice = itemData.price * count
     if consumePlayerEmc(totalPrice) then
-      player.giveItem({name = itemData.name, count = count})
+      for i=1,count do
+        player.giveItem({name = itemData.name, count = 1})
+      end
     else
       -- TODO: Play error sound.
     end
