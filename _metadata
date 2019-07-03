@@ -1,12 +1,13 @@
 {
   "author" : "AlbertoRota",
-  "description" : "Equivalent Exchange for Strabound",
-  "friendlyName" : "EE for Strabound",
+  "description" : "Equivalent Exchange for Starbound",
+  "friendlyName" : "EE for Starbound",
   "includes" : [],
-  "link" : "",
+  "link" : "steam://url/CommunityFilePage/1790667104",
   "name" : "EES",
   "path" : ".",
   "requires" : [],
-  "steamContentId" : "",
+  "steamContentId" : "1790667104",
+  "tags" : "Crafting and Building|Miscellaneous|Food and Farming|Mechanics",
   "version" : "0.4.0"
 }

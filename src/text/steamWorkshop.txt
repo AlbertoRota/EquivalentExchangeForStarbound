@@ -1,0 +1,74 @@
+[h1]Equivalent Exchange for Starbound[/h1]
+[i][b]Starbound mod inspired by the Minecraft mod "Equivalent Exchange 2"[/b][/i]
+
+[h1]What does it do?[/h1]
+It adds several [i]"Transmutation tables"[/i] and a [i]"Transmutation book"[/i] to your game.
+
+You can use the [i]"Transmutation tables"[/i] to convert items to [i]EMC[/i] (A universal alchemical currency) and to convert [i]EMC[/i] back to items when needed.
+
+The [i]"Transmutation book"[/i] is where you store all your knowledge about alchemical transmutations, lose it and you will lose all your knowledge!!!
+
+[h1]Meet the tables:[/h1]
+[B]Mine transmutation table.[/B]
+[table]
+    [tr]
+        [th]Tier 1[/th]
+        [th]Tier 2[/th]
+        [th]Tier 3[/th]
+    [/tr]
+    [tr]
+        [td][img]https://steamuserimages-a.akamaihd.net/ugc/778476510222215334/C945F4D1F831AB9070554644BE2A44E3448DC3BA/?imw=116&imh=65&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true[/img][/td]
+        [td][img]https://steamuserimages-a.akamaihd.net/ugc/778476510222215988/C71087FFAD0A5FB9FE3532EC34F3A2D2D37DD7B7/?imw=116&imh=65&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true[/img][/td]
+        [td][img]https://steamuserimages-a.akamaihd.net/ugc/778476510222216799/FF132D0FC25994AD27D326FD547710F2464F8116/?imw=116&imh=65&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true[/img][/td]
+    [/tr]
+[/table]
+
+Will allow you to study ores and other mining-related stuff obtaining [i]"Mine EMC"[/i] in a very efficient way.
+Also, once you study enough, you will be able to obtain those items from both [i]"Ore EMC"[/i] and [i]"Universal EMC"[/i]
+
+[B]Farm transmutation table.[/B]
+[table]
+    [tr]
+        [th]Tier 1[/th]
+        [th]Tier 2[/th]
+        [th]Tier 3[/th]
+    [/tr]
+    [tr]
+        [td][img]https://steamuserimages-a.akamaihd.net/ugc/778476510222210874/D1234F8997CB79002D71C6D025A022E401BD3979/?imw=116&imh=65&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true[/img][/td]
+        [td][img]https://steamuserimages-a.akamaihd.net/ugc/778476510222211661/F2DB74CC80818EEC103355BF1D4CDE7F13DC310C/?imw=116&imh=65&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true[/img][/td]
+        [td][img]https://steamuserimages-a.akamaihd.net/ugc/778476510222212493/F30BF31235AA4DDE17C9BB1515CFB2FB298B706E/?imw=116&imh=65&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true[/img][/td]
+    [/tr]
+[/table]
+
+Will allow you to study crops and other farm-related stuff obtaining [i]"Farm EMC"[/i] in a very efficient way.
+Also, once you study enough, you will be able to obtain those items from both [i]"Farm EMC"[/i] and [i]"Universal EMC"[/i]
+
+[B]Hunt transmutation table.[/B]
+[table]
+    [tr]
+        [th]Tier 1[/th]
+        [th]Tier 2[/th]
+        [th]Tier 3[/th]
+    [/tr]
+    [tr]
+        [td][img]https://steamuserimages-a.akamaihd.net/ugc/778476510222213209/491C095B6F47C031841097F34C8E33124AF9F52D/?imw=116&imh=65&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true[/img][/td]
+        [td][img]https://steamuserimages-a.akamaihd.net/ugc/778476510222213771/6DBD294744EF4D7C2909D92A8FB8A14700BA4370/?imw=116&imh=65&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true[/img][/td]
+        [td][img]https://steamuserimages-a.akamaihd.net/ugc/778476510222214611/2BE6FAE903C923E1E836A00F7742621E0D78CA9F/?imw=116&imh=65&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true[/img][/td]
+    [/tr]
+[/table]
+
+Will allow you to study monster drops and other hunt-related stuff obtaining [i]"Hunt EMC"[/i] in a very efficient way.
+Also, once you study enough, you will be able to obtain those items from both [i]"Hunt EMC"[/i] and [i]"Universal EMC"[/i]
+
+[h1]How to obtain EMC:[/h1]
+You have two main ways of gaining EMC, [i]"Study items"[/i] and [i]"Burn items"[/i].
+
+[B]Study Items:[/B]
+Each table has a set of items that you can study there, [i]Studying[/i] is the most efficient and powerful way of obtaining [i]EMC[/i].
+Also, if you study enough items of the same type, you will finally learn how to use [i]EMC[/i] to get that item back!
+
+[B]Burn Items:[/B]
+For items that you can't study, you can always throw them to the alchemical fire, is much less efficient than [i]Studying[/i], but will work for everything and will give you [i]"Universal EMC"[/i], that can be used for anything!
+
+[h1]F.A.Q.:[/h1]
+Please, read the F.A.Q. thread to see the answers to the most common questions.
