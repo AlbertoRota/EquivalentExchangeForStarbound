@@ -8,7 +8,7 @@
   "objectType" : "container",
   "category" : "storage",
   "price" : 350,
-  "description" : "description",
+  "description" : "Here you can study ^orange;Ores^white; to obtain ^orange;Mine EMC^white; in a very efficient way.",
   "shortdescription" : "^green;Basic mine EMC table^white;",
   "race" : "generic",
   "health" : 1.5,
@@ -90,21 +90,8 @@
         // ****************************************************************** //
         // ********************* T1: Basic properties. ********************** //
         // ****************************************************************** //
-        "price" : 350,
-        "description" : "description",
         "rarity" : "Uncommon",
         "shortdescription" : "^green;Basic mine EMC table^white;",
-
-        // ****************************************************************** //
-        // ******************** T1: Racial descriptions. ******************** //
-        // ****************************************************************** //
-        "apexDescription" : "T1 - apexDescription",
-        "avianDescription" : "T1 - avianDescription",
-        "floranDescription" : "T1 - floranDescription",
-        "glitchDescription" : "T1 - glitchDescription",
-        "humanDescription" : "T1 - humanDescription",
-        "hylotlDescription" : "T1 - hylotlDescription",
-        "novakidDescription" : "T1 - novakidDescription",
 
         // ****************************************************************** //
         // *********** T1: Graphis and sounds related parameters. *********** //
@@ -145,21 +132,8 @@
         // ****************************************************************** //
         // ********************* T2: Basic properties. ********************** //
         // ****************************************************************** //
-        "price" : 350,
-        "description" : "description",
         "rarity" : "Rare",
         "shortdescription" : "^cyan;Advanced mine EMC table^white;",
-
-        // ****************************************************************** //
-        // ******************* T2: Racial descriptions.. ******************** //
-        // ****************************************************************** //
-        "apexDescription" : "T2 - apexDescription",
-        "avianDescription" : "T2 - avianDescription",
-        "floranDescription" : "T2 - floranDescription",
-        "glitchDescription" : "T2 - glitchDescription",
-        "humanDescription" : "T2 - humanDescription",
-        "hylotlDescription" : "T2 - hylotlDescription",
-        "novakidDescription" : "T2 - novakidDescription",
 
         // ****************************************************************** //
         // *********** T2: Graphis and sounds related parameters. *********** //
@@ -203,21 +177,8 @@
         // ****************************************************************** //
         // ********************* T3: Basic properties. ********************** //
         // ****************************************************************** //
-        "price" : 350,
-        "description" : "description",
         "rarity" : "Essential",
         "shortdescription" : "^orange;Expert mine EMC table^white;",
-
-        // ****************************************************************** //
-        // ******************* T3: Racial descriptions.. ******************** //
-        // ****************************************************************** //
-        "apexDescription" : "T3 - apexDescription",
-        "avianDescription" : "T3 - avianDescription",
-        "floranDescription" : "T3 - floranDescription",
-        "glitchDescription" : "T3 - glitchDescription",
-        "humanDescription" : "T3 - humanDescription",
-        "hylotlDescription" : "T3 - hylotlDescription",
-        "novakidDescription" : "T3 - novakidDescription",
 
         // ****************************************************************** //
         // *********** T3: Graphis and sounds related parameters. *********** //
