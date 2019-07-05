@@ -182,7 +182,7 @@ function findOrCreateTransmutation(book, name)
   end
 
   -- If not found, create a new one and return it's index.
-  local itemPrice = root.itemConfig(name).config.price
+  local itemPrice = root.itemConfig(name).config.price or 0
   if itemPrice < self.minItemPrice then itemPrice = self.minItemPrice end
   local last = #book.parameters.eesTransmutations[self.mainEmc] + 1
   book.parameters.eesTransmutations[self.mainEmc][last] = {

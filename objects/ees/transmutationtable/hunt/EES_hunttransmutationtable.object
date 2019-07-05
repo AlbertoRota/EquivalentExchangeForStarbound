@@ -137,7 +137,10 @@
           "monsterscales" : true,
           "sandcrawlermeat" : true,
           "sandcrawlertooth" : true,
-          "valahrgland" : true
+          "valahrgland" : true,
+
+          // FU - T1
+          "monsterplating" : true
         }
       }
     },
@@ -208,7 +211,10 @@
 
           // Elithian Races Mod - T2 - Avikan
           "monsterclaws" : true,
-          "monsterplate" : true
+          "monsterplate" : true,
+
+          // FU - T1
+          "monsterplating" : true
         }
       }
     },
@@ -279,7 +285,10 @@
 
           // Elithian Races Mod - T3 - Avikan
           "greatmonsterbone" : true,
-          "monsterspine" : true
+          "monsterspine" : true,
+
+          // FU - T1
+          "monsterplating" : true
         }
       }
     }

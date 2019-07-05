@@ -117,7 +117,13 @@
           "ironore" : true,
           "copperore" : true,
           "silverore" : true,
-          "tungstenore" : true
+          "tungstenore" : true,
+
+          // FU - T1 - Ores
+          "bone" : true,
+          "lead" : true,
+          "magnesiumore" : true,
+          "sulphur" : true
         }
       }
     },
@@ -164,7 +170,13 @@
           // Vanilla - T2 - Ores
           "goldore" : true,
           "titaniumore" : true,
-          "durasteelore" : true
+          "durasteelore" : true,
+
+          // FU - T1 - Ores
+          "bone" : true,
+          "lead" : true,
+          "magnesiumore" : true,
+          "sulphur" : true
         }
       }
     },
@@ -210,7 +222,13 @@
           "aegisaltore" : true,
           "feroziumore" : true,
           "violiumore" : true,
-          "solariumore" : true
+          "solariumore" : true,
+
+          // FU - T1 - Ores
+          "bone" : true,
+          "lead" : true,
+          "magnesiumore" : true,
+          "sulphur" : true
         }
       }
     }

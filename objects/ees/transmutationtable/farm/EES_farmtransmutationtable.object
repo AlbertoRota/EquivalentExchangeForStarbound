@@ -112,11 +112,12 @@
         ],
         "eesCanStudy" : {
           // Vanilla - T1 - Materials
-          "plantfibre" : true,
           "cotton" : true,
+          "plantfibre" : true,
           "petalblue" : true,
           "petalred" : true,
           "petalyellow" : true,
+          "silkfibre" : true,
 
           // Vanilla - T1 - Human food
           "carrot" : true,
@@ -136,7 +137,7 @@
           "pussplum" : true,
           "wartweed" : true,
 
-          // Elithian Races Mod - T1- Aegi
+          // Elithian Races Mod - T1 - Aegi
           "ambrumfiber" : true,
           "borato" : true,
           "selvasextract" : true,
@@ -144,11 +145,29 @@
           "mellowroot" : true,
           "vahlberries" : true,
 
-          // Elithian Races Mod - T1- Avikan
+          // Elithian Races Mod - T1 - Avikan
           "avikanspices" : true,
           "bolbohn" : true,
           "dunestalk" : true,
-          "kadavancactus" : true
+          "kadavancactus" : true,
+
+          // FU - T1
+          "cinnamon" : true,
+          "erithianalgae" : true,
+          "hops" : true,
+          "dragonsbeard" : true,
+          "jillyroot" : true,
+          "littlerascal" : true,
+          "solusberry" : true,
+          "blisterbushplantfood" : true,
+          "energiflower" : true,
+          "ighantbulb" : true,
+          "leafshell" : true,
+          "miraclegrass" : true,
+          "slimeleaf" : true,
+          "varanberry" : true,
+          "vextonguestamen" : true,
+          "wubstem" : true
         }
       }
     },
@@ -185,11 +204,12 @@
         ],
         "eesCanStudy" : {
           // Vanilla - T1 - Materials
-          "plantfibre" : true,
           "cotton" : true,
+          "plantfibre" : true,
           "petalblue" : true,
           "petalred" : true,
           "petalyellow" : true,
+          "silkfibre" : true,
 
           // Vanilla - T1 - Human food
           "carrot" : true,
@@ -225,7 +245,7 @@
           "pearlpea" : true,
           "thornfruit" : true,
 
-          // Elithian Races Mod - T1- Aegi
+          // Elithian Races Mod - T1 - Aegi
           "ambrumfiber" : true,
           "borato" : true,
           "selvasextract" : true,
@@ -233,11 +253,29 @@
           "mellowroot" : true,
           "vahlberries" : true,
 
-          // Elithian Races Mod - T1- Avikan
+          // Elithian Races Mod - T1 - Avikan
           "avikanspices" : true,
           "bolbohn" : true,
           "dunestalk" : true,
-          "kadavancactus" : true
+          "kadavancactus" : true,
+
+          // FU - T1
+          "cinnamon" : true,
+          "erithianalgae" : true,
+          "hops" : true,
+          "dragonsbeard" : true,
+          "jillyroot" : true,
+          "littlerascal" : true,
+          "solusberry" : true,
+          "blisterbushplantfood" : true,
+          "energiflower" : true,
+          "ighantbulb" : true,
+          "leafshell" : true,
+          "miraclegrass" : true,
+          "slimeleaf" : true,
+          "varanberry" : true,
+          "vextonguestamen" : true,
+          "wubstem" : true
         }
       }
     },
@@ -266,11 +304,12 @@
         "eesUpgradeMaterials" : [ /* No further upgrades available */ ],
         "eesCanStudy" : {
           // Vanilla - T1 - Materials
-          "plantfibre" : true,
           "cotton" : true,
+          "plantfibre" : true,
           "petalblue" : true,
           "petalred" : true,
           "petalyellow" : true,
+          "silkfibre" : true,
 
           // Vanilla - T1 - Human food
           "carrot" : true,
@@ -322,7 +361,7 @@
           "currentcorn" : true,
           "diodia" : true,
 
-          // Elithian Races Mod - T1- Aegi
+          // Elithian Races Mod - T1 - Aegi
           "ambrumfiber" : true,
           "borato" : true,
           "selvasextract" : true,
@@ -330,11 +369,29 @@
           "mellowroot" : true,
           "vahlberries" : true,
 
-          // Elithian Races Mod - T1- Avikan
+          // Elithian Races Mod - T1 - Avikan
           "avikanspices" : true,
           "bolbohn" : true,
           "dunestalk" : true,
-          "kadavancactus" : true
+          "kadavancactus" : true,
+
+          // FU - T1
+          "cinnamon" : true,
+          "erithianalgae" : true,
+          "hops" : true,
+          "dragonsbeard" : true,
+          "jillyroot" : true,
+          "littlerascal" : true,
+          "solusberry" : true,
+          "blisterbushplantfood" : true,
+          "energiflower" : true,
+          "ighantbulb" : true,
+          "leafshell" : true,
+          "miraclegrass" : true,
+          "slimeleaf" : true,
+          "varanberry" : true,
+          "vextonguestamen" : true,
+          "wubstem" : true
         }
       }
     }
