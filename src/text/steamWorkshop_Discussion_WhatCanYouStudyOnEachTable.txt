@@ -1,0 +1,74 @@
+[h1]Mine EMC table:[/h1]
+[b]Basic mine EMC table (Tier 1)[/b]
+[list]
+    [*][u]Vanilla early-game ores:[/u] Coal, Core fragment, Copper ore, Silver ore, Iron ore and Tungsten ore.
+    [*][u]FU early-game ores:[/u] Bone, Lead, Magnesite, Telebrium crystal, Lunari shard and Sulphur.
+[/list]
+
+[b]Advanced mine EMC table (Tier 2)[/b]
+[list]
+    [*]All the items of the Basic mine EMC table (Tier 1)
+    [*][u]Vanilla mid-game ores:[/u] Gold ore, Titanium ore and Durasteel ore.
+    [*][u]FU mid-game ores:[/u] Lasombrium, Irradium ore, Neptunium ore, Penumbrite ore, Prism shard, Protocite, Quietus ore, Thorium, Trianglium ore and Zerchesium ore.
+[/list]
+
+[b]Expert mine EMC table (Tier 3)[/b]
+[list]
+    [*]All the items of the Basic mine EMC table (Tier 1)
+    [*]All the items of the Advanced mine EMC table (Tier 2)
+    [*][u]Vanilla end-game ores:[/u] Diamond, Aegisalt ore, Ferozium ore, Violium ore and Solarium ore.
+    [*][u]FU end-game ores:[/u] Plasmic crystal, Densinium ore, Effigium ore, Isogen ore, Raw nocxium, Pyreite ore and Xithricite ore.
+[/list]
+
+[h1]Farm EMC table:[/h1]
+[b]Basic farm EMC table (Tier 1)[/b]
+[list]
+    [*][u]Vanilla materials:[/u] Plant fibre, Cotton, Silk fibre, Blue petal, Red petal and Yellow petal.
+    [*][u]Vanilla "Human" food:[/u] Carrot, Chilli, Coffe beans, Potato, Red apple, Rice, Mushrooms, Tomato and Wheat.
+    [*][u]Vanilla "Floran" food:[/u] Boneboo, Eggshoot, Oculemon, Pussplum and Wartweed.
+    [*][u]Elithian Races Mod "Aegi" plants:[/u] Ambrum fiber, Borato, Selvas extract, Loft grain, Mellow root and Vahl berries.
+    [*][u]Elithian Races Mod "Avikan" plants:[/u] Avikan spices, Bolbohn, Dunestalk and Kadavan cactus.
+    [*][u]FU early-game plants:[/u] Cinnamon, Erithian algae, Hops, Dragons beard herb, Jilly root, Little rascal herb, Solusberry, Blister sack, Energiflower, Ighant bulb, Leafshell, Miracle grass root, Slime leaf, Varan berries, Vextongue stamen and Wubstem.
+[/list]
+
+[b]Advanced farm EMC table (Tier 2)[/b]
+[list]
+    [*]All the items of the Basic farm EMC table (Tier 1)
+    [*][u]Vanilla "Hylotl" food:[/u] Coralcreep, Dirturchin, Kelp, Reefpod and Toxictop.
+    [*][u]Vanilla "Avian" food:[/u] Avesmingo, Beakseed, Cactus, Corn, Feathercrown, Pearlpeas and Thorn fruit.
+[/list]
+
+[b]Expert farm EMC table (Tier 3)[/b]
+[list]
+    [*]All the items of the Basic farm EMC table (Tier 1)
+    [*]All the items of the Advanced farm EMC table (Tier 2)
+    [*][u]Vanilla "Apex" food:[/u] Alien fruit, Banana, Cocoa pod, Grapes, Kiwi, Neonmelon, Pineapple and Sugar.
+    [*][u]Vanilla "Glitch" food:[/u] Automato, Boltbulb, Currentcorn and Diodia.
+[/list]
+
+[h1]Hunt EMC table:[/h1]
+[b]Basic hunt EMC table (Tier 1)[/b]
+[list]
+    [*][u]Vanilla food:[/u] Raw steack, Egg, Raw bacon, Raw fish, Raw poultry, Raw ribs, Raw tentacle.
+    [*][u]Vanilla early-game drops:[/u] Hardened carapace, Leather, Living root, Phase matter and Sharpened claw.
+    [*][u]Elithian Races Mod "Aegi" drops:[/u] Faryth scale and Kelbet hide.
+    [*][u]Elithian Races Mod "Avikan" early-game drops[/u] Monster bone, Monster hide, Monster scales, Sandcrawler meat, Sandcrawler tooth and Valahr gland.
+    [*][u]FU early-game drops:[/u] Monster plate.
+[/list]
+
+[b]Advanced hunt EMC table (Tier 2)[/b]
+[list]
+    [*]All the items of the Basic hunt EMC table (Tier 1)
+    [*][u]Vanilla mid-game drops:[/u] Static cell, Stick of ram, Venom sample.
+    [*][u]Elithian Races Mod "Avikan" mid-game drops[/u] Monster claws and Monster plate.
+[/list]
+
+[b]Experthunt EMC table (Tier 3)[/b]
+[list]
+    [*]All the items of the Basic hunt EMC table (Tier 1)
+    [*]All the items of the Advanced hunt EMC table (Tier 2)
+    [*][u]Vanilla late-game drops:[/u] Cryonic extract and Scorched core.
+    [*][u]Elithian Races Mod "Avikan" late-game drops[/u] Great monster bone and Monster spine.
+[/list]
+
+If you miss something, let me know.

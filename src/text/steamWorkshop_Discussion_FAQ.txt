@@ -1,0 +1,30 @@
+[h1]Q: Do this mod works with Starbound 1.4?[/h1]
+[b]A:[/b] Yes, this mod is fully compatible with Starbound 1.4
+
+[h1]Q: Is this mod safe to install?[/h1]
+[b]A:[/b] Yes, this mod is safe to install even mid-game, it does not require a new character.
+
+[h1]Q: Is this mod safe to uninstall?[/h1]
+[b]A:[/b] Yes, you can remove this mod at any point during your playthrought.
+Only quirk is that the first time you play after removing the mod you "might" be kicked out to your ship, DO NOT PANIC, just log in again and everything is perfect.
+
+[h1]Q: Where do I craft the tables?[/h1]
+[b]A:[/b]The first thing you need is the "Transmutation book", you can craft it for "100 pixels" with your empty hands.
+
+Once you get the "Transmutation book", you will discover the recipes of all the three "Tables".
+You can then craft the tables in the "Inventor's Table" (The same one where you craft the "Primitive Furnace" and the "Anvil").
+
+From that point onwards, you can "Upgrade" each table clicking in the button with the arrow pointing up that you will find in the top-right corner of the table UI (Next to the close one.)
+
+[h1]Q: Is this compatible with <InsertModNameHere>?[/h1]
+[b]A:[/b] Yes, this mod is compatible with everything and will not cause any crash or problem.
+
+[h1]Q: Has support for items added by <InsertModNameHere>?[/h1]
+[b]A:[/b] For the moment it has support for "Frakin Universe" and "Elithian Races" mods, that means that the plants, ores and monster drops added by them are fully integrated into the tables.
+See [url=https://steamcommunity.com/workshop/filedetails/discussion/1790667104/1642041886374825440/]What can you study on each table.[/url] to have a detailed list of items.
+
+I plan to also add support for the FU ones, but it adds so much that I'm having a hard time with it.
+
+[h1]Q: Is this mod finished?[/h1]
+[b]A:[/b] The mod is feature complete, that means that you will be able to use it from the start to the end without any issue or missing feature.
+There are always things to polish and feedback will be welcome.
