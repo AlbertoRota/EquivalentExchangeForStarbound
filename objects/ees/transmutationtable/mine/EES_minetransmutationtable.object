@@ -180,7 +180,19 @@
           "magnesiumore" : true,
           "moonstoneore" : true,
           "solarishard" : true,
-          "sulphur" : true
+          "sulphur" : true,
+
+          // FU - T2 - Ores
+          "protociteore" : true,
+          "zerchesiumore" : true,
+          "penumbriteore" : true,
+          "neptuniumore" : true,
+          "prisiliteore" : true,
+          "corruptionore" : true,
+          "triangliumore" : true,
+          "quietusore" : true,
+          "irradiumore" : true,
+          "thoriumore" : true
         }
       }
     },
@@ -234,7 +246,19 @@
           "magnesiumore" : true,
           "moonstoneore" : true,
           "solarishard" : true,
-          "sulphur" : true
+          "sulphur" : true,
+
+          // FU - T2 - Ores
+          "protociteore" : true,
+          "zerchesiumore" : true,
+          "penumbriteore" : true,
+          "neptuniumore" : true,
+          "prisiliteore" : true,
+          "corruptionore" : true,
+          "triangliumore" : true,
+          "quietusore" : true,
+          "irradiumore" : true,
+          "thoriumore" : true
         }
       }
     }
