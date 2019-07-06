@@ -183,16 +183,16 @@
           "sulphur" : true,
 
           // FU - T2 - Ores
-          "protociteore" : true,
-          "zerchesiumore" : true,
-          "penumbriteore" : true,
-          "neptuniumore" : true,
-          "prisiliteore" : true,
           "corruptionore" : true,
-          "triangliumore" : true,
-          "quietusore" : true,
           "irradiumore" : true,
-          "thoriumore" : true
+          "neptuniumore" : true,
+          "penumbriteore" : true,
+          "prisiliteore" : true,
+          "protociteore" : true,
+          "quietusore" : true,
+          "thoriumore" : true,
+          "triangliumore" : true,
+          "zerchesiumore" : true
         }
       }
     },
@@ -249,16 +249,25 @@
           "sulphur" : true,
 
           // FU - T2 - Ores
-          "protociteore" : true,
-          "zerchesiumore" : true,
-          "penumbriteore" : true,
-          "neptuniumore" : true,
-          "prisiliteore" : true,
           "corruptionore" : true,
-          "triangliumore" : true,
-          "quietusore" : true,
           "irradiumore" : true,
-          "thoriumore" : true
+          "neptuniumore" : true,
+          "penumbriteore" : true,
+          "prisiliteore" : true,
+          "protociteore" : true,
+          "quietusore" : true,
+          "thoriumore" : true,
+          "triangliumore" : true,
+          "zerchesiumore" : true,
+
+          // FU - T3 - Ores
+          "blooddiamond" : true,
+          "densiniumore" : true,
+          "effigiumore" : true,
+          "isogenore" : true,
+          "nocxiumore" : true,
+          "pyreiteore" : true,
+          "xithriciteore" : true
         }
       }
     }
