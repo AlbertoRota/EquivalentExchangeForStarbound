@@ -63,7 +63,7 @@
     [*][u]Elithian Races Mod "Avikan" mid-game drops[/u] Monster claws and Monster plate.
 [/list]
 
-[b]Experthunt EMC table (Tier 3)[/b]
+[b]Expert hunt EMC table (Tier 3)[/b]
 [list]
     [*]All the items of the Basic hunt EMC table (Tier 1)
     [*]All the items of the Advanced hunt EMC table (Tier 2)
