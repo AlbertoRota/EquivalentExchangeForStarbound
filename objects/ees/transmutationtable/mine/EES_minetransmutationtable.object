@@ -123,6 +123,8 @@
           "bone" : true,
           "lead" : true,
           "magnesiumore" : true,
+          "moonstoneore" : true,
+          "solarishard" : true,
           "sulphur" : true
         }
       }
@@ -176,6 +178,8 @@
           "bone" : true,
           "lead" : true,
           "magnesiumore" : true,
+          "moonstoneore" : true,
+          "solarishard" : true,
           "sulphur" : true
         }
       }
@@ -228,6 +232,8 @@
           "bone" : true,
           "lead" : true,
           "magnesiumore" : true,
+          "moonstoneore" : true,
+          "solarishard" : true,
           "sulphur" : true
         }
       }
