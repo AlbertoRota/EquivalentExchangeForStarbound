@@ -1,5 +1,7 @@
 [h1]Equivalent Exchange for Starbound[/h1]
-[i][b]Starbound mod inspired by the Minecraft mod "Equivalent Exchange 2"[/b][/i]
+[i][b]Starbound mod inspired by the Minecraft mod "Equivalent Exchange"[/b][/i]
+[b]Do this work with 1.4?[/b] -> YES
+[b]Do this work with FU?[/b] --> YES
 
 [h1]What does it do?[/h1]
 It adds several [i]"Transmutation tables"[/i] and a [i]"Transmutation book"[/i] to your game.
@@ -72,3 +74,7 @@ For items that you can't study, you can always throw them to the alchemical fire
 
 [h1]F.A.Q.:[/h1]
 Please, read the [url=https://steamcommunity.com/workshop/filedetails/discussion/1790667104/1642041886367571170/]F.A.Q. thread[/url] to see the answers to the most common questions.
+
+[h1]Credits:[/h1]
+[b]x3n0ph0b3[/b] - Original creator of the Minecraft mods "Equivalent Exchange" and "Equivalent Exchange 2", that is the inspiration of this one.
+[b]Pahimar[/b] - Original creator of the Minecraft mod "Equivalent Exchange 3", that is the inspiration of this one.
