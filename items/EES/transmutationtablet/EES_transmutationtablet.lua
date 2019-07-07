@@ -1,14 +1,20 @@
 function activate(fireMode, shiftHeld)
-    activeItem.interact(
-      "ScriptPane",
-      "/interface/ees/transmutationtablet/EES_transmutationtablet.config"
-    )
-    animator.playSound("activate")
+  -- Load the basic UI config
+  local configData = root.assetJson("/interface/ees/transmutationtablet/EES_transmutationtablet.config")
+
+  -- Pass the object specific config to the UI
+  configData.eesMainEmc = config.getParameter("eesMainEmc")
+  configData.eesSlotConfig = config.getParameter("eesSlotConfig")
+  configData.eesCanStudy = config.getParameter("eesCanStudy")
+
+  -- Open the UI
+  activeItem.interact("ScriptPane", configData)
+  animator.playSound("activate")
 end
 
 
 function update()
-	if mcontroller.crouching() then
+  if mcontroller.crouching() then
 		activeItem.setArmAngle(-0.15)
 	else
 		activeItem.setArmAngle(-0.5)
