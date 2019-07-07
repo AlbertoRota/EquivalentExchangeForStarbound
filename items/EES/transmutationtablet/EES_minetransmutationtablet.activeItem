@@ -1,0 +1,21 @@
+{
+  // ************************************************************************ //
+  // ************************** Basic properties. *************************** //
+  // ************************************************************************ //
+  "itemName" : "EES_minetransmutationtablet",
+  "price" : 320,
+  "rarity" : "Essential",
+  "category" : "Tool",
+  "twoHanded" : true,
+  "maxStack" : 1,
+  "inventoryIcon" : "EES_minetransmutationtablet.png",
+  "description" : "Like an \"^orange;Expert mine EMC table^white;\", but potable.",
+  "shortdescription" : "Mine EMC tablet",
+  "itemTags" : ["EES_minetransmutationtablet"],
+  "animation" : "EES_minetransmutationtablet.animation",
+
+  // ************************************************************************ //
+  // ********************** Script related parameters. ********************** //
+  // ************************************************************************ //
+  "scripts" : ["EES_transmutationtablet.lua"]
+}
