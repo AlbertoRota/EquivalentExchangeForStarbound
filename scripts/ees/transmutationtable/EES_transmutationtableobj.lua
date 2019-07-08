@@ -1,3 +1,4 @@
+require "/scripts/ees/common/EES_transmutation_study.lua"
 require "/scripts/ees/EES_utils.lua"
 
 --------------------------------------------------------------------------------
@@ -12,11 +13,8 @@ function init()
   container = {}
 
   -- Load config from the ".object" file.
-  self.canStudy        = getMandatoryConfig("eesCanStudy")
-  self.initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots")
-  self.endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots")
-  self.initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots")
-  self.endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots")
+  self.initBurnSlots   = EES_getConfig("eesSlotConfig.initBurnSlots")
+  self.endBurnSlots    = EES_getConfig("eesSlotConfig.endBurnSlots")
 
   -- Register mesagges that will be called by the GUI.
   message.setHandler("clearStudySlots", clearStudySlots)
@@ -39,11 +37,6 @@ end
 --------------------------------------------------------------------------------
 ------------------------------- Public functions -------------------------------
 --------------------------------------------------------------------------------
-EES_superUpgradeTo = upgradeTo
-function upgradeTo(oldStage, newStage)
-  if EES_superUpgradeTo then EES_superUpgradeTo(oldStage, newStage) end
-  self.canStudy = getMandatoryConfig("eesCanStudy")
-end
 
 -- Clears the Study slots.
 -- Called by "world.sendEntityMessage(entityId, 'clearStudySlots')"
@@ -66,7 +59,7 @@ end
 --------------------------------------------------------------------------------
 
 -- Get "configName" from the config, raises error if not found.
-function getMandatoryConfig(configName)
+function EES_getConfig(configName)
   local errMsgMissingConfig = "Configuration parameter \"%s\" not found."
   local value = config.getParameter(configName)
   if not value then

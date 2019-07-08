@@ -111,21 +111,7 @@
           { "item" : "goldbar", "count" : 1 }
         ],
         "eesCanStudy" : {
-          // Vanilla - T1 - Ores
-          "coalore" : true,
-          "corefragmentore" : true,
-          "ironore" : true,
-          "copperore" : true,
-          "silverore" : true,
-          "tungstenore" : true,
-
-          // FU - T1 - Ores
-          "bone" : true,
-          "lead" : true,
-          "magnesiumore" : true,
-          "moonstoneore" : true,
-          "solarishard" : true,
-          "sulphur" : true
+          "mine" : ["T1"]
         }
       }
     },
@@ -161,38 +147,7 @@
           { "item" : "diamond", "count" : 1 }
         ],
         "eesCanStudy" : {
-          // Vanilla - T1 - Ores
-          "coalore" : true,
-          "corefragmentore" : true,
-          "ironore" : true,
-          "copperore" : true,
-          "silverore" : true,
-          "tungstenore" : true,
-
-          // Vanilla - T2 - Ores
-          "goldore" : true,
-          "titaniumore" : true,
-          "durasteelore" : true,
-
-          // FU - T1 - Ores
-          "bone" : true,
-          "lead" : true,
-          "magnesiumore" : true,
-          "moonstoneore" : true,
-          "solarishard" : true,
-          "sulphur" : true,
-
-          // FU - T2 - Ores
-          "corruptionore" : true,
-          "irradiumore" : true,
-          "neptuniumore" : true,
-          "penumbriteore" : true,
-          "prisiliteore" : true,
-          "protociteore" : true,
-          "quietusore" : true,
-          "thoriumore" : true,
-          "triangliumore" : true,
-          "zerchesiumore" : true
+          "mine" : ["T1", "T2"]
         }
       }
     },
@@ -220,54 +175,7 @@
         // ****************************************************************** //
         "eesUpgradeMaterials" : [ /* No further upgrades available */ ],
         "eesCanStudy" : {
-          // Vanilla - T1 - Ores
-          "coalore" : true,
-          "corefragmentore" : true,
-          "ironore" : true,
-          "copperore" : true,
-          "silverore" : true,
-          "tungstenore" : true,
-
-          // Vanilla - T2 - Ores
-          "goldore" : true,
-          "titaniumore" : true,
-          "durasteelore" : true,
-
-          // Vanilla - T3 - Ores
-          "diamond" : true,
-          "aegisaltore" : true,
-          "feroziumore" : true,
-          "violiumore" : true,
-          "solariumore" : true,
-
-          // FU - T1 - Ores
-          "bone" : true,
-          "lead" : true,
-          "magnesiumore" : true,
-          "moonstoneore" : true,
-          "solarishard" : true,
-          "sulphur" : true,
-
-          // FU - T2 - Ores
-          "corruptionore" : true,
-          "irradiumore" : true,
-          "neptuniumore" : true,
-          "penumbriteore" : true,
-          "prisiliteore" : true,
-          "protociteore" : true,
-          "quietusore" : true,
-          "thoriumore" : true,
-          "triangliumore" : true,
-          "zerchesiumore" : true,
-
-          // FU - T3 - Ores
-          "blooddiamond" : true,
-          "densiniumore" : true,
-          "effigiumore" : true,
-          "isogenore" : true,
-          "nocxiumore" : true,
-          "pyreiteore" : true,
-          "xithriciteore" : true
+          "mine" : ["T1", "T2", "T3"]
         }
       }
     }

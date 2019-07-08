@@ -1,3 +1,4 @@
+require "/scripts/ees/common/EES_transmutation_study.lua"
 require "/scripts/ees/EES_utils.lua"
 
 --------------------------------------------------------------------------------
@@ -17,12 +18,9 @@ function init()
   self.canUse = #player.itemsWithTag("EES_transmutationbook") == 1
 
   -- Load config from the ".object" file of the linked container.
-  self.mainEmc         = getMandatoryConfig("eesMainEmc")
-  self.canStudy        = getMandatoryConfig("eesCanStudy")
-  self.initStudySlots  = getMandatoryConfig("eesSlotConfig.initStudySlots") + 1
-  self.endStudySlots   = getMandatoryConfig("eesSlotConfig.endStudySlots") + 1
-  self.initBurnSlots   = getMandatoryConfig("eesSlotConfig.initBurnSlots") + 1
-  self.endBurnSlots    = getMandatoryConfig("eesSlotConfig.endBurnSlots") + 1
+  self.mainEmc         = EES_getConfig("eesMainEmc")
+  self.initBurnSlots   = EES_getConfig("eesSlotConfig.initBurnSlots") + 1
+  self.endBurnSlots    = EES_getConfig("eesSlotConfig.endBurnSlots") + 1
 
   if self.canUse then
     -- Initiallize the itemList
@@ -116,15 +114,8 @@ end
 --------------------------------------------------------------------------------
 
 -- Get "configName" from the config of the source object.
--- Raises error if not found.
--- TODO: Check "getMandatoryConfig" in "EES_transmutationtableobj.lua" and merge
-function getMandatoryConfig(configName)
-  local errMsgMissingConfig = "Configuration parameter \"%s\" not found."
-  local value = world.getObjectParameter(pane.containerEntityId(), configName)
-  if not value then
-    error(string.format(errMsgMissingConfig, configName))
-  end
-  return value
+function EES_getConfig(configName)
+  return world.getObjectParameter(pane.containerEntityId(), configName)
 end
 
 -- Updates the labels for the player EMC with the current player EMC.
