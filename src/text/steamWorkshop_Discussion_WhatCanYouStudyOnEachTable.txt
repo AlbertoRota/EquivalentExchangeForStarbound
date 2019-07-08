@@ -9,7 +9,7 @@
 [list]
     [*]All the items of the Basic mine EMC table (Tier 1)
     [*][u]Vanilla mid-game ores:[/u] Gold ore, Titanium ore and Durasteel ore.
-    [*][u]FU mid-game ores:[/u] Lasombrium, Irradium ore, Neptunium ore, Penumbrite ore, Prism shard, Protocite, Quietus ore, Thorium, Trianglium ore and Zerchesium ore.
+    [*][u]FU mid-game ores:[/u] Lasombrium, Irradium ore, Neptunium ore, Penumbrite ore, Platinum ore, Prism shard, Protocite, Quietus ore, Thorium, Trianglium ore and Zerchesium ore.
 [/list]
 
 [b]Expert mine EMC table (Tier 3)[/b]
