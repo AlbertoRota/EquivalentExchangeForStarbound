@@ -10,10 +10,6 @@ function init()
   self.canStudy        = createStudyList(EES_getConfig("eesCanStudy"))
   self.initStudySlots  = EES_getConfig("eesSlotConfig.initStudySlots") + 1
   self.endStudySlots   = EES_getConfig("eesSlotConfig.endStudySlots") + 1
-
-  tprint(self.canStudy, "self.canStudy")
-  tprint(self.initStudySlots, "self.initStudySlots")
-  tprint(self.endStudySlots, "self.endStudySlots")
 end
 
 -- Hook function called by "Upgradeable" objects.
