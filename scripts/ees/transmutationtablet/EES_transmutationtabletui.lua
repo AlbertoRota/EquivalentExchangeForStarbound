@@ -1,4 +1,5 @@
 require "/scripts/ees/common/EES_transmutation_study.lua"
+require "/scripts/ees/transmutationtable/EES_transmutationtableui_stack.lua"
 require "/scripts/ees/EES_utils.lua"
 
 --------------------------------------------------------------------------------
@@ -14,6 +15,18 @@ function init()
   self.lastItemGridItems = {}
 
   self.mainEmc         = config.getParameter("eesMainEmc")
+end
+
+-- Hook function called when the GUI is closed.
+EES_superUninit = uninit
+function uninit()
+  if EES_superUninit then EES_superUninit() end
+
+  -- Dump all the items out of the book.
+  for studySlot = self.initStudySlots - 1, self.endStudySlots - 1 do
+    local slotItem = EES_getItemAtSlot(studySlot)
+		if slotItem then player.giveItem(slotItem) end
+  end
 end
 
 --------------------------------------------------------------------------------
@@ -32,7 +45,7 @@ function swapItem(widgetName)
     else
       -- Items are the same, stack them.
       player.setSwapSlotItem(
-        applyItemToSlot(swapItem, string.sub(widgetName, -1))
+        EES_applyItemAtSlot(swapItem, string.sub(widgetName, -1))
       )
     end
   else
@@ -62,34 +75,35 @@ function EES_setItemAtSlot(item, slot)
   widget.setItemSlotItem("itemSlot" .. slot, item)
 end
 
---------------------------------------------------------------------------------
------------------------------- Private functions -------------------------------
---------------------------------------------------------------------------------
-
 -- Add the specified items to the given slot, returning the leftover.
-function applyItemToSlot(itemToAdd, slot)
+-- Abstracts container/itemGrid/itemSlot diferencies.
+function EES_applyItemAtSlot(itemToApply, slot)
   local slotItem = EES_getItemAtSlot(slot)
 
   if not slotItem then
     -- Slot is empty, move all the items and return.
-    EES_setItemAtSlot(itemToAdd, slot)
+    EES_setItemAtSlot(itemToApply, slot)
     return nil
-  elseif itemToAdd.name ~= slotItem.name then
+  elseif itemToApply.name ~= slotItem.name then
     -- Only items of the same type can be stacked, do nothing.
-    return itemToAdd
+    return itemToApply
   else
     -- Calculate how many items we can add.
     local slotItemConfig = root.itemConfig(slotItem).config
     local maxStack = (slotItemConfig.category and slotItemConfig.category == "Blueprint" and 1) or slotItemConfig.maxStack or root.assetJson("/items/defaultParameters.config:defaultMaxStack")
     local missing = maxStack - slotItem.count
-    local amountToAdd = math.min(missing, itemToAdd.count)
+    local amountToAdd = math.min(missing, itemToApply.count)
 
     -- Add the amount to the slot.
     slotItem.count = slotItem.count + amountToAdd
     EES_setItemAtSlot(slotItem, slot)
 
     -- Return the items we were unable to fit.
-    itemToAdd.count = itemToAdd.count - amountToAdd
-    return itemToAdd.count ~= 0 and itemToAdd or nil
+    itemToApply.count = itemToApply.count - amountToAdd
+    return itemToApply.count ~= 0 and itemToApply or nil
   end
 end
+
+--------------------------------------------------------------------------------
+------------------------------ Private functions -------------------------------
+--------------------------------------------------------------------------------

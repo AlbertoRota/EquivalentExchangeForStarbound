@@ -110,7 +110,7 @@ function listSelectedChanged()
 end
 
 --------------------------------------------------------------------------------
------------------------------- Private functions -------------------------------
+------------------------------- Public functions -------------------------------
 --------------------------------------------------------------------------------
 
 -- Get "configName" from the config.
@@ -118,6 +118,27 @@ end
 function EES_getConfig(configName)
   return world.getObjectParameter(pane.containerEntityId(), configName)
 end
+
+-- Gets the item in the specified slot.
+-- Abstracts container/itemGrid/itemSlot diferencies.
+function EES_getItemAtSlot(slot)
+  return world.containerItemAt(pane.containerEntityId(), slot)
+end
+
+-- Sets the item in the specified slot.
+-- Abstracts container/itemGrid/itemSlot diferencies.
+function EES_setItemAtSlot(item, slot)
+   world.containerSwapItemsNoCombine(pane.containerEntityId(), item, slot)
+end
+
+-- Add the specified items to the given slot, returning the leftover.
+-- Abstracts container/itemGrid/itemSlot diferencies.
+function EES_applyItemAtSlot(itemToApply, slot)
+  return world.containerItemApply(pane.containerEntityId(), itemToApply, slot)
+end
+--------------------------------------------------------------------------------
+------------------------------ Private functions -------------------------------
+--------------------------------------------------------------------------------
 
 -- Updates the labels for the player EMC with the current player EMC.
 function updatePlayerEmcLabels()

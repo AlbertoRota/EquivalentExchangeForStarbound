@@ -40,7 +40,7 @@ function stackSimilarItems()
   local containerFreeSlots = {}
 
   for studySlot = self.initStudySlots - 1, self.endStudySlots - 1 do
-    local slotItem = world.containerItemAt(pane.containerEntityId(), studySlot)
+    local slotItem = EES_getItemAtSlot(studySlot)
 		if slotItem then
       moveItemFromPlayerToContainerSlot(slotItem, studySlot)
 		else
@@ -86,8 +86,7 @@ function moveItemFromPlayerToContainerSlot(itemDescriptor, containerSlot)
       false,
       false
     )
-    world.containerItemApply(
-      pane.containerEntityId(),
+    EES_applyItemAtSlot(
       {name = itemDescriptor.name, count = itemDescriptor.count + consume},
       containerSlot
     )
