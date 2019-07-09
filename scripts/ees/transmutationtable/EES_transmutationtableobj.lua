@@ -24,7 +24,7 @@ end
 -- Hook function called after any modification to the "itemgrid" elements.
 function containerCallback()
   -- Check all the "Study" slots for invalid items
-  for studySlot = self.initStudySlots, self.endStudySlots do
+  for studySlot = self.initStudySlots - 1, self.endStudySlots - 1 do
     local item = world.containerItemAt(entity.id(), studySlot)
 
     -- If the item is not in "canStudy", move it out of the "Study" slots.
@@ -58,14 +58,10 @@ end
 ------------------------------ Private functions -------------------------------
 --------------------------------------------------------------------------------
 
--- Get "configName" from the config, raises error if not found.
+-- Get "configName" from the config.
+-- Abstracts object/activeItem/scriptedPane diferencies.
 function EES_getConfig(configName)
-  local errMsgMissingConfig = "Configuration parameter \"%s\" not found."
-  local value = config.getParameter(configName)
-  if not value then
-    error(string.format(errMsgMissingConfig, configName))
-  end
-  return value
+  return config.getParameter(configName)
 end
 
 -- Attemps to move the item in the specified slot to one of the "Burn" slots.

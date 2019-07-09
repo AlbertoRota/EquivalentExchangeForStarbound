@@ -113,7 +113,8 @@ end
 ------------------------------ Private functions -------------------------------
 --------------------------------------------------------------------------------
 
--- Get "configName" from the config of the source object.
+-- Get "configName" from the config.
+-- Abstracts object/activeItem/scriptedpane diferencies.
 function EES_getConfig(configName)
   return world.getObjectParameter(pane.containerEntityId(), configName)
 end
