@@ -13,6 +13,10 @@ function init()
   if EES_superInit then EES_superInit() end
 
   self.mainEmc = config.getParameter("eesMainEmc")
+
+  -- Initiallize player emc
+  widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
+  updatePlayerEmcLabels()
 end
 
 -- Hook function called when the GUI is closed.
@@ -108,3 +112,9 @@ end
 --------------------------------------------------------------------------------
 ------------------------------ Private functions -------------------------------
 --------------------------------------------------------------------------------
+
+-- Updates the labels for the player EMC with the current player EMC.
+function updatePlayerEmcLabels()
+  widget.setText("labelMainEmc", player.currency(self.mainEmc))
+  widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
+end
