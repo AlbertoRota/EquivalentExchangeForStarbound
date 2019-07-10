@@ -10,7 +10,6 @@ EES_superInit = init
 function init()
   if EES_superInit then EES_superInit() end
   container = {}
-  self.currentItemGridItems = {}
   self.lastItemGridItems = {}
   self.itemList = "scrollArea.itemList"
   self.minItemPrice = 1
@@ -19,8 +18,8 @@ function init()
 
   -- Load config from the ".object" file of the linked container.
   self.mainEmc         = EES_getConfig("eesMainEmc")
-  self.initBurnSlots   = EES_getConfig("eesSlotConfig.initBurnSlots") + 1
-  self.endBurnSlots    = EES_getConfig("eesSlotConfig.endBurnSlots") + 1
+  self.initBurnSlots   = EES_getConfig("eesSlotConfig.initBurnSlots")
+  self.endBurnSlots    = EES_getConfig("eesSlotConfig.endBurnSlots")
 
   if self.canUse then
     -- Initiallize the itemList
@@ -61,9 +60,6 @@ end
 
 -- Adds the emcValue to the player currency and clears the study slots
 function buttonStudy()
-  -- Ensure that we are using the latest grid status
-  self.currentItemGridItems = widget.itemGridItems("itemGrid")
-
   -- Add the EMC and update the Book
   player.addCurrency(self.mainEmc, calculateStudyEmcValue())
   updateTransmutationBook()
@@ -75,9 +71,6 @@ end
 
 -- Adds the emcValue to the player currency and clears the burn slots
 function buttonBurn()
-  -- Ensure that we are using the latest grid status
-  self.currentItemGridItems = widget.itemGridItems("itemGrid")
-
   -- Add the EMC, no need to update the Book
   player.addCurrency("EES_universalemc", calculateBurnEmcValue())
 
@@ -158,7 +151,7 @@ function updateTransmutationBook()
   -- Update the info of the transmutations.
   for slot = self.initStudySlots, self.endStudySlots do
     -- Check if the slot contains a valid item
-    local itemDescriptor = self.currentItemGridItems[slot]
+    local itemDescriptor = EES_getItemAtSlot(slot)
     if itemDescriptor then -- The slot has an item
       local idx = findOrCreateTransmutation(book, itemDescriptor.name)
       updated = updateProgress(book, idx, itemDescriptor.count) or updated
@@ -279,13 +272,10 @@ end
 function itemGridHasChanged()
   local hasChanged = false
 
-  -- Update "currentItemGridItems".
-  self.currentItemGridItems = widget.itemGridItems("itemGrid")
-
   -- Check if there are differences.
   for slot = self.initStudySlots, self.endBurnSlots do
     -- Pick one item from each list
-    local currentItem = self.currentItemGridItems[slot]
+    local currentItem = EES_getItemAtSlot(slot)
     local lastItem = self.lastItemGridItems[slot]
 
     if currentItem == nil and lastItem == nil then
@@ -303,10 +293,11 @@ function itemGridHasChanged()
       -- The ammount of items is different
       hasChanged = true
     end
+
+    -- Update "lastItemGridItems".
+    self.lastItemGridItems[slot] = currentItem
   end
 
-  -- Update "lastItemGridItems".
-  self.lastItemGridItems = self.currentItemGridItems
   return hasChanged
 end
 
@@ -314,7 +305,7 @@ end
 function calculateStudyEmcValue()
   local emcValue = 0
   for slot = self.initStudySlots, self.endStudySlots do
-    emcValue = emcValue + calculateItemEmc(self.currentItemGridItems[slot], 1)
+    emcValue = emcValue + calculateItemEmc(EES_getItemAtSlot(slot), 1)
   end
   return emcValue
 end
@@ -323,7 +314,7 @@ end
 function calculateBurnEmcValue()
   local emcValue = 0
   for slot = self.initBurnSlots, self.endBurnSlots do
-    emcValue = emcValue + calculateItemEmc(self.currentItemGridItems[slot], 0.1)
+    emcValue = emcValue + calculateItemEmc(EES_getItemAtSlot(slot), 0.1)
   end
   return emcValue
 end

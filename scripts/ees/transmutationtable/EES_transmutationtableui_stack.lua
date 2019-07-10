@@ -39,7 +39,7 @@ end
 function stackSimilarItems()
   local containerFreeSlots = {}
 
-  for studySlot = self.initStudySlots - 1, self.endStudySlots - 1 do
+  for studySlot = self.initStudySlots, self.endStudySlots do
     local slotItem = EES_getItemAtSlot(studySlot)
 		if slotItem then
       moveItemFromPlayerToContainerSlot(slotItem, studySlot)

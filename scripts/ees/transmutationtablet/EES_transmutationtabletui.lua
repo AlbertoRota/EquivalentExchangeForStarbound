@@ -11,10 +11,7 @@ EES_superInit = init
 function init()
   if EES_superInit then EES_superInit() end
 
-  self.currentItemGridItems = {}
-  self.lastItemGridItems = {}
-
-  self.mainEmc         = config.getParameter("eesMainEmc")
+  self.mainEmc = config.getParameter("eesMainEmc")
 end
 
 -- Hook function called when the GUI is closed.
@@ -23,7 +20,7 @@ function uninit()
   if EES_superUninit then EES_superUninit() end
 
   -- Dump all the items out of the book.
-  for studySlot = self.initStudySlots - 1, self.endStudySlots - 1 do
+  for studySlot = self.initStudySlots, self.endStudySlots do
     local slotItem = EES_getItemAtSlot(studySlot)
 		if slotItem then player.giveItem(slotItem) end
   end

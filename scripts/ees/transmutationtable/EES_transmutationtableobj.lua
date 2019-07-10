@@ -24,7 +24,7 @@ end
 -- Hook function called after any modification to the "itemgrid" elements.
 function containerCallback()
   -- Check all the "Study" slots for invalid items
-  for studySlot = self.initStudySlots - 1, self.endStudySlots - 1 do
+  for studySlot = self.initStudySlots, self.endStudySlots do
     local item = world.containerItemAt(entity.id(), studySlot)
 
     -- If the item is not in "canStudy", move it out of the "Study" slots.

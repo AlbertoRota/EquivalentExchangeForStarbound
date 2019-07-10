@@ -8,8 +8,8 @@ function init()
   if EES_studySuperInit then EES_studySuperInit() end
 
   self.canStudy        = createStudyList(EES_getConfig("eesCanStudy"))
-  self.initStudySlots  = EES_getConfig("eesSlotConfig.initStudySlots") + 1
-  self.endStudySlots   = EES_getConfig("eesSlotConfig.endStudySlots") + 1
+  self.initStudySlots  = EES_getConfig("eesSlotConfig.initStudySlots")
+  self.endStudySlots   = EES_getConfig("eesSlotConfig.endStudySlots")
 end
 
 -- Hook function called by "Upgradeable" objects.
