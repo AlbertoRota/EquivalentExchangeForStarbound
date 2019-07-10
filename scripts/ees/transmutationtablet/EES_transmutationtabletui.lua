@@ -1,5 +1,5 @@
 require "/scripts/ees/common/EES_transmutation_study.lua"
-require "/scripts/ees/transmutationtable/EES_transmutationtableui_stack.lua"
+require "/scripts/ees/common/EES_transmutation_stack.lua"
 require "/scripts/ees/EES_utils.lua"
 
 --------------------------------------------------------------------------------
