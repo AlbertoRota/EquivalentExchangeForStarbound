@@ -1,4 +1,5 @@
 require "/scripts/ees/common/EES_transmutation_study.lua"
+require "/scripts/ees/common/EES_transmutation_emccalc.lua"
 require "/scripts/ees/common/EES_transmutation_stack.lua"
 require "/scripts/ees/EES_utils.lua"
 
@@ -48,6 +49,9 @@ function swapItem(widgetName)
   else
     pane.playSound("/sfx/interface/clickon_error.ogg")
   end
+
+  -- Re-calculate and display the "studyEmc" value
+  widget.setText("labelStudyEmc", EES_calculateStudyEmcValue())
 end
 
 --------------------------------------------------------------------------------

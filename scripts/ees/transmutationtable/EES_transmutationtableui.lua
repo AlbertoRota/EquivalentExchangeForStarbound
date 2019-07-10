@@ -1,4 +1,5 @@
 require "/scripts/ees/common/EES_transmutation_study.lua"
+require "/scripts/ees/common/EES_transmutation_emccalc.lua"
 require "/scripts/ees/common/EES_transmutation_stack.lua"
 require "/scripts/ees/EES_utils.lua"
 
@@ -45,10 +46,10 @@ function update(dt)
   -- Pool the itemGrid to check if the inventory has changed
   if itemGridHasChanged() then
     -- Re-calculate and display the "studyEmc" value
-    widget.setText("labelStudyEmc", calculateStudyEmcValue())
+    widget.setText("labelStudyEmc", EES_calculateStudyEmcValue())
 
     -- Re-calculate and display the "burnEmc" value
-    widget.setText("labelBurnEmc", calculateBurnEmcValue())
+    widget.setText("labelBurnEmc", EES_calculateBurnEmcValue())
 
     -- Display player emc
     updatePlayerEmcLabels()
@@ -62,7 +63,7 @@ end
 -- Adds the emcValue to the player currency and clears the study slots
 function buttonStudy()
   -- Add the EMC and update the Book
-  player.addCurrency(self.mainEmc, calculateStudyEmcValue())
+  player.addCurrency(self.mainEmc, EES_calculateStudyEmcValue())
   updateTransmutationBook()
 
   -- Clear the  slots and update the buy buttons
@@ -73,7 +74,7 @@ end
 -- Adds the emcValue to the player currency and clears the burn slots
 function buttonBurn()
   -- Add the EMC, no need to update the Book
-  player.addCurrency("EES_universalemc", calculateBurnEmcValue())
+  player.addCurrency("EES_universalemc", EES_calculateBurnEmcValue())
 
   -- Clear the  slots and update the buy buttons
   world.sendEntityMessage(pane.containerEntityId(), "clearBurnSlots")
@@ -300,44 +301,6 @@ function itemGridHasChanged()
   end
 
   return hasChanged
-end
-
--- Calculates the EMC value of all the items in the "Study" slots.
-function calculateStudyEmcValue()
-  local emcValue = 0
-  for slot = self.initStudySlots, self.endStudySlots do
-    emcValue = emcValue + calculateItemEmc(EES_getItemAtSlot(slot), 1)
-  end
-  return emcValue
-end
-
--- Calculates the EMC value of all the items in the "Burn" slots.
-function calculateBurnEmcValue()
-  local emcValue = 0
-  for slot = self.initBurnSlots, self.endBurnSlots do
-    emcValue = emcValue + calculateItemEmc(EES_getItemAtSlot(slot), 0.1)
-  end
-  return emcValue
-end
-
--- Calculates the EMC value of the given "itemDescriptor".
--- "discountFactor" is 1 by default (EMC = pixel price)
-function calculateItemEmc(itemDescriptor , discountFactor)
-  -- Preconditions and default values
-  if not itemDescriptor then return 0 end
-  discountFactor = discountFactor or 1
-
-  -- Obtain the relevant information of the item
-  local itemConfig = root.itemConfig(itemDescriptor.name).config
-  local itemPrice = itemConfig.price
-  local itemCategory = itemConfig.category -- TODO: Will be used in the future.
-
-  -- Obtain the value of a single item
-  -- TODO: Improve the EMC calculation (Water should be worthless)
-  if not itemPrice or itemPrice < self.minItemPrice then itemPrice = self.minItemPrice end
-
-  -- Calculate the value of all the items in the "itemDescriptor"
-  return math.floor(itemPrice * itemDescriptor.count * discountFactor)
 end
 
 -- Gives the player the item slected in the itemList.
