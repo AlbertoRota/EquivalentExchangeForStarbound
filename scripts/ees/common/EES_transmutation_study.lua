@@ -1,3 +1,5 @@
+require "/scripts/ees/common/EES_transmutation_bookupdate.lua"
+
 --------------------------------------------------------------------------------
 ------------------------- Starbound hooks and functions ------------------------
 --------------------------------------------------------------------------------
@@ -17,6 +19,27 @@ EES_studySuperUpgradeTo = upgradeTo
 function upgradeTo(oldStage, newStage)
   if EES_studySuperUpgradeTo then EES_studySuperUpgradeTo(oldStage, newStage) end
   self.canStudy = createStudyList(EES_getConfig("eesCanStudy"))
+end
+
+--------------------------------------------------------------------------------
+-------------------------- Buttons hooks and functions -------------------------
+--------------------------------------------------------------------------------
+
+-- Adds the emcValue to the player currency and clears the study slots
+function buttonStudy()
+  -- Add the EMC and update the Book
+  player.addCurrency(self.mainEmc, EES_calculateStudyEmcValue())
+  local bookUpdated = EES_updateTransmutationBook()
+
+  -- Clear the  slots and update the buy buttons
+  for slot = self.initStudySlots, self.endStudySlots do
+    EES_setItemAtSlot(nil, slot)
+  end
+
+  -- Update all the depending fields
+  widget.setText("labelStudyEmc", EES_calculateStudyEmcValue())
+  if updateBuyButtons then updateBuyButtons() end
+  if bookUpdated and populateItemList then populateItemList() end
 end
 
 --------------------------------------------------------------------------------
