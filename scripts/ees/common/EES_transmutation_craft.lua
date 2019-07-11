@@ -47,34 +47,34 @@ end
 ------------------------------ Private functions -------------------------------
 --------------------------------------------------------------------------------
 
--- Updates the ui with the info of the player's transmutation book.
--- TODO: Seriously rethink and refactor this code. (Too long and complex)
+-- Updates the ui with the info of the player's known transmutations.
 function populateItemList()
-  -- Check if the player has an "EES_transmutationbook".
-  local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
-  if not transmutationBook or not transmutationBook.parameters.eesTransmutations or not transmutationBook.parameters.eesTransmutations[self.mainEmc] then
+  -- Check if the player knowns some transmutations.
+  local playerTransmutations = player.getProperty("eesTransmutations")
+  if not playerTransmutations or not playerTransmutations[self.mainEmc] then
     return
   end
-  -- Get and sort all player known transmutations from the book.
-  local transmutationList = transmutationBook.parameters.eesTransmutations[self.mainEmc]
+
+  -- Sort all player known transmutations.
+  local transmutationList = playerTransmutations[self.mainEmc]
+  local orderedTransmutationList = {}
+  for k, v in pairs(transmutationList) do
+    table.insert(orderedTransmutationList, v)
+  end
   table.sort(
-    transmutationList,
+    orderedTransmutationList,
     function(a, b)
-      if a.price ~= b.price then
-        return a.price > b.price
-      else
-        return string.lower(a.name) < string.lower(b.name)
-      end
+      return a.price ~= b.price and a.price > b.price or a.name < b.name
     end
   )
 
   -- Add all known transmutations to the list.
   widget.clearListItems(self.itemList)
-  for _, transmutation in pairs(transmutationList) do
+  for _, transmutation in pairs(orderedTransmutationList) do
     local itemConfig = root.itemConfig(transmutation.name).config
 
     -- Skip the items that do not match the searchFilter
-    if  not EES_itemMatchFilter or EES_itemMatchFilter(itemConfig) then
+    if not EES_itemMatchFilter or EES_itemMatchFilter(itemConfig) then
       local newItem = string.format("%s.%s", self.itemList, widget.addListItem(self.itemList))
 
       -- Basic info.

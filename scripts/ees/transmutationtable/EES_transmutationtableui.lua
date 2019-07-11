@@ -15,24 +15,18 @@ function init()
   container = {}
   self.lastItemGridItems = {}
   self.defaultMaxStack = root.assetJson("/items/defaultParameters.config:defaultMaxStack")
-  self.canUse = #player.itemsWithTag("EES_transmutationbook") == 1
 
   -- Load config from the ".object" file of the linked container.
   self.mainEmc         = EES_getConfig("eesMainEmc")
   self.initBurnSlots   = EES_getConfig("eesSlotConfig.initBurnSlots")
   self.endBurnSlots    = EES_getConfig("eesSlotConfig.endBurnSlots")
 
-  if self.canUse then
-    -- Initiallize player emc
-    widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
-    updatePlayerEmcLabels()
+  -- Initiallize player emc
+  widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
+  updatePlayerEmcLabels()
 
-    -- Initiallize the crafting grid
-    EES_refreshAllCrafting()
-
-    widget.setVisible("imgDisabledOverlay", false)
-    widget.setVisible("labelDisabledOverlay", false)
-  end
+  -- Initiallize the crafting grid
+  EES_refreshAllCrafting()
 end
 
 -- Hook function called every "scriptDelta".

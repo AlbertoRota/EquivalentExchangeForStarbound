@@ -2,36 +2,43 @@
 ------------------------- Starbound hooks and functions ------------------------
 --------------------------------------------------------------------------------
 
+-- Hook function called when the GUI is opened.
+EES_bookupdateSuperInit = init
+function init()
+  if EES_bookupdateSuperInit then EES_bookupdateSuperInit() end
+
+  -- UPDATE FROM BOOK TO PLAYER - INIT
+  if player then
+    local books = player.itemsWithTag("EES_transmutationbook")
+    if books and books[1] then
+      local playerTransmutations = {}
+      local bookTransmutations = books[1].parameters.eesTransmutations or {}
+      for emc, transmutations in pairs(bookTransmutations) do
+        playerTransmutations[emc] = {}
+        for idx, transmutation in pairs(transmutations) do
+          playerTransmutations[emc][transmutation.name] = transmutation
+        end
+      end
+      player.setProperty("eesTransmutations", playerTransmutations)
+    end
+  end
+  -- UPDATE FROM BOOK TO PLAYER - END
+end
+
 --------------------------------------------------------------------------------
 ------------------------------- Public functions -------------------------------
 --------------------------------------------------------------------------------
 
 -- Updates the player's transmutation book with the info of the study slots.
 function EES_updateTransmutationBook()
-  local updated = false
-  local book = player.itemsWithTag("EES_transmutationbook")[1]
-  if not book then return false end
-
   -- Initiallize the relevant parameters if not present.
-  initBook(book)
+  initPlayer()
 
   -- Update the info of the transmutations.
   for slot = self.initStudySlots, self.endStudySlots do
-    -- Check if the slot contains a valid item
     local itemDescriptor = EES_getItemAtSlot(slot)
-    if itemDescriptor then -- The slot has an item
-      local idx = findOrCreateTransmutation(book, itemDescriptor.name)
-      updated = updateProgress(book, idx, itemDescriptor.count) or updated
-    end
+    if itemDescriptor then updateProgress(itemDescriptor) end
   end
-
-  if updated then
-    -- If the book has been updated, give the updated version to the player.
-    player.consumeTaggedItem("EES_transmutationbook", 1)
-    player.giveItem(book)
-  end
-
-  return updated
 end
 
 --------------------------------------------------------------------------------
@@ -39,51 +46,40 @@ end
 --------------------------------------------------------------------------------
 
 -- If not present, creates all the structure tree inside "book"
-function initBook(book)
-  if not book.parameters.eesTransmutations then
-    book.parameters.eesTransmutations = {}
+function initPlayer()
+  local playerTransmutations = player.getProperty("eesTransmutations", {})
+  if not playerTransmutations then playerTransmutations = {} end
+  if not playerTransmutations[self.mainEmc] then
+    playerTransmutations[self.mainEmc] = {}
+    player.setProperty("eesTransmutations", playerTransmutations)
   end
-  if not book.parameters.eesTransmutations[self.mainEmc] then
-    book.parameters.eesTransmutations[self.mainEmc] = {}
-  end
-end
-
--- Returns the index of the transmutation.
--- If not present, creates a new one and returns it's index.
-function findOrCreateTransmutation(book, name)
-  -- First, try to find the transmutation in the book and return it's index.
-  local transmutations = book.parameters.eesTransmutations[self.mainEmc]
-  for idx, transmutation in ipairs(transmutations) do
-    if transmutation.name == name then return idx end
-  end
-
-  -- If not found, create a new one and return it's index.
-  local itemPrice = root.itemConfig(name).config.price or 0
-  if itemPrice < self.minItemPrice then itemPrice = self.minItemPrice end
-  local last = #book.parameters.eesTransmutations[self.mainEmc] + 1
-  book.parameters.eesTransmutations[self.mainEmc][last] = {
-    known = false, progress = 0, name = name, price = itemPrice
-  }
-  return last
 end
 
 -- Updates the progress on the transmutation.
--- Returns true if the book has changed.
-function updateProgress(book, idx, count)
-  local transmutation = book.parameters.eesTransmutations[self.mainEmc][idx]
-  if transmutation.known then
-    -- Transmutation known, no need to update it.
-    return false
-  else
-    -- It's an unknown item, update the transmutation information
-    transmutation.progress = transmutation.progress + count
+-- Returns true if something was updated.
+function updateProgress(item)
+  local playerTransmutations = player.getProperty("eesTransmutations")
+
+  -- If totally unknown, initiallize it.
+  if not playerTransmutations[self.mainEmc][item.name] then
+    local itemPrice = root.itemConfig(item.name).config.price or 0
+    if itemPrice < self.minItemPrice then itemPrice = self.minItemPrice end
+    playerTransmutations[self.mainEmc][item.name] = {
+      known = false, progress = 0, name = item.name, price = itemPrice
+    }
+  end
+
+  -- If not fully known, update the transmutation information.
+  local transmutation = playerTransmutations[self.mainEmc][item.name]
+  if not transmutation.known then
+    transmutation.progress = transmutation.progress + item.count
     if transmutation.progress >= 10 then
       transmutation.known = true
       transmutation.progress = 10
     end
 
-    -- Save that information back into the book
-    book.parameters.eesTransmutations[self.mainEmc][idx] = transmutation
-    return true
+    -- Save the information back into the player
+    playerTransmutations[self.mainEmc][item.name] = transmutation
+    player.setProperty("eesTransmutations", playerTransmutations)
   end
 end

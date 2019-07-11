@@ -29,7 +29,7 @@ end
 function buttonStudy()
   -- Add the EMC and update the Book
   player.addCurrency(self.mainEmc, EES_calculateStudyEmcValue())
-  local bookUpdated = EES_updateTransmutationBook()
+  EES_updateTransmutationBook()
 
   -- Clear the  slots and update the buy buttons
   for slot = self.initStudySlots, self.endStudySlots do
