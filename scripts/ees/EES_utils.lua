@@ -22,7 +22,7 @@ function tprint (tbl, msg)
   elseif type(tbl) == "table" then
     __tprintloop (tbl, indent)
   else
-    sb.logInfo("Not a table: " .. tostring(tbl))
+    sb.logInfo("Not a table (" .. type(tbl) .. "): " .. tostring(tbl))
   end
   sb.logInfo("/* **************************** */")
 end
