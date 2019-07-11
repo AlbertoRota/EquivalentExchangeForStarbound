@@ -1,4 +1,5 @@
 require "/scripts/ees/common/EES_transmutation_study.lua"
+require "/scripts/ees/common/EES_transmutation_craft.lua"
 require "/scripts/ees/common/EES_transmutation_emccalc.lua"
 require "/scripts/ees/common/EES_transmutation_stack.lua"
 require "/scripts/ees/EES_utils.lua"
@@ -17,6 +18,9 @@ function init()
   -- Initiallize player emc
   widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
   updatePlayerEmcLabels()
+
+  -- Initiallize the crafting grid
+  EES_refreshAllCrafting()
 end
 
 -- Hook function called when the GUI is closed.

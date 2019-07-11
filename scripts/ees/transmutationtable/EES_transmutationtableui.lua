@@ -1,4 +1,5 @@
 require "/scripts/ees/common/EES_transmutation_study.lua"
+require "/scripts/ees/common/EES_transmutation_craft.lua"
 require "/scripts/ees/common/EES_transmutation_emccalc.lua"
 require "/scripts/ees/common/EES_transmutation_stack.lua"
 require "/scripts/ees/EES_utils.lua"
@@ -13,7 +14,6 @@ function init()
   if EES_superInit then EES_superInit() end
   container = {}
   self.lastItemGridItems = {}
-  self.itemList = "scrollArea.itemList"
   self.defaultMaxStack = root.assetJson("/items/defaultParameters.config:defaultMaxStack")
   self.canUse = #player.itemsWithTag("EES_transmutationbook") == 1
 
@@ -23,15 +23,12 @@ function init()
   self.endBurnSlots    = EES_getConfig("eesSlotConfig.endBurnSlots")
 
   if self.canUse then
-    -- Initiallize the itemList
-    populateItemList()
-
-    -- Initiallize the buy buttons
-    updateBuyButtons()
-
     -- Initiallize player emc
     widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
     updatePlayerEmcLabels()
+
+    -- Initiallize the crafting grid
+    EES_refreshAllCrafting()
 
     widget.setVisible("imgDisabledOverlay", false)
     widget.setVisible("labelDisabledOverlay", false)
@@ -66,29 +63,6 @@ function buttonBurn()
 
   -- Clear the  slots and update the buy buttons
   world.sendEntityMessage(pane.containerEntityId(), "clearBurnSlots")
-  updateBuyButtons()
-end
-
--- Gets one unit of the item selected in the list.
-function buttonGetOne()
-  craftSelectedWithEmc(1)
-  updateBuyButtons()
-end
-
--- Gets five unit of the item selected in the list.
-function buttonGetFive()
-  craftSelectedWithEmc(5)
-  updateBuyButtons()
-end
-
--- Gets ten unit of the item selected in the list.
-function buttonGetTen()
-  craftSelectedWithEmc(10)
-  updateBuyButtons()
-end
-
--- Update the buy buttons
-function listSelectedChanged()
   updateBuyButtons()
 end
 
@@ -129,56 +103,6 @@ function updatePlayerEmcLabels()
   widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
 end
 
--- Updates the ui with the info of the player's transmutation book.
--- TODO: Seriously rethink and refactor this code. (Too long and complex)
-function populateItemList()
-  -- Check if the player has an "EES_transmutationbook".
-  local transmutationBook = player.itemsWithTag("EES_transmutationbook")[1]
-  if not transmutationBook or not transmutationBook.parameters.eesTransmutations or not transmutationBook.parameters.eesTransmutations[self.mainEmc] then
-    return
-  end
-  -- Get and sort all player known transmutations from the book.
-  local transmutationList = transmutationBook.parameters.eesTransmutations[self.mainEmc]
-  table.sort(
-    transmutationList,
-    function(a, b)
-      if a.price ~= b.price then
-        return a.price > b.price
-      else
-        return string.lower(a.name) < string.lower(b.name)
-      end
-    end
-  )
-
-  -- Add all known transmutations to the list.
-  widget.clearListItems(self.itemList)
-  for _, transmutation in pairs(transmutationList) do
-    local itemConfig = root.itemConfig(transmutation.name).config
-
-    -- Skip the items that do not match the searchFilter
-    if  not EES_itemMatchFilter or EES_itemMatchFilter(itemConfig) then
-      local newItem = string.format("%s.%s", self.itemList, widget.addListItem(self.itemList))
-
-      -- Basic info.
-      widget.setText(newItem..".itemName", itemConfig.shortdescription)
-      widget.setText(newItem..".priceLabel", transmutation.price)
-      widget.setItemSlotItem(
-        newItem..".itemIcon",
-        { name = itemConfig.itemName, count = 1 }
-      )
-
-      -- Toggle element visibility
-      widget.setVisible(newItem..".notcraftableoverlay", not transmutation.known)
-      widget.setVisible(newItem..".strudyMoreLabel", not transmutation.known)
-      widget.setVisible(newItem..".strudyMoreImage", not transmutation.known)
-      widget.setText(newItem..".strudyMoreLabel", transmutation.progress .. "/10")
-
-      -- Store the "transmutation" as "data", so that it can be used later.
-      widget.setData(newItem, transmutation)
-    end
-  end
-end
-
 -- Checks if the "itemGrid" has changed since the last check.
 function itemGridHasChanged()
   local hasChanged = false
@@ -210,76 +134,4 @@ function itemGridHasChanged()
   end
 
   return hasChanged
-end
-
--- Gives the player the item slected in the itemList.
--- Consumes EMC in the process, first the specific, then the universal.
-function craftSelectedWithEmc(count)
-  -- Get the currently selected item.
-  local selectedListItem = widget.getListSelected(self.itemList)
-  if selectedListItem then
-    local itemData = widget.getData(
-      string.format("%s.%s", self.itemList, selectedListItem)
-    )
-
-    local totalPrice = itemData.price * count
-    if consumePlayerEmc(totalPrice) then
-      for i=1,count do
-        player.giveItem({name = itemData.name, count = 1})
-      end
-    else
-      -- TODO: Play error sound.
-    end
-
-    -- Display player emc
-    updatePlayerEmcLabels()
-  end
-end
-
--- Similar to "player.consumeCurrency", but for EMC.
--- Consumes first "mainEmc", using only "universalemc" if "ammount > mainEmc".
-function consumePlayerEmc(ammount)
-  local playerMainEmc = player.currency(self.mainEmc)
-  local playerUniversalEmc = player.currency("EES_universalemc")
-
-  if ammount <= playerMainEmc then
-    -- Enough EMC of the main type, consume it first.
-    player.consumeCurrency(self.mainEmc, ammount)
-    return true
-  elseif ammount - playerMainEmc <= playerUniversalEmc then
-    -- Consume all main EMC first, the use the universal.
-    player.consumeCurrency(self.mainEmc, playerMainEmc)
-    player.consumeCurrency("EES_universalemc", ammount - playerMainEmc)
-    return true
-  else
-    -- Not enough EMC to consume, return error.
-    return false
-  end
-end
-
--- Enables or disables the buy buttons depending on the selected item.
-function updateBuyButtons()
-  -- Get the currently selected item.
-  local transmutation = widget.getListSelected(self.itemList)
-  if transmutation then
-    local playerTotalEmc = player.currency(self.mainEmc) + player.currency("EES_universalemc")
-    local itemData = widget.getData(string.format("%s.%s", self.itemList, transmutation))
-    local itemPrice, itemKnown = itemData.price, itemData.known
-    widget.setButtonEnabled(
-      "buttonGetOne",
-      itemKnown and playerTotalEmc > (itemPrice * 1)
-    )
-    widget.setButtonEnabled(
-      "buttonGetFive",
-      itemKnown and playerTotalEmc > (itemPrice * 5)
-    )
-    widget.setButtonEnabled(
-      "buttonGetTen",
-      itemKnown and playerTotalEmc > (itemPrice * 10)
-    )
-  else
-    widget.setButtonEnabled("buttonGetOne", false)
-    widget.setButtonEnabled("buttonGetFive", false)
-    widget.setButtonEnabled("buttonGetTen", false)
-  end
 end

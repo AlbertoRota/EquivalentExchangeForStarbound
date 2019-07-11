@@ -39,8 +39,7 @@ function buttonStudy()
   -- Update all the depending fields
   widget.setText("labelMainEmc", player.currency(self.mainEmc))
   widget.setText("labelStudyEmc", EES_calculateStudyEmcValue())
-  if updateBuyButtons then updateBuyButtons() end
-  if bookUpdated and populateItemList then populateItemList() end
+  if EES_refreshAllCrafting then EES_refreshAllCrafting() end
 end
 
 --------------------------------------------------------------------------------
