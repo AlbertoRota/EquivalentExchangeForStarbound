@@ -1,0 +1,6 @@
+[
+  { "op": "add", "path": "/scriptConfig/turnInQuests/-", "value": "EES_minetransmutationtablet_1" },
+
+  { "op": "add", "path": "/scriptConfig/offeredQuests/-", "value": "EES_minetransmutationtablet_2" },
+  { "op": "add", "path": "/scriptConfig/turnInQuests/-", "value": "EES_minetransmutationtablet_2" }
+]

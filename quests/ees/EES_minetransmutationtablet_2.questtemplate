@@ -1,0 +1,37 @@
+{
+  "id" : "EES_minetransmutationtablet_2",
+  "prerequisites" : [ "EES_minetransmutationtablet_1" ],
+  "title" : "^orange;Eduard Eric - Full Mine Alchemist^reset;",
+  "text" : "Reflexive. The ritual to create the ^orange;Mine transmutation tablet^reset; it's pretty complex... I'll remain here studying it while you bring me the required materials.",
+  "completionText" : "Proud. Here you have, your very own ^orange;Mine transmutation tablet^reset;",
+  "moneyRange" : [0, 0],
+  "rewards" : [
+    [ [ "EES_minetransmutationtablet", 1 ] ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/ees/scripts/EES_main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "questGiver"
+    },
+    "requireTurnIn" : true,
+    "turnInDescription" : "Speak to ^orange;The Baron^reset; at the ^orange;outpost^reset;",
+    "conditions" : [
+      // Gather materials
+      {
+        "type" : "gatherItem",
+        "itemName" : "cobblestonematerial",
+        "count" : 50,
+        "consume" : true
+      },
+      {
+        "type" : "gatherEmc",
+        "description" : "Gather Mine EMC:\n<current> / <required>",
+        "mainEmc" : "EES_mineemc",
+        "count" : 1000
+      }
+    ],
+    "giveBlueprints" : [ "EES_minetransmutationtablet" ]
+  }
+}

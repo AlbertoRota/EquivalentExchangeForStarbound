@@ -1,0 +1,33 @@
+{
+  "id" : "EES_minetransmutationtablet_1",
+  "mainQuest" : true,
+  "prerequisites" : [ ],
+  "title" : "^orange;The path of the mine alchemist",
+  "text" : "You have just crafted a ^orange;Mine EMC table^reset;, it's a good start, but you feel that this is just the begining of the journey.",
+  "completionText" : "Impressed. You look like a wise person, especially in the long forgotten craft of ^orange;Alchemy^reset;\n\nConcentrated. I do remember to have an old text written by the long forgotten alchemist ^orange;Eduard Eric - Full Mine Alchemist^reset;, it describes a ritual to create a powerful book called the ^orange;Mine transmutation tablet^reset;, talk with me if you are interested.",
+  "moneyRange" : [0, 0],
+  "rewards" : [ ],
+  "canBeAbandoned" : false,
+  "questGiverIndicator" : "mainquestgiver",
+  "questReceiverIndicator" : "mainquestreceiver",
+
+  "updateDelta" : 10,
+  "script" : "/quests/ees/scripts/EES_main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "questStarted" : "player",
+      "questComplete" : "questReceiver"
+    },
+    "requireTurnIn" : true,
+    "turnInDescription" : "Speak to ^orange;The Baron^reset; at the ^orange;outpost^reset;",
+    "conditions" : [
+      // Study transmutations
+      {
+        "type" : "studyTransmutation",
+        "description" : "Mine transmutations:\n<current> / <required>",
+        "mainEmc" : "EES_mineemc",
+        "count" : 2 // 13
+      }
+    ]
+  }
+}

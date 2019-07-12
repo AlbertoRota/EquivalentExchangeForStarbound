@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "cobblestonematerial", "count" : 50 },
+    { "item" : "EES_mineemc", "count" : 1000 }
+  ],
+  "output" : {
+    "item" : "EES_minetransmutationtablet",
+    "count" : 1
+  },
+  "duration" : 2,
+  "groups" : [ "plain", "objects", "all", "tools" ]
+}
