@@ -11,15 +11,20 @@ function init()
   if player then
     local books = player.itemsWithTag("EES_transmutationbook")
     if books and books[1] then
-      local playerTransmutations = {}
-      local bookTransmutations = books[1].parameters.eesTransmutations or {}
-      for emc, transmutations in pairs(bookTransmutations) do
-        playerTransmutations[emc] = {}
-        for idx, transmutation in pairs(transmutations) do
-          playerTransmutations[emc][transmutation.name] = transmutation
+      local playerTransmutations = player.getProperty("eesTransmutations") or {}
+      for i,v in ipairs(books) do
+        local bookTransmutations = books[i].parameters.eesTransmutations or {}
+        for emc, transmutations in pairs(bookTransmutations) do
+          playerTransmutations[emc] = playerTransmutations[emc] or {}
+          for idx, transmutation in pairs(transmutations) do
+            playerTransmutations[emc][transmutation.name] = transmutation
+          end
         end
+        player.consumeItem(books[i])
       end
+
       player.setProperty("eesTransmutations", playerTransmutations)
+      player.confirm(root.assetJson("/interface/ees/confirmation/updateconfirmation.config:v1_to_v2"))
     end
   end
   -- UPDATE FROM BOOK TO PLAYER - END
