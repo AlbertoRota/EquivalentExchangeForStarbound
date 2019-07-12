@@ -1,5 +1,6 @@
 require "/scripts/ees/common/EES_transmutation_study.lua"
 require "/scripts/ees/common/EES_transmutation_craft.lua"
+require "/scripts/ees/common/EES_transmutation_search.lua"
 require "/scripts/ees/common/EES_transmutation_emccalc.lua"
 require "/scripts/ees/common/EES_transmutation_stack.lua"
 require "/scripts/ees/EES_utils.lua"
