@@ -26,7 +26,7 @@
         "type" : "studyTransmutation",
         "description" : "Mine transmutations:\n<current> / <required>",
         "mainEmc" : "EES_mineemc",
-        "count" : 2 // 13
+        "count" : 13
       }
     ]
   }

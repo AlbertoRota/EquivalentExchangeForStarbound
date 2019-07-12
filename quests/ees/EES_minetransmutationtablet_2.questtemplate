@@ -29,7 +29,7 @@
         "type" : "gatherEmc",
         "description" : "Gather Mine EMC:\n<current> / <required>",
         "mainEmc" : "EES_mineemc",
-        "count" : 1000
+        "count" : 60000
       }
     ],
     "giveBlueprints" : [ "EES_minetransmutationtablet" ]
