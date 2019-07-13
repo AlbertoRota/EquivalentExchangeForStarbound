@@ -64,7 +64,11 @@ function populateItemList()
   table.sort(
     orderedTransmutationList,
     function(a, b)
-      return a.price ~= b.price and a.price > b.price or a.name < b.name
+      if a.price ~= b.price then
+        return a.price > b.price
+      else
+        return a.name < b.name
+      end
     end
   )
 
