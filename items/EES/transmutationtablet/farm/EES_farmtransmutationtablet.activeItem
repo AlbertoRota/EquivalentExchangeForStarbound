@@ -8,7 +8,7 @@
   "category" : "Tool",
   "twoHanded" : true,
   "maxStack" : 1,
-  "inventoryIcon" : "EES_farmtransmutationtablet.png",
+  "inventoryIcon" : "/items/EES/transmutationtablet/farm/EES_farmtransmutationtablet.png",
   "description" : "Like an \"^orange;Expert farm EMC table^white;\", but portable.",
   "shortdescription" : "Farm EMC tablet",
   "itemTags" : ["EES_farmtransmutationtablet"],

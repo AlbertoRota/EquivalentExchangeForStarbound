@@ -8,7 +8,7 @@
   "category" : "Tool",
   "twoHanded" : true,
   "maxStack" : 1,
-  "inventoryIcon" : "EES_minetransmutationtablet.png",
+  "inventoryIcon" : "/items/EES/transmutationtablet/mine/EES_minetransmutationtablet.png",
   "description" : "Like an \"^orange;Expert mine EMC table^white;\", but portable.",
   "shortdescription" : "Mine EMC tablet",
   "itemTags" : ["EES_minetransmutationtablet"],

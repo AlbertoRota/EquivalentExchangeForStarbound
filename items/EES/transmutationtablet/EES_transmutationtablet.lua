@@ -6,6 +6,8 @@ function activate(fireMode, shiftHeld)
   configData.eesMainEmc = config.getParameter("eesMainEmc")
   configData.eesSlotConfig = config.getParameter("eesSlotConfig")
   configData.eesCanStudy = config.getParameter("eesCanStudy")
+  configData.eesTitle = config.getParameter("shortdescription")
+  configData.eesTitleIcon = config.getParameter("inventoryIcon")
 
   -- Open the UI
   activeItem.interact("ScriptPane", configData)

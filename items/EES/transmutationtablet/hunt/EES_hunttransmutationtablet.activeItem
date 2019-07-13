@@ -8,7 +8,7 @@
   "category" : "Tool",
   "twoHanded" : true,
   "maxStack" : 1,
-  "inventoryIcon" : "EES_hunttransmutationtablet.png",
+  "inventoryIcon" : "/items/EES/transmutationtablet/hunt/EES_hunttransmutationtablet.png",
   "description" : "Like an \"^orange;Expert hunt EMC table^white;\", but portable.",
   "shortdescription" : "Hunt EMC tablet",
   "itemTags" : ["EES_hunttransmutationtablet"],
