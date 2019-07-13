@@ -1,0 +1,37 @@
+{
+  "id" : "EES_farmtransmutationtablet_2",
+  "prerequisites" : [ "EES_farmtransmutationtablet_1" ],
+  "title" : "^orange;Apex Luis - Strong Farm Alchemist^reset;",
+  "text" : "Concentrated. I have an old text written by the long forgotten alchemist ^orange;Apex Luis - Strong Farm Alchemist^reset;, it describes a ritual to create a powerful book called the ^orange;Farm transmutation tablet^reset;, but to do it, I'll require you to bring me some materials and a lot of ^orange;Farm EMC^reset;.",
+  "completionText" : "Proud. Here you have, your very own ^orange;Farm transmutation tablet^reset;",
+  "moneyRange" : [0, 0],
+  "rewards" : [
+    [ [ "EES_farmtransmutationtablet", 1 ] ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/ees/scripts/EES_main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "questGiver"
+    },
+    "requireTurnIn" : true,
+    "turnInDescription" : "Speak to ^orange;The Baron^reset; at the ^orange;outpost^reset;",
+    "conditions" : [
+      // Gather materials
+      {
+        "type" : "gatherItem",
+        "itemName" : "dirtmaterial",
+        "count" : 50,
+        "consume" : true
+      },
+      {
+        "type" : "gatherEmc",
+        "description" : "Gather Farm EMC:\n<current> / <required>",
+        "mainEmc" : "EES_farmemc",
+        "count" : 60000
+      }
+    ],
+    "giveBlueprints" : [ "EES_farmtransmutationtablet" ]
+  }
+}

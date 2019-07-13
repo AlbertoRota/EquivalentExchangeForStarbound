@@ -1,0 +1,37 @@
+{
+  "id" : "EES_hunttransmutationtablet_2",
+  "prerequisites" : [ "EES_hunttransmutationtablet_1" ],
+  "title" : "^orange;Roi Huntstang - Fire Alchemist^reset;",
+  "text" : "Concentrated. I have an old text written by the long forgotten alchemist ^orange;Roi Huntstang - Fire Alchemist^reset;, it describes a ritual to create a powerful book called the ^orange;Hunt transmutation tablet^reset;, but to do it, I'll require you to bring me some materials and a lot of ^orange;Hunt EMC^reset;.",
+  "completionText" : "Proud. Here you have, your very own ^orange;Hunt transmutation tablet^reset;",
+  "moneyRange" : [0, 0],
+  "rewards" : [
+    [ [ "EES_hunttransmutationtablet", 1 ] ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/ees/scripts/EES_main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "questGiver"
+    },
+    "requireTurnIn" : true,
+    "turnInDescription" : "Speak to ^orange;The Baron^reset; at the ^orange;outpost^reset;",
+    "conditions" : [
+      // Gather materials
+      {
+        "type" : "gatherItem",
+        "itemName" : "henegg",
+        "count" : 50,
+        "consume" : true
+      },
+      {
+        "type" : "gatherEmc",
+        "description" : "Gather Hunt EMC:\n<current> / <required>",
+        "mainEmc" : "EES_huntemc",
+        "count" : 60000
+      }
+    ],
+    "giveBlueprints" : [ "EES_hunttransmutationtablet" ]
+  }
+}

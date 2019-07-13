@@ -1,10 +1,10 @@
 {
-  "id" : "EES_minetransmutationtablet_1",
+  "id" : "EES_farmtransmutationtablet_1",
   "mainQuest" : true,
   "prerequisites" : [ ],
-  "title" : "^orange;The path of the mine alchemist",
-  "text" : "You have just crafted a ^orange;Mine EMC table^reset;, it's a good start, but you feel that this is just the begining of the journey.",
-  "completionText" : "Impressed. You look like a wise person, especially in the long forgotten craft of ^orange;Mine alchemy^reset;, talk with me if you are interested in learning more.",
+  "title" : "^green;The path of the farm alchemist",
+  "text" : "You have just crafted a ^orange;Farm EMC table^reset;, it's a good start, but you feel that this is just the begining of the journey.",
+  "completionText" : "Impressed. You look like a wise person, especially in the long forgotten craft of ^green;Farm alchemy^reset;, talk with me if you are interested in learning more.",
   "moneyRange" : [0, 0],
   "rewards" : [ ],
   "canBeAbandoned" : false,
@@ -24,9 +24,9 @@
       // Study transmutations
       {
         "type" : "studyTransmutation",
-        "description" : "Mine transmutations:\n<current> / <required>",
-        "mainEmc" : "EES_mineemc",
-        "count" : 13
+        "description" : "Farm transmutations:\n<current> / <required>",
+        "mainEmc" : "EES_farmemc",
+        "count" : 35
       }
     ]
   }

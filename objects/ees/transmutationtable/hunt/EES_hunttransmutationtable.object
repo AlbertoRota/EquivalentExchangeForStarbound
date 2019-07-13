@@ -60,6 +60,7 @@
   ],
   "scriptDelta" : 120,
   "containerCallback" : "containerCallback",
+  "pickupQuestTemplates" : [ "EES_hunttransmutationtablet_1" ],
 
   // ************************************************************************ //
   // ************************ EES custom properties. ************************ //

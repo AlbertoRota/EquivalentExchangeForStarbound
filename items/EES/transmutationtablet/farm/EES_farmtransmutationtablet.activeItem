@@ -2,17 +2,17 @@
   // ************************************************************************ //
   // ************************** Basic properties. *************************** //
   // ************************************************************************ //
-  "itemName" : "EES_minetransmutationtablet",
+  "itemName" : "EES_farmtransmutationtablet",
   "price" : 320,
   "rarity" : "Essential",
   "category" : "Tool",
   "twoHanded" : true,
   "maxStack" : 1,
-  "inventoryIcon" : "EES_minetransmutationtablet.png",
-  "description" : "Like an \"^orange;Expert mine EMC table^white;\", but portable.",
-  "shortdescription" : "Mine EMC tablet",
-  "itemTags" : ["EES_minetransmutationtablet"],
-  "animation" : "EES_minetransmutationtablet.animation",
+  "inventoryIcon" : "EES_farmtransmutationtablet.png",
+  "description" : "Like an \"^orange;Expert farm EMC table^white;\", but portable.",
+  "shortdescription" : "Farm EMC tablet",
+  "itemTags" : ["EES_farmtransmutationtablet"],
+  "animation" : "EES_farmtransmutationtablet.animation",
 
   // ************************************************************************ //
   // ********************** Script related parameters. ********************** //
@@ -22,12 +22,12 @@
   // ************************************************************************ //
   // ************************ EES custom properties. ************************ //
   // ************************************************************************ //
-  "eesMainEmc" : "EES_mineemc",
+  "eesMainEmc" : "EES_farmemc",
   "eesSlotConfig" : {
     "initStudySlots" : 0,
     "endStudySlots" : 7
   },
   "eesCanStudy" : {
-      "mine" : ["T1", "T2", "T3"]
+      "farm" : ["T1", "T2", "T3"]
   }
 }
