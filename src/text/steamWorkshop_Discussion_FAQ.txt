@@ -18,7 +18,7 @@ From that point onwards, you can "Upgrade" each table clicking in the button wit
 
 The first time you craft/pick-up a transmutation table you will start a "Quest" to improve your alchemical knowledge, finish it to obtain the tablet.
 
-Once the quest is finished, you will be able to re-craft them again with your empty hands (The same one where you craft the "Camfire")
+Once the quest is finished, you will be able to re-craft them again with your empty hands (The same one where you craft the "Campfire")
 
 [h1]Q: Is this compatible with <InsertModNameHere>?[/h1]
 [b]A:[/b] Yes, this mod is compatible with everything and will not cause any crash or problem.
