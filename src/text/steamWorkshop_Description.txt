@@ -4,11 +4,9 @@
 [b]Do this work with FU?[/b] --> YES
 
 [h1]What does it do?[/h1]
-It adds several [i]"Transmutation tables"[/i] and a [i]"Transmutation book"[/i] to your game.
+It adds several [i]"Transmutation tables"[/i] to your game.
 
-You can use the [i]"Transmutation tables"[/i] to convert items to [i]EMC[/i] (A universal alchemical currency) and to convert [i]EMC[/i] back to items when needed.
-
-The [i]"Transmutation book"[/i] is where you store all your knowledge about alchemical transmutations, lose it and you will lose all your knowledge!!!
+You can use the [i]"Transmutation tables"[/i] to convert items to [i]EMC[/i] (A universal alchemical currency) and to convert [i]EMC[/i] back to items when need.
 
 [h1]Meet the tables:[/h1]
 [B]Mine transmutation table.[/B]
