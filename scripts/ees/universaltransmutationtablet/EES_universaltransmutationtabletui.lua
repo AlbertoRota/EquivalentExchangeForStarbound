@@ -16,12 +16,8 @@ function init()
 
   self.mainEmc = config.getParameter("eesMainEmc")
 
-  -- Initiallize player emc
-  widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
-  EES_updatePlayerEmcLabels()
-
   -- Initiallize the crafting grid
-  EES_refreshAllCrafting()
+  refreshEmcChange()
 end
 
 -- Hook function called when the GUI is closed.
@@ -30,10 +26,7 @@ function uninit()
   if EES_superUninit then EES_superUninit() end
 
   -- Dump all the items out of the book.
-  for studySlot = self.initStudySlots, self.endStudySlots do
-    local slotItem = EES_getItemAtSlot(studySlot)
-		if slotItem then player.giveItem(slotItem) end
-  end
+  dumpItems()
 end
 
 --------------------------------------------------------------------------------
@@ -63,6 +56,21 @@ function swapItem(widgetName)
   widget.setText("labelStudyEmc", EES_calculateStudyEmcValue())
 end
 
+function changeEmcRadioGroup(index)
+  if index == "0" then
+    self.mainEmc = "EES_mineemc"
+    EES_refreshStudyList({mine = {"T1", "T2", "T3"}})
+  elseif index == "1" then
+    self.mainEmc = "EES_farmemc"
+    EES_refreshStudyList({farm = {"T1", "T2", "T3"}})
+  elseif index == "2" then
+    self.mainEmc = "EES_huntemc"
+    EES_refreshStudyList({hunt = {"T1", "T2", "T3"}})
+  end
+
+  dumpItems()
+  refreshEmcChange()
+end
 --------------------------------------------------------------------------------
 ------------------------------- Public functions -------------------------------
 --------------------------------------------------------------------------------
@@ -131,4 +139,13 @@ function refreshEmcChange()
 
   -- Initiallize the crafting grid
   EES_refreshAllCrafting()
+end
+
+-- Dump all the items out of the book.
+function dumpItems()
+  for studySlot = self.initStudySlots, self.endStudySlots do
+    local slotItem = EES_getItemAtSlot(studySlot)
+		if slotItem then player.giveItem(slotItem) end
+    EES_setItemAtSlot(nil, studySlot)
+  end
 end

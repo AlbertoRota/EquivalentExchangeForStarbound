@@ -25,7 +25,7 @@
   "eesMainEmc" : "EES_mineemc",
   "eesSlotConfig" : {
     "initStudySlots" : 0,
-    "endStudySlots" : 7
+    "endStudySlots" : 9
   },
   "eesCanStudy" : {
       "mine" : ["T1", "T2", "T3"]

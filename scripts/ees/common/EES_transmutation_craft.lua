@@ -52,6 +52,7 @@ function populateItemList()
   -- Check if the player knowns some transmutations.
   local playerTransmutations = player.getProperty("eesTransmutations")
   if not playerTransmutations or not playerTransmutations[self.mainEmc] then
+    widget.clearListItems(self.itemList)
     return
   end
 

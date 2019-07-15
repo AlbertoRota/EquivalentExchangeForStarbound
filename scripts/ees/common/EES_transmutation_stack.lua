@@ -11,10 +11,7 @@ function init()
   self.defaultMaxStack = root.assetJson("/items/defaultParameters.config:defaultMaxStack")
 
   -- Save the "canStudy" as an array, so that we can iterate it in for loops
-  self.canStudyArr = {}
-  for k,v in pairs(self.canStudy) do
-    table.insert(self.canStudyArr, k)
-  end
+  EES_refreshStackList()
 end
 
 --------------------------------------------------------------------------------
@@ -29,6 +26,18 @@ function buttonFromInventory()
 
   -- Second pass, fill free slots
   fillEmptySlots(containerFreeSlots)
+end
+
+--------------------------------------------------------------------------------
+------------------------------- Public functions -------------------------------
+--------------------------------------------------------------------------------
+
+function EES_refreshStackList()
+  -- Save the "canStudy" as an array, so that we can iterate it in for loops
+  self.canStudyArr = {}
+  for k,v in pairs(self.canStudy) do
+    table.insert(self.canStudyArr, k)
+  end
 end
 
 --------------------------------------------------------------------------------
