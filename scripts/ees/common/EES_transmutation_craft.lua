@@ -121,7 +121,7 @@ function craftSelectedWithEmc(count)
     end
 
     -- Display player emc
-    updatePlayerEmcLabels()
+    EES_updatePlayerEmcLabels()
 
     -- Update buttons
     updateBuyButtons()

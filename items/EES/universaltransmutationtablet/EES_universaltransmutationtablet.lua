@@ -1,6 +1,6 @@
 function activate(fireMode, shiftHeld)
   -- Load the basic UI config
-  local configData = root.assetJson("/interface/ees/universaltransmutationtablet/EES_tritablet.config")
+  local configData = root.assetJson("/interface/ees/universaltransmutationtablet/EES_universaltransmutationtablet.config")
 
   -- Pass the object specific config to the UI
   configData.eesMainEmc = config.getParameter("eesMainEmc")

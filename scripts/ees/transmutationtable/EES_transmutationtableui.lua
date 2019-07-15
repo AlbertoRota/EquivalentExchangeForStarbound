@@ -24,7 +24,7 @@ function init()
 
   -- Initiallize player emc
   widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
-  updatePlayerEmcLabels()
+  EES_updatePlayerEmcLabels()
 
   -- Initiallize the crafting grid
   EES_refreshAllCrafting()
@@ -43,7 +43,7 @@ function update(dt)
     widget.setText("labelBurnEmc", EES_calculateBurnEmcValue())
 
     -- Display player emc
-    updatePlayerEmcLabels()
+    EES_updatePlayerEmcLabels()
   end
 end
 
@@ -88,15 +88,16 @@ end
 function EES_applyItemAtSlot(itemToApply, slot)
   return world.containerItemApply(pane.containerEntityId(), itemToApply, slot)
 end
---------------------------------------------------------------------------------
------------------------------- Private functions -------------------------------
---------------------------------------------------------------------------------
 
 -- Updates the labels for the player EMC with the current player EMC.
-function updatePlayerEmcLabels()
+function EES_updatePlayerEmcLabels()
   widget.setText("labelMainEmc", player.currency(self.mainEmc))
   widget.setText("labelUniversalEmc", player.currency("EES_universalemc"))
 end
+
+--------------------------------------------------------------------------------
+------------------------------ Private functions -------------------------------
+--------------------------------------------------------------------------------
 
 -- Checks if the "itemGrid" has changed since the last check.
 function itemGridHasChanged()

@@ -9,7 +9,7 @@
   "twoHanded" : true,
   "maxStack" : 1,
   "inventoryIcon" : "/items/EES/universaltransmutationtablet/EES_universaltransmutationtablet.png",
-  "description" : "An \"^orange;All-In-One^white;\" solution for all your transmutation needs.",
+  "description" : "The \"^orange;All-In-One^white;\" solution for all your transmutation needs.",
   "shortdescription" : "Universal EMC tablet",
   "itemTags" : ["EES_universaltransmutationtablet"],
   "animation" : "EES_universaltransmutationtablet.animation",

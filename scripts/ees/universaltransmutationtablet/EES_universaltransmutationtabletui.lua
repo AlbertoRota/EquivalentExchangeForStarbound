@@ -16,13 +16,6 @@ function init()
 
   self.mainEmc = config.getParameter("eesMainEmc")
 
-  -- Initiallize window title and icon
-  pane.setTitle(
-    "^orange;" .. config.getParameter("eesTitle") .. "^reset;",
-    "Transmutation tablet"
-  )
-  pane.setTitleIcon(config.getParameter("eesTitleIcon"))
-
   -- Initiallize player emc
   widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
   EES_updatePlayerEmcLabels()
@@ -130,3 +123,12 @@ end
 --------------------------------------------------------------------------------
 ------------------------------ Private functions -------------------------------
 --------------------------------------------------------------------------------
+
+function refreshEmcChange()
+  -- Initiallize player emc
+  widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
+  EES_updatePlayerEmcLabels()
+
+  -- Initiallize the crafting grid
+  EES_refreshAllCrafting()
+end
