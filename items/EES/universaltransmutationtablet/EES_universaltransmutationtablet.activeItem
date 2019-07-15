@@ -1,0 +1,33 @@
+{
+  // ************************************************************************ //
+  // ************************** Basic properties. *************************** //
+  // ************************************************************************ //
+  "itemName" : "EES_universaltransmutationtablet",
+  "price" : 320,
+  "rarity" : "Essential",
+  "category" : "Tool",
+  "twoHanded" : true,
+  "maxStack" : 1,
+  "inventoryIcon" : "/items/EES/universaltransmutationtablet/EES_universaltransmutationtablet.png",
+  "description" : "An \"^orange;All-In-One^white;\" solution for all your transmutation needs.",
+  "shortdescription" : "Universal EMC tablet",
+  "itemTags" : ["EES_universaltransmutationtablet"],
+  "animation" : "EES_universaltransmutationtablet.animation",
+
+  // ************************************************************************ //
+  // ********************** Script related parameters. ********************** //
+  // ************************************************************************ //
+  "scripts" : ["/items/EES/universaltransmutationtablet/EES_universaltransmutationtablet.lua"],
+
+  // ************************************************************************ //
+  // ************************ EES custom properties. ************************ //
+  // ************************************************************************ //
+  "eesMainEmc" : "EES_mineemc",
+  "eesSlotConfig" : {
+    "initStudySlots" : 0,
+    "endStudySlots" : 7
+  },
+  "eesCanStudy" : {
+      "mine" : ["T1", "T2", "T3"]
+  }
+}
