@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "henegg", "count" : 50 },
+    { "item" : "EES_huntemc", "count" : 60000 }
+  ],
+  "output" : {
+    "item" : "EES_hunttransmutationtablet",
+    "count" : 1
+  },
+  "duration" : 2,
+  "groups" : [ "plain", "objects", "all", "tools" ]
+}

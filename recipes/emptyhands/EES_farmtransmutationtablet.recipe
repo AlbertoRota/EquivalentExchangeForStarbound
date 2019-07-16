@@ -1,0 +1,12 @@
+{
+  "input" : [
+    { "item" : "dirtmaterial", "count" : 50 },
+    { "item" : "EES_farmemc", "count" : 60000 }
+  ],
+  "output" : {
+    "item" : "EES_farmtransmutationtablet",
+    "count" : 1
+  },
+  "duration" : 2,
+  "groups" : [ "plain", "objects", "all", "tools" ]
+}

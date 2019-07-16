@@ -1,0 +1,14 @@
+{
+  "input" : [
+    { "item" : "EES_minetransmutationtablet", "count" : 1 },
+    { "item" : "EES_farmtransmutationtablet", "count" : 1 },
+    { "item" : "EES_hunttransmutationtablet", "count" : 1 },
+    { "item" : "EES_universalemc", "count" : 30000 }
+  ],
+  "output" : {
+    "item" : "EES_universaltransmutationtablet",
+    "count" : 1
+  },
+  "duration" : 2,
+  "groups" : [ "plain", "objects", "all", "tools" ]
+}

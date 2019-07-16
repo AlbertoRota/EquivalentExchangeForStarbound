@@ -1,7 +1,7 @@
 {
   "input" : [
     { "item" : "cobblestonematerial", "count" : 50 },
-    { "item" : "EES_mineemc", "count" : 1000 }
+    { "item" : "EES_mineemc", "count" : 60000 }
   ],
   "output" : {
     "item" : "EES_minetransmutationtablet",

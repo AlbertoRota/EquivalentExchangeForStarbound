@@ -9,5 +9,8 @@
 
   { "op": "add", "path": "/scriptConfig/turnInQuests/-", "value": "EES_hunttransmutationtablet_1" },
   { "op": "add", "path": "/scriptConfig/offeredQuests/-", "value": "EES_hunttransmutationtablet_2" },
-  { "op": "add", "path": "/scriptConfig/turnInQuests/-", "value": "EES_hunttransmutationtablet_2" }
+  { "op": "add", "path": "/scriptConfig/turnInQuests/-", "value": "EES_hunttransmutationtablet_2" },
+
+  { "op": "add", "path": "/scriptConfig/offeredQuests/-", "value": "EES_universaltransmutationtablet" },
+  { "op": "add", "path": "/scriptConfig/turnInQuests/-", "value": "EES_universaltransmutationtablet" }
 ]

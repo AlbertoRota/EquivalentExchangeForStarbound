@@ -2,7 +2,7 @@
   "id" : "EES_farmtransmutationtablet_2",
   "prerequisites" : [ "EES_farmtransmutationtablet_1" ],
   "title" : "^orange;Apex Luis - Strong Farm Alchemist^reset;",
-  "text" : "Concentrated. I have an old text written by the long forgotten alchemist ^orange;Apex Luis - Strong Farm Alchemist^reset;, it describes a ritual to create a powerful book called the ^orange;Farm transmutation tablet^reset;, but to do it, I'll require you to bring me some materials and a lot of ^orange;Farm EMC^reset;.",
+  "text" : "Concentrated. I have an old text written by the long forgotten alchemist ^orange;Apex Luis - Strong Farm Alchemist^reset;, it describes a ritual to create a powerful book called the ^orange;Farm transmutation tablet^reset;, but to do it, I'll require you to bring me ^orange;50 dirt^reset; and ^orange;60.000 Farm EMC^reset;.",
   "completionText" : "Proud. Here you have, your very own ^orange;Farm transmutation tablet^reset;",
   "moneyRange" : [0, 0],
   "rewards" : [

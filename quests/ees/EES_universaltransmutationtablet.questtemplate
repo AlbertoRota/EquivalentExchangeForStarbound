@@ -1,0 +1,54 @@
+{
+  "id" : "EES_universaltransmutationtablet",
+  "prerequisites" : [ ],
+  "requiredItems" : [
+    "EES_minetransmutationtablet",
+    "EES_farmtransmutationtablet",
+    "EES_hunttransmutationtablet"
+  ],
+  "title" : "^orange;The universal transmutation tablet^reset;",
+  "text" : "Reflexive. It's often told that \"Knowledge does not take up any space\", but nonetheless those books you carry are still pretty bulky. I can fix that if you give me your ^orange;Trasmutation tablets^reset; and ^orange;30.000 Universal EMC^reset;.",
+  "completionText" : "Proud. Here you have, your very own ^orange;Universal transmutation tablet^reset;",
+  "moneyRange" : [0, 0],
+  "rewards" : [
+    [ [ "EES_universaltransmutationtablet", 1 ] ]
+  ],
+
+  "updateDelta" : 10,
+  "script" : "/quests/ees/scripts/EES_main.lua",
+  "scriptConfig" : {
+    "portraits" : {
+      "default" : "questGiver"
+    },
+    "requireTurnIn" : true,
+    "turnInDescription" : "Speak to ^orange;The Baron^reset; at the ^orange;outpost^reset;",
+    "conditions" : [
+      // Gather materials
+      {
+        "type" : "gatherItem",
+        "itemName" : "EES_minetransmutationtablet",
+        "count" : 1,
+        "consume" : true
+      },
+      {
+        "type" : "gatherItem",
+        "itemName" : "EES_farmtransmutationtablet",
+        "count" : 1,
+        "consume" : true
+      },
+      {
+        "type" : "gatherItem",
+        "itemName" : "EES_hunttransmutationtablet",
+        "count" : 1,
+        "consume" : true
+      },
+      {
+        "type" : "gatherEmc",
+        "description" : "Gather Universal EMC:\n<current> / <required>",
+        "mainEmc" : "EES_universalemc",
+        "count" : 30000
+      }
+    ],
+    "giveBlueprints" : [ "EES_universaltransmutationtablet" ]
+  }
+}
