@@ -11,7 +11,7 @@
   "completionText" : "Proud. Here you have, your very own ^orange;Universal transmutation tablet^reset;",
   "moneyRange" : [0, 0],
   "rewards" : [
-    [ [ "EES_universaltransmutationtablet", 1 ] ]
+    [ [ "EES_universaltransmutationtablet", 1 ], [ "EES_thankyou-codex", 1 ] ]
   ],
 
   "updateDelta" : 10,

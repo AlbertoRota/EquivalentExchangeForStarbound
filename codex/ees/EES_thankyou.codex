@@ -1,0 +1,31 @@
+{
+  "id" : "EES_thankyou",
+  "title" : "Card from ^orange;Alberto-Rota^reset;",
+  "description" : "A card from ^orange;Alberto-Rota^reset;, author of ^orange;EE for Starbound.^reset;",
+  "icon" : "EES_thankyou.png",
+  "contentPages" : [
+"
+First of all, congratulations on obtaining your very own ^orange;Universal transmutation tablet^reset;!
+
+You have now reached the very end-game and are now an expert alchemist, you can be proud of that.
+
+Doing this mod took quite a bunch of time and effort, but it's great to see you fully exploring it.
+",
+"
+I do really hope that you enjoyed ^orange;EE for Starbound^reset;.
+
+If you did, please consider going back to the Steam Workshop page and:
+
+1) Drop some ^orange;nice words^reset;.
+2) Hit the ^orange;\"Like\"^reset; and ^orange;\"Favorite\"^reset; buttons.
+
+That's all! Have a nice day!
+- Alberto-Rota, author of EE for Starbound
+
+"
+  ],
+    "itemConfig" : {
+    "rarity" : "Legendary",
+    "price" : 25
+  }
+}
