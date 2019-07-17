@@ -160,15 +160,15 @@ function updateBuyButtons()
     local itemPrice, itemKnown = itemData.price, itemData.known
     widget.setButtonEnabled(
       "buttonGetOne",
-      itemKnown and playerTotalEmc > (itemPrice * 1)
+      itemKnown and playerTotalEmc >= (itemPrice * 1)
     )
     widget.setButtonEnabled(
       "buttonGetFive",
-      itemKnown and playerTotalEmc > (itemPrice * 5)
+      itemKnown and playerTotalEmc >= (itemPrice * 5)
     )
     widget.setButtonEnabled(
       "buttonGetTen",
-      itemKnown and playerTotalEmc > (itemPrice * 10)
+      itemKnown and playerTotalEmc >= (itemPrice * 10)
     )
   else
     widget.setButtonEnabled("buttonGetOne", false)
