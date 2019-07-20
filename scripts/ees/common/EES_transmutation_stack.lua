@@ -26,6 +26,9 @@ function buttonFromInventory()
 
   -- Second pass, fill free slots
   fillEmptySlots(containerFreeSlots)
+
+  -- Re-calculate and display the "studyEmc" value
+  widget.setText("labelStudyEmc", EES_calculateStudyEmcValue())
 end
 
 --------------------------------------------------------------------------------
