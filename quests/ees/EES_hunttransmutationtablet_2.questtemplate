@@ -2,7 +2,7 @@
   "id" : "EES_hunttransmutationtablet_2",
   "prerequisites" : [ "EES_hunttransmutationtablet_1" ],
   "title" : "^orange;Roi Huntstang - Fire Alchemist^reset;",
-  "text" : "Concentrated. I have an old text written by the long forgotten alchemist ^orange;Roi Huntstang - Fire Alchemist^reset;, it describes a ritual to create a powerful book called the ^orange;Hunt transmutation tablet^reset;, but to do it, I'll require you to bring me ^orange;50 eggs^reset; and ^orange;60.000 Hunt EMC^reset;.",
+  "text" : "Concentrated. I have an old text written by the long forgotten alchemist ^orange;Roi Huntstang - Fire Alchemist^reset;, it describes a ritual to create a powerful book called the ^orange;Hunt transmutation tablet^reset;, but to do it, I'll require you to bring me ^orange;10 hen eggs^reset; and ^orange;60.000 Hunt EMC^reset;.",
   "completionText" : "Proud. Here you have, your very own ^orange;Hunt transmutation tablet^reset;",
   "moneyRange" : [0, 0],
   "rewards" : [
@@ -22,7 +22,7 @@
       {
         "type" : "gatherItem",
         "itemName" : "henegg",
-        "count" : 50,
+        "count" : 10,
         "consume" : true
       },
       {
