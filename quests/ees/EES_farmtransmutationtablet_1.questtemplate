@@ -26,7 +26,7 @@
         "type" : "studyTransmutation",
         "description" : "Farm transmutations:\n<current> / <required>",
         "mainEmc" : "EES_farmemc",
-        "count" : 35
+        "count" : 30
       }
     ]
   }
