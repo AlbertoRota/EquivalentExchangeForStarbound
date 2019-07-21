@@ -57,7 +57,7 @@ end
 
 function createStudyList(studyConfig)
   local out = {}
-  local studyListConfig = root.assetJson("/EES_transmutationstudylist_backUp.config")
+  local studyListConfig = root.assetJson("/EES_transmutationstudylist.config")
 
   for emcType, tiers in pairs(studyConfig) do
     for i, tier in ipairs(tiers) do
