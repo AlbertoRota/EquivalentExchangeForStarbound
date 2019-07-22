@@ -106,8 +106,7 @@ function EES_applyItemAtSlot(itemToApply, slot)
     return itemToApply
   else
     -- Calculate how many items we can add.
-    local slotItemConfig = root.itemConfig(slotItem).config
-    local maxStack = (slotItemConfig.category and slotItemConfig.category == "Blueprint" and 1) or slotItemConfig.maxStack or root.assetJson("/items/defaultParameters.config:defaultMaxStack")
+    local maxStack = EES_getItemConfig(slotItem).maxStack
     local missing = maxStack - slotItem.count
     local amountToAdd = math.min(missing, itemToApply.count)
 

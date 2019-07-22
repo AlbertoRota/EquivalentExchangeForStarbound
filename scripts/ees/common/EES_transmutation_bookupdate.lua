@@ -67,7 +67,7 @@ function updateProgress(item)
 
   -- If totally unknown, initiallize it.
   if not playerTransmutations[self.mainEmc][item.name] then
-    local itemPrice = root.itemConfig(item.name).config.price or 0
+    local itemPrice = EES_getItemConfig(item.name).price
     if itemPrice < self.minItemPrice then itemPrice = self.minItemPrice end
     playerTransmutations[self.mainEmc][item.name] = {
       known = false, progress = 0, name = item.name, price = itemPrice

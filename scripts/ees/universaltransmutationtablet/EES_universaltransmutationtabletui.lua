@@ -107,8 +107,7 @@ function EES_applyItemAtSlot(itemToApply, slot)
     return itemToApply
   else
     -- Calculate how many items we can add.
-    local slotItemConfig = root.itemConfig(slotItem).config
-    local maxStack = (slotItemConfig.category and slotItemConfig.category == "Blueprint" and 1) or slotItemConfig.maxStack or root.assetJson("/items/defaultParameters.config:defaultMaxStack")
+    local maxStack = EES_getItemConfig(slotItem).maxStack
     local missing = maxStack - slotItem.count
     local amountToAdd = math.min(missing, itemToApply.count)
 
@@ -136,6 +135,9 @@ function refreshEmcChange()
   -- Initiallize player emc
   widget.setImage("iconMainEmc", "/items/EES/currency/" .. self.mainEmc .. ".png")
   EES_updatePlayerEmcLabels()
+
+  -- Re-calculate and display the "studyEmc" value
+  widget.setText("labelStudyEmc", EES_calculateStudyEmcValue())
 
   -- Initiallize the crafting grid
   EES_refreshAllCrafting()

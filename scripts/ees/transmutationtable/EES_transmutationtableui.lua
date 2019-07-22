@@ -15,7 +15,6 @@ function init()
   if EES_superInit then EES_superInit() end
   container = {}
   self.lastItemGridItems = {}
-  self.defaultMaxStack = root.assetJson("/items/defaultParameters.config:defaultMaxStack")
 
   -- Load config from the ".object" file of the linked container.
   self.mainEmc         = EES_getConfig("eesMainEmc")

@@ -7,9 +7,6 @@ EES_stackSuperInit = init
 function init()
   if EES_stackSuperInit then EES_stackSuperInit() end
 
-  -- Default stack for items that do not specify it.
-  self.defaultMaxStack = root.assetJson("/items/defaultParameters.config:defaultMaxStack")
-
   -- Save the "canStudy" as an array, so that we can iterate it in for loops
   EES_refreshStackList()
 end
@@ -87,7 +84,7 @@ end
 function moveItemFromPlayerToContainerSlot(itemDescriptor, containerSlot)
   local moved = false
   local amount = player.hasCountOfItem(itemDescriptor, false)
-  local maxStack = root.itemConfig(itemDescriptor.name).config.maxStack or self.defaultMaxStack
+  local maxStack = EES_getItemConfig(itemDescriptor.name).maxStack
   local missing = maxStack - itemDescriptor.count
 
   -- Move the maximum amount possible from player to slot

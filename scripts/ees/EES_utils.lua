@@ -1,22 +1,44 @@
+function EES_getItemConfig(itemDesc)
+  -- Initiallyze cache.
+  if not self.itemConfigCache then self.itemConfigCache = {} end
+
+	if not itemDesc then
+    -- No item passed, skip.
+    sb.logWarn("EES_log - EES_getItemConfig: Called 'EES_getItemConfig' with a 'nil' value.")
+		return
+	elseif type(itemDesc) ~= "table" then
+    -- Only name provided, create dummy "itemDesc".
+		itemDesc = {name = itemDesc, count = 1, parameters = {}}
+	end
+
+	if not self.itemConfigCache[itemDesc.name] then
+    -- Item not cached, initiallize it.
+		local default = root.itemConfig(itemDesc)
+		if default then
+      local cfg = default.config
+			self.itemConfigCache[itemDesc.name] = {
+        itemName = cfg.itemName,
+				maxStack = (cfg.category and cfg.category == "Blueprint" and 1) or
+                    cfg.maxStack or
+                    root.assetJson("/items/defaultParameters.config:defaultMaxStack"),
+				price = cfg.price or 0,
+				shortdescription = cfg.shortdescription
+			}
+		else
+      sb.logWarn("EES_log - EES_getItemConfig: Unable to properly parse: %s", itemDesc.name)
+			self.itemConfigCache[itemDesc.name] = {}
+		end
+	end
+
+  tprint(self.itemConfigCache[itemDesc.name], "self.itemConfigCache[itemDesc.name]")
+	return self.itemConfigCache[itemDesc.name]
+end
+
+
 -- Prints all the tables available in the environment
-function envprint (msg)
-  sb.logInfo("/* **************************** */")
-  sb.logInfo("Printing _ENV: " .. msg)
-  for k, v in pairs(_ENV) do
-    sb.logInfo( k .. ": " .. tostring(v) )
-  end
-  sb.logInfo("/* **************************** */")
-end
-
-function traceprint (msg)
-  sb.logInfo("/* **************************** */")
-  sb.logInfo( msg )
-  sb.logInfo("/* **************************** */")
-end
-
 function tprint (tbl, msg)
   sb.logInfo("/* **************************** */")
-  sb.logInfo("Printing: " .. msg)
+  sb.logInfo("EES_log - Printing: " .. msg)
   if not tbl then
     sb.logInfo("Is nill")
   elseif type(tbl) == "table" then

@@ -90,7 +90,6 @@ function initUpgradeTooltip()
   widget.clearListItems(ingredientsList)
   for _, upgradeMaterial in pairs(self.upgradeMaterials) do
     local itemName, count = upgradeMaterial.item, upgradeMaterial.count
-    local itemConfig = root.itemConfig(itemName).config
     local newItem = string.format(
       "%s.%s",
       ingredientsList,
@@ -98,7 +97,10 @@ function initUpgradeTooltip()
     )
 
     -- Basic info.
-    widget.setText(newItem..".itemName", itemConfig.shortdescription)
+    widget.setText(
+      newItem..".itemName",
+      EES_getItemConfig(itemName).shortdescription
+    )
     widget.setItemSlotItem(
       newItem..".itemIcon",
       { name = itemName, count = 1 }

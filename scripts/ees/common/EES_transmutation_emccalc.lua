@@ -38,7 +38,7 @@ function EES_calculateItemEmcValue(item, factor)
   if not item then return 0 end
 
   -- Obtain the relevant information of the item
-  local itemPrice = root.itemConfig(item.name).config.price or 0
+  local itemPrice = EES_getItemConfig(item.name).price
 
   -- Obtain the value of a single item
   if itemPrice < self.minItemPrice then itemPrice = self.minItemPrice end

@@ -44,7 +44,7 @@ function EES_itemMatchFilter(itemConfig)
   if stringMatchFilter(itemConfig.shortdescription) then return true end
 
   -- Check "description"
-  if stringMatchFilter(itemConfig.description) then return true end
+  -- if stringMatchFilter(itemConfig.description) then return true end
 
   -- No match, return false
   return false

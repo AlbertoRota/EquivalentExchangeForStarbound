@@ -76,7 +76,7 @@ function populateItemList()
   -- Add all known transmutations to the list.
   widget.clearListItems(self.itemList)
   for _, transmutation in pairs(orderedTransmutationList) do
-    local itemConfig = root.itemConfig(transmutation.name).config
+    local itemConfig = EES_getItemConfig(transmutation.name)
 
     -- Skip the items that do not match the searchFilter
     if not EES_itemMatchFilter or EES_itemMatchFilter(itemConfig) then
