@@ -6,8 +6,9 @@
   "link" : "steam://url/CommunityFilePage/1790667104",
   "name" : "EES",
   "path" : ".",
+  "priority" : -9998,
   "requires" : [],
   "steamContentId" : "1790667104",
   "tags" : "Crafting and Building|Miscellaneous|Food and Farming|Mechanics",
-  "version" : "3.1.1"
+  "version" : "3.1.2"
 }
