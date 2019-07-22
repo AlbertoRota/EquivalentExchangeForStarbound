@@ -29,8 +29,7 @@ function EES_getItemConfig(itemDesc)
 			self.itemConfigCache[itemDesc.name] = {}
 		end
 	end
-
-  tprint(self.itemConfigCache[itemDesc.name], "self.itemConfigCache[itemDesc.name]")
+  
 	return self.itemConfigCache[itemDesc.name]
 end
 
