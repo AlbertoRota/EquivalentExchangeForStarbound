@@ -26,10 +26,15 @@ function EES_getItemConfig(itemDesc)
 			}
 		else
       sb.logWarn("EES_log - EES_getItemConfig: Unable to properly parse: %s", itemDesc.name)
-			self.itemConfigCache[itemDesc.name] = {}
+			self.itemConfigCache[itemDesc.name] = {
+        itemName = itemDesc.name,
+				maxStack = 0,
+				price = 0,
+				shortdescription = "Error - Item not found."
+			}
 		end
 	end
-  
+
 	return self.itemConfigCache[itemDesc.name]
 end
 
