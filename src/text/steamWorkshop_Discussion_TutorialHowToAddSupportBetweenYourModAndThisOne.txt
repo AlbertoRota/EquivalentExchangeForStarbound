@@ -1,0 +1,67 @@
+[h1] Preface [/h1]
+This tutorial is intended to help other modders to add compatibility between their mods and "EE for Starbound".
+
+If you are not the author of the mod, but you want to see it integrated with "EE for Starbound", please ask the author to take a look here.
+
+If you are the mod author, welcome.
+
+[h1] TL;DR: [/h1]
+[olist]
+    [*]Create a file named "EES_transmutationstudylist.config.patch" in the root of your mod.
+    [*]In that file, add one patch operation per item you want to be "Studyable"
+    [*]Done ːsteamhappyː
+[/olist]
+
+[h1] In detail: [/h1]
+[b]Create the ".patch" file.[/b]
+Create a file named "EES_transmutationstudylist.config.patch" in the root of your mod.
+This file will be used to patch my own "EES_transmutationstudylist.config" file, where all the "Studyable" items are listed.
+Make sure that it is in the root of your mod (Same level as "player.config.patch")
+
+[b]Add the patch operations.[/b]
+You will need to add one patch operation per item you want to add.
+The patch operation should be as follows:
+[code]{ "op": "add", "path": "/[mine|farm|hunt]/[T1|T2|T3]/<itemName>", "value": true}[/code]
+Let me clarify it:
+[list]
+    [*][b][mine|farm|hunt][/b]
+    [list]
+        [*][i]mine[/i] if it's an ore or simmilar.
+        [*][i]farm[/i] if it's a plant or simmilar.
+        [*][i]hunt[/i] if it's an mob drop or simmilar.
+    [/list]
+    [*][b][T1|T2|T3][/b]
+    [list]
+        [*][i]T1[/i] if it's an early-game item.
+        [*][i]T2[/i] if it's a mid-game.
+        [*][i]T3[/i] if it's an end-game item.
+    [/list]
+    [*][b]<itemName>[/b]
+    [list]
+        [*]The [i]"itemName"[/i] of your item.
+    [/list]
+[/list]
+Example:
+[code][
+    { "op": "add", "path": "/mine/T1/ironore", "value": true},
+    { "op": "add", "path": "/farm/T2/coralcreep", "value": true},
+    { "op": "add", "path": "/hunt/T3/cryonicextract", "value": true}
+][/code]
+
+
+[b]Finish.[/b]
+That's all you need to do.
+If you want to check it, just start your game with both mods installed and check if you can study it in the expected table, at the expected level.
+If it fails, don't hesitate to contact me. ːsteamhappyː
+
+[b]Tips for choosing items.[/b]
+[olist]
+    [*]Choose always only the bare minimum materials to add, if something can be crafted from other materials, let the players craft it, if not (Mined, farmed or dropped by a monster) consider to add it.
+[/olist]
+
+[h1] Real world examples: [/h1]
+Here you have a list of links to real examples of files created to integrate items added by other mods into "EE for Starbound":
+[list]
+    [*][b]Frackin Universe[/b] - [url=https://github.com/sayterdarkwynd/FrackinUniverse/blob/master/EES_transmutationstudylist.config.patch]Link to the file in GitHub.[/url]
+    [*][b]Elithian Races Mod[/b] - [url=https://github.com/Aegonian/ElithianAllianceStarboundMod/blob/master/EES_transmutationstudylist.config.patch]Link to the file in GitHub.[/url]
+[/list]
