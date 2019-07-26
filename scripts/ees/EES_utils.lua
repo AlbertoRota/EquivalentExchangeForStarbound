@@ -22,6 +22,8 @@ function EES_getItemConfig(itemDesc)
                     cfg.maxStack or
                     root.assetJson("/items/defaultParameters.config:defaultMaxStack"),
 				price = cfg.price or 0,
+        isStudyable = self.canStudy[itemDesc.name] ~= nil,
+        error = false,
 				shortdescription = cfg.shortdescription
 			}
 		else
@@ -30,6 +32,8 @@ function EES_getItemConfig(itemDesc)
         itemName = itemDesc.name,
 				maxStack = 0,
 				price = 0,
+        isStudyable = false,
+        error = true,
 				shortdescription = "Error - Item not found."
 			}
 		end

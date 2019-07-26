@@ -20,7 +20,6 @@ function searchCallback()
 
   if self.searchFilter ~= newSearchText then
     self.searchFilter = newSearchText
-    traceprint("Populating list - " .. self.searchFilter)
     populateItemList()
   end
 end
@@ -40,11 +39,14 @@ end
 ------------------------------ Public functions -------------------------------
 --------------------------------------------------------------------------------
 function EES_itemMatchFilter(itemConfig)
+  -- Filter out erroneous items
+  if itemConfig.error then return false end
+
+  -- Filter out items that can't be studyed
+  if not itemConfig.isStudyable then return false end
+
   -- Check "shortdescription"
   if stringMatchFilter(itemConfig.shortdescription) then return true end
-
-  -- Check "description"
-  -- if stringMatchFilter(itemConfig.description) then return true end
 
   -- No match, return false
   return false
