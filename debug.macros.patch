@@ -1,0 +1,22 @@
+[
+  {
+    "op": "add",
+    "path": "/EES_FinishMainQuests",
+    "value": [
+  	  "/startquest '\"EES_farmtransmutationtablet_1\"'",
+      "/completequest EES_farmtransmutationtablet_1",
+      "/startquest '\"EES_farmtransmutationtablet_2\"'",
+      "/completequest EES_farmtransmutationtablet_2",
+      "/startquest '\"EES_hunttransmutationtablet_1\"'",
+      "/completequest EES_hunttransmutationtablet_1",
+      "/startquest '\"EES_hunttransmutationtablet_2\"'",
+      "/completequest EES_hunttransmutationtablet_2",
+      "/startquest '\"EES_minetransmutationtablet_1\"'",
+      "/completequest EES_minetransmutationtablet_1",
+      "/startquest '\"EES_minetransmutationtablet_2\"'",
+      "/completequest EES_minetransmutationtablet_2",
+      "/startquest '\"EES_universaltransmutationtablet\"'",
+      "/completequest EES_universaltransmutationtablet"
+  	]
+  }
+]
